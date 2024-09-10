@@ -1,10 +1,10 @@
-import HeroPage from "./Components/HeroPage";
+import HomePage from './Components/HomePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <>
-    <HeroPage></HeroPage>
+      <HomePage></HomePage>
     </>
   );
 }
