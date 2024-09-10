@@ -1,0 +1,35 @@
+.hero-section {
+  background-color: #ffffff;
+  padding-top: 60px;
+  padding-bottom: 110px;
+}
+
+.heading {
+  font-weight: bold;
+  font-size: 45px;
+}
+
+.description {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-family: 'Mulish', sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  color: #7d7987;
+}
+
+.button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background-color: #458ff6;
+  border-radius: 50px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+  transition: all 0.1s ease;
+}
+
+.button:hover {
+  background-color: #1878ff;
+}

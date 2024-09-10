@@ -1,0 +1,26 @@
+.footer {
+  padding: 80px 70px;
+  color: white;
+  background: linear-gradient(to top right, #5a98f2, #67c3f3);
+}
+
+.footer-title {
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.footer-desc {
+  margin: 10px 0 30px;
+  font-family: 'Mulish', sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  color: white;
+}
+
+.footer-subtitle {
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 19px;
+  color: white;
+}

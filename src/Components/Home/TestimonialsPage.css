@@ -1,0 +1,49 @@
+.testimonial-sec {
+  padding: 60px 0;
+}
+
+.testimonial {
+  padding: 80px;
+}
+
+.t-title {
+  width: 420px;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 44px;
+}
+
+.t-hr {
+  margin: 20px 0;
+  height: 2px;
+  background-color: black;
+  border-width: 0;
+  width: 50px;
+  opacity: 1;
+}
+
+.t-desc {
+  margin: 30px 0;
+  width: 420px;
+  font-family: 'Mulish', sans-serif;
+  font-weight: normal;
+  font-size: 17px;
+  color: #7d7987;
+}
+
+.t-button {
+  margin-top: 16px;
+  padding: 12px 30px;
+  background-color: white;
+  border-radius: 50px;
+  border: 1.4px solid #458ff6;
+  color: #458ff6;
+  font-weight: bold;
+  font-size: 17px;
+  transition: all 0.2s ease;
+}
+
+.t-button:hover {
+  background-color: #458ff6;
+  color: white;
+}
