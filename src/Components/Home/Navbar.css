@@ -6,6 +6,10 @@
   font-size: 28px;
   font-weight: bold;
   color: #1f1534;
+  background-clip: border-box;
+  background: -webkit-linear-gradient(top, #00e7f0, #00b1f0, #0087f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .navitem {

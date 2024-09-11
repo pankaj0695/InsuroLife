@@ -10,7 +10,7 @@ function Navbar() {
         <a href='/' className='d-flex align-items-center text-decoration-none'>
           <img src={MainLogo} alt='Logo' className='logo' />
           <div className='ml-3'>
-            <h1 className='font-weight-bold mb-0 mx-2 title'>Insurolife</h1>
+            <h1 className='mb-0 mx-2 title'>Insurolife</h1>
           </div>
         </a>
         <nav>
