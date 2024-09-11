@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import illustration from '../../assets/images/illustration.svg';
 import './HeroPage.css';
 
@@ -14,7 +16,9 @@ function HeroPage() {
               Discover the best insurance for you, and book appointments with
               ease, all in one place.
             </p>
-            <button className='button'>Get Started</button>
+            <Link to='get-started' className='button'>
+              Get Started
+            </Link>
           </div>
           <div className='col-md-6 text-center'>
             <img

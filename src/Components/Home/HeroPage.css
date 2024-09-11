@@ -19,6 +19,7 @@
 }
 
 .button {
+  display: inline-block;
   margin-top: 20px;
   padding: 12px 30px;
   background-color: #458ff6;
@@ -27,6 +28,7 @@
   color: white;
   font-weight: bold;
   font-size: 17px;
+  text-decoration: none;
   transition: all 0.1s ease;
 }
 

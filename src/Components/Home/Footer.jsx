@@ -7,7 +7,10 @@ function Footer() {
       <div className='container'>
         <div className='row align-items-start'>
           <div className='col-md-4 d-flex flex-column align-items-left text-left'>
-            <div className='d-flex flex-row align-items-center'>
+            <a
+              href='/'
+              className='d-flex flex-row align-items-center text-decoration-none'
+            >
               <img
                 src={FooterLogo}
                 alt='Insurolife Logo'
@@ -15,7 +18,7 @@ function Footer() {
                 style={{ maxWidth: '45px' }}
               />
               <h5 className='footer-title'>Insurolife</h5>
-            </div>
+            </a>
             <div>
               <p className='footer-desc'>
                 Insurolife simplifies your healthcare journey by providing
@@ -30,13 +33,13 @@ function Footer() {
             <h5 className='footer-subtitle'>Company</h5>
             <ul className='list-unstyled'>
               <li className='mb-3'>
-                <a href='#home' className='footer-desc text-decoration-none'>
+                <a href='/' className='footer-desc text-decoration-none'>
                   Home
                 </a>
               </li>
               <li className='mb-3'>
                 <a
-                  href='#insurance'
+                  href='/insurances'
                   className='footer-desc text-decoration-none'
                 >
                   Insurances
@@ -44,7 +47,7 @@ function Footer() {
               </li>
               <li className='mb-3'>
                 <a
-                  href='#appointment'
+                  href='/appointment'
                   className='footer-desc text-decoration-none'
                 >
                   Appointment

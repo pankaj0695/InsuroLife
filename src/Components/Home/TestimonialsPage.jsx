@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import secTwoIllustration from '../../assets/images/trafalgar-illustration sec02 1.svg';
 import secThreeIllustration from '../../assets/images/trafalgar-illustration sec03 1.svg';
 import './TestimonialsPage.css';
@@ -25,7 +27,9 @@ function TestimonialsPage() {
                 accessible on mobile and online for everyone. To us, it's not
                 just work. We take pride in the solutions we deliver.
               </p>
-              <button className='t-button'>Learn more</button>
+              <Link to='/profile' className='t-button'>
+                Learn more
+              </Link>
             </div>
           </div>
         </div>
@@ -41,7 +45,9 @@ function TestimonialsPage() {
                 Our dedicated patient engagement app and web portal allow you to
                 access information instantaneously and securely.
               </p>
-              <button className='t-button'>Book Now</button>
+              <Link to='/appointment' className='t-button'>
+                Book Now
+              </Link>
             </div>
             <div className='col-md-6 text-center'>
               <img

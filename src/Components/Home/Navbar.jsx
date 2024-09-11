@@ -1,3 +1,5 @@
+import { Link, NavLink } from 'react-router-dom';
+
 import MainLogo from '../../assets/insurolife-logo.svg';
 import './Navbar.css';
 
@@ -5,31 +7,33 @@ function Navbar() {
   return (
     <header className='header bg-white py-4'>
       <div className='container d-flex justify-content-between align-items-center'>
-        <div className='d-flex align-items-center'>
+        <a href='/' className='d-flex align-items-center text-decoration-none'>
           <img src={MainLogo} alt='Logo' className='logo' />
           <div className='ml-3'>
             <h1 className='font-weight-bold mb-0 mx-2 title'>Insurolife</h1>
           </div>
-        </div>
+        </a>
         <nav>
           <ul className='nav align-items-center'>
             <li className='navitem'>
-              <a href='#home' className='navlink'>
+              <NavLink to='/' className='navlink'>
                 Home
-              </a>
+              </NavLink>
             </li>
             <li className='navitem'>
-              <a href='#insurance' className='navlink'>
+              <NavLink to='/insurances' className='navlink'>
                 Insurances
-              </a>
+              </NavLink>
             </li>
             <li className='navitem'>
-              <a href='#appointment' className='navlink'>
+              <NavLink to='/appointment' className='navlink'>
                 Appointment
-              </a>
+              </NavLink>
             </li>
             <li className='navitem'>
-              <button className='nav-button'>Login</button>
+              <Link to='/get-started' className='nav-button'>
+                Login
+              </Link>
             </li>
           </ul>
         </nav>
