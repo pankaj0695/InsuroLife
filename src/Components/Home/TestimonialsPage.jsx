@@ -27,9 +27,11 @@ function TestimonialsPage() {
                 accessible on mobile and online for everyone. To us, it's not
                 just work. We take pride in the solutions we deliver.
               </p>
-              <Link to='/profile' className='t-button'>
-                Learn more
-              </Link>
+              <div className='btn d-flex justify-content-center'>
+                <Link to='/profile' className='t-button'>
+                  Learn more
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -45,9 +47,11 @@ function TestimonialsPage() {
                 Our dedicated patient engagement app and web portal allow you to
                 access information instantaneously and securely.
               </p>
-              <Link to='/appointment' className='t-button'>
-                Book Now
-              </Link>
+              <div className='d-flex justify-content-center'>
+                <Link to='/appointment' className='t-button'>
+                  Book Now
+                </Link>
+              </div>
             </div>
             <div className='col-md-6 text-center'>
               <img
