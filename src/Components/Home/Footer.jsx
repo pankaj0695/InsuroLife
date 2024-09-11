@@ -6,7 +6,7 @@ function Footer() {
     <footer className='footer'>
       <div className='container'>
         <div className='row align-items-start'>
-          <div className='col-md-4 d-flex flex-column align-items-left text-left'>
+          <div className='col-md-4 d-flex flex-column align-items-left text-left logo-section'>
             <a
               href='/'
               className='d-flex flex-row align-items-center text-decoration-none'
@@ -79,3 +79,4 @@ function Footer() {
 }
 
 export default Footer;
+

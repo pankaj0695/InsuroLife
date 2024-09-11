@@ -1,9 +1,14 @@
 import { Link, NavLink } from 'react-router-dom';
+import { useState } from 'react';
 
 import MainLogo from '../../assets/insurolife-logo.svg';
 import './Navbar.css';
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
   return (
     <header className='header bg-white py-4'>
       <div className='container d-flex justify-content-between align-items-center'>
@@ -13,25 +18,30 @@ function Navbar() {
             <h1 className='mb-0 mx-2 title'>Insurolife</h1>
           </div>
         </a>
-        <nav>
+        <button className='hamburger' onClick={toggleMenu}>
+          <span className='bar'></span>
+          <span className='bar'></span>
+          <span className='bar'></span>
+        </button>
+        <nav className={`nav-menu ${menuOpen ? 'active' : ''}`}>
           <ul className='nav align-items-center'>
             <li className='navitem'>
-              <NavLink to='/' className='navlink'>
+              <NavLink to='/' className='navlink' onClick={toggleMenu}>
                 Home
               </NavLink>
             </li>
             <li className='navitem'>
-              <NavLink to='/insurances' className='navlink'>
+              <NavLink to='/insurances' className='navlink' onClick={toggleMenu}>
                 Insurances
               </NavLink>
             </li>
             <li className='navitem'>
-              <NavLink to='/appointment' className='navlink'>
+              <NavLink to='/appointment' className='navlink' onClick={toggleMenu}>
                 Appointment
               </NavLink>
             </li>
             <li className='navitem'>
-              <Link to='/get-started' className='nav-button'>
+              <Link to='/get-started' className='nav-button' onClick={toggleMenu}>
                 Login
               </Link>
             </li>
@@ -43,3 +53,4 @@ function Navbar() {
 }
 
 export default Navbar;
+

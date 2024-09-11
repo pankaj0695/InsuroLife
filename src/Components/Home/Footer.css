@@ -1,27 +1,119 @@
 .footer {
-  padding: 80px 70px;
-  color: white;
-  background: linear-gradient(to top right, #5a98f2, #67c3f3);
-}
+    padding: 60px 20px; 
+    color: white;
+    background: linear-gradient(to top right, #5a98f2, #67c3f3);
+  }
+  
+  .footer-title {
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+  }
+  
+  .footer-desc {
+    margin: 10px 0 30px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    color: white;
+  }
+  
+  .footer-subtitle {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 19px;
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    .footer .container {
+      text-align: center;
+    }
+  
+    .footer .row {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .footer .col-md-4 {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .footer .col-md-4:nth-child(1) {
+      margin-bottom: 30px;
+    }
+  
+    .footer .col-md-4:nth-child(2),
+    .footer .col-md-4:nth-child(3) {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .footer .col-md-4:nth-child(2) {
+      margin-right: 0;
+    }
+  
+    .footer .list-unstyled {
+      padding-left: 0;
+      list-style: none;
+      text-align: center;
+    }
+  
+    .footer .list-unstyled li {
+      margin-bottom: 10px;
+    }
+  
+    .footer .logo-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .footer .logo-img {
+      max-width: 60px;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .footer .row {
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    .footer .col-md-4 {
+      width: 30%;
+    }
+  
+    .footer .col-md-4:nth-child(1) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .footer .logo-section {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  
+    .footer .logo-img {
+      max-width: 45px;
+      margin-right: 10px;
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
 
-.footer-title {
-  margin-left: 10px;
-  font-weight: bold;
-  font-size: 24px;
-  color: white;
-}
 
-.footer-desc {
-  margin: 10px 0 30px;
-  font-family: 'Mulish', sans-serif;
-  font-weight: normal;
-  font-size: 16px;
-  color: white;
-}
 
-.footer-subtitle {
-  margin-bottom: 20px;
-  font-weight: bold;
-  font-size: 19px;
-  color: white;
-}
