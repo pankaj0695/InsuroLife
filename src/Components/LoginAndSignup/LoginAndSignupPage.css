@@ -1,0 +1,69 @@
+/* Common styles for login and signup */
+.login-page-container,
+.signup-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.login-form,
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 15px;
+}
+
+.login-form label,
+.signup-form label {
+  font-size: 1rem;
+  color: #333;
+}
+
+.login-form input,
+.signup-form input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-btn,
+.signup-btn {
+  padding: 12px;
+  font-size: 1.2rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover,
+.signup-btn:hover {
+  background-color: #0056b3;
+}
+
+p {
+  margin-top: 15px;
+  font-size: 1rem;
+}
+
+p span {
+  color: #007bff;
+  text-decoration: none;
+}
+
+p span:hover {
+  text-decoration: underline;
+}

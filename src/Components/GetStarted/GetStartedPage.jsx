@@ -5,7 +5,7 @@ const GetStartedPage = () => {
   const navigate = useNavigate();
 
   const handleNavigation = role => {
-    navigate(`/login`);
+    navigate(`/login`, { state: { role } });
   };
 
   return (
