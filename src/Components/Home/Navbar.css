@@ -1,3 +1,7 @@
+.header-padd {
+  padding: 1.5rem 0;
+}
+
 .logo {
   width: 45px;
 }
@@ -56,10 +60,10 @@
 }
 
 .bar {
-  width: 25px;
-  height: 3px;
+  width: 20px;
+  height: 2px;
   background-color: #1f1534;
-  margin: 3px 0;
+  margin: 2px 0;
 }
 
 .nav-menu {
@@ -71,6 +75,18 @@
 }
 
 @media (max-width: 768px) {
+  .header-padd {
+    padding: 1rem 0;
+  }
+
+  .logo {
+    width: 35px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
   .nav {
     display: none;
   }
@@ -100,14 +116,13 @@
   .navitem {
     margin-left: 0;
     margin: 10px 0;
-    padding: 10px 20px;
-
+    padding: 5px 20px;
   }
 
-  .navlink, .nav-button {
-    font-size: 20px;
+  .navlink,
+  .nav-button {
+    font-size: 16px;
     display: block;
-    margin: 10px 0;
+    margin: 0;
   }
 }
-

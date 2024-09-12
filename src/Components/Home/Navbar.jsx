@@ -7,10 +7,10 @@ import './Navbar.css';
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleMenu = () => setMenuOpen(prevState => !prevState);
 
   return (
-    <header className='header bg-white py-4'>
+    <header className='header bg-white header-padd'>
       <div className='container d-flex justify-content-between align-items-center'>
         <a href='/' className='d-flex align-items-center text-decoration-none'>
           <img src={MainLogo} alt='Logo' className='logo' />
@@ -31,17 +31,29 @@ function Navbar() {
               </NavLink>
             </li>
             <li className='navitem'>
-              <NavLink to='/insurances' className='navlink' onClick={toggleMenu}>
+              <NavLink
+                to='/insurances'
+                className='navlink'
+                onClick={toggleMenu}
+              >
                 Insurances
               </NavLink>
             </li>
             <li className='navitem'>
-              <NavLink to='/appointment' className='navlink' onClick={toggleMenu}>
+              <NavLink
+                to='/appointment'
+                className='navlink'
+                onClick={toggleMenu}
+              >
                 Appointment
               </NavLink>
             </li>
             <li className='navitem'>
-              <Link to='/get-started' className='nav-button' onClick={toggleMenu}>
+              <Link
+                to='/get-started'
+                className='nav-button'
+                onClick={toggleMenu}
+              >
                 Login
               </Link>
             </li>
@@ -53,4 +65,3 @@ function Navbar() {
 }
 
 export default Navbar;
-

@@ -19,7 +19,7 @@ function TestimonialsPage() {
                 height='300'
               />
             </div>
-            <div className='col-md-6'>
+            <div className='col-md-6 t-content'>
               <h2 className='t-title'>Maintains Health Record</h2>
               <hr className='t-hr' />
               <p className='t-desc'>
@@ -27,11 +27,9 @@ function TestimonialsPage() {
                 accessible on mobile and online for everyone. To us, it's not
                 just work. We take pride in the solutions we deliver.
               </p>
-              <div className='btn d-flex justify-content-center'>
-                <Link to='/profile' className='t-button'>
-                  Learn more
-                </Link>
-              </div>
+              <Link to='/profile' className='t-button'>
+                Learn more
+              </Link>
             </div>
           </div>
         </div>
@@ -40,18 +38,17 @@ function TestimonialsPage() {
       <div className='testimonial'>
         <div className='container'>
           <div className='row align-items-center'>
-            <div className='col-md-6 text-left text-md-left'>
+            <div className='col-md-6 t-content'>
               <h2 className='t-title'>Book an Appointment with Expert</h2>
               <hr className='t-hr' />
               <p className='t-desc'>
                 Our dedicated patient engagement app and web portal allow you to
                 access information instantaneously and securely.
               </p>
-              <div className='d-flex justify-content-center'>
-                <Link to='/appointment' className='t-button'>
-                  Book Now
-                </Link>
-              </div>
+
+              <Link to='/appointment' className='t-button'>
+                Book Now
+              </Link>
             </div>
             <div className='col-md-6 text-center'>
               <img
