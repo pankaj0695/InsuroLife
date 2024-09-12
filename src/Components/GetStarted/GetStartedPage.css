@@ -40,3 +40,43 @@
 .get-started-btn:focus {
   outline: none;
 }
+
+@media (max-width: 768px) {
+  .get-started-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .get-started-btn {
+    width: 200px;
+    padding: 12px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .get-started-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .get-started-btn {
+    width: 180px;
+    padding: 10px;
+    font-size: 1rem;
+  }
+}
