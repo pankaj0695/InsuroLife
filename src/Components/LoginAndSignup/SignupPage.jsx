@@ -46,8 +46,8 @@ const SignupPage = () => {
         userData = {
           name,
           dob,
-          city,
-          state,
+          city: city.toLowerCase(),
+          state: state.toLowerCase(),
           email,
           password,
         };
@@ -64,8 +64,8 @@ const SignupPage = () => {
 
         resData = await response.json();
         localStorage.setItem('auth-token', resData.token);
-        // window.location.replace('/');
-        console.log(resData.user);
+        window.location.replace('/');
+        // console.log(resData.user);
 
         break;
 
@@ -79,9 +79,9 @@ const SignupPage = () => {
           return;
 
         userData = {
-          hospital_name: name,
-          city,
-          state,
+          hospital_name: name.toLowerCase(),
+          city: city.toLowerCase(),
+          state: state.toLowerCase(),
           email,
           password,
         };
@@ -98,14 +98,14 @@ const SignupPage = () => {
 
         resData = await response.json();
         localStorage.setItem('auth-token', resData.token);
-        // window.location.replace('/');
-        console.log(resData.hospital);
+        window.location.replace('/');
+        // console.log(resData.hospital);
 
         break;
 
       case 'company':
         userData = {
-          company_name: name,
+          company_name: name.toLowerCase(),
           email,
           password,
         };
@@ -121,8 +121,8 @@ const SignupPage = () => {
 
         resData = await response.json();
         localStorage.setItem('auth-token', resData.token);
-        // window.location.replace('/');
-        console.log(resData.company);
+        window.location.replace('/');
+        // console.log(resData.company);
 
         break;
 
@@ -143,7 +143,13 @@ const SignupPage = () => {
       </h2>
       {/* Signup form */}
       <form className='signup-form' onSubmit={submitHandler}>
-        <label htmlFor='name'>Name</label>
+        <label htmlFor='name'>
+          {role === 'customer'
+            ? 'Name'
+            : role === 'hospital'
+            ? 'Hospital Name'
+            : 'Company Name'}
+        </label>
         <input
           type='text'
           id='name'
