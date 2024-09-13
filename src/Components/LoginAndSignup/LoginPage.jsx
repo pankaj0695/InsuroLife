@@ -9,7 +9,7 @@ const LoginPage = () => {
 
   return (
     <div className='login-page-container'>
-      <h2>
+      <h2 className='heading2'>
         Login as{' '}
         {role === 'customer'
           ? 'Customer'
@@ -19,10 +19,10 @@ const LoginPage = () => {
       </h2>
       {/* Login form */}
       <form className='login-form'>
-        <label htmlFor='email'>Email:</label>
+        <label htmlFor='email'>Email</label>
         <input type='email' id='email' name='email' required />
 
-        <label htmlFor='password'>Password:</label>
+        <label htmlFor='password'>Password</label>
         <input type='password' id='password' name='password' required />
 
         <button type='submit' className='login-btn'>

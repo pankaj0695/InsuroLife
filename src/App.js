@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import Layout from './Components/Layout';
+import GetStartedLayout from './Components/GetStartedLayout';
 import HomePage from './Components/Home/HomePage';
 import GetStartedPage from './Components/GetStarted/GetStartedPage';
 import LoginPage from './Components/LoginAndSignup/LoginPage';
@@ -26,6 +27,12 @@ const router = createBrowserRouter([
         path: '/appointment',
         element: <AppointmentPage />,
       },
+    ],
+  },
+  {
+    path: '/',
+    element: <GetStartedLayout />,
+    children: [
       {
         path: '/get-started',
         element: <GetStartedPage />,

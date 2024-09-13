@@ -4,15 +4,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f0f0f0;
+  justify-content: start;
+  background-color: white;
+  padding: 120px 0;
+  min-height: 90vh;
 }
 
-h2 {
+.heading2 {
   margin-bottom: 20px;
   color: #333;
   font-size: 1.8rem;
+  font-weight: medium;
+  text-align: center;
 }
 
 .login-form,
@@ -20,7 +23,7 @@ h2 {
   display: flex;
   flex-direction: column;
   width: 300px;
-  gap: 15px;
+  gap: 10px;
 }
 
 .login-form label,
@@ -31,6 +34,7 @@ h2 {
 
 .login-form input,
 .signup-form input {
+  margin-bottom: 5px;
   padding: 10px;
   font-size: 1rem;
   border: 1px solid #ccc;
@@ -39,19 +43,20 @@ h2 {
 
 .login-btn,
 .signup-btn {
+  margin: 10px 0;
   padding: 12px;
   font-size: 1.2rem;
-  background-color: #007bff;
+  background-color: #458ff6;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.1s ease;
 }
 
 .login-btn:hover,
 .signup-btn:hover {
-  background-color: #0056b3;
+  background-color: #1878ff;
 }
 
 p {
@@ -66,4 +71,14 @@ p span {
 
 p span:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .heading2 {
+    font-size: 1.6rem;
+  }
+  .login-page-container,
+  .signup-page-container {
+    padding: 80px 0;
+  }
 }

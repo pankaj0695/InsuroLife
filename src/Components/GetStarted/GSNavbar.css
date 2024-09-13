@@ -1,0 +1,32 @@
+.gs-header {
+  background-color: white;
+  padding: 1.5rem 0;
+}
+
+.gs-logo {
+  width: 45px;
+}
+
+.gs-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1f1534;
+  background-clip: border-box;
+  background: -webkit-linear-gradient(top, #00e7f0, #00b1f0, #0087f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .gs-header-padd {
+    padding: 1rem 0;
+  }
+
+  .gs-logo {
+    width: 35px;
+  }
+
+  .gs-title {
+    font-size: 24px;
+  }
+}
