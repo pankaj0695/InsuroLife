@@ -27,7 +27,7 @@ const LoginPage = () => {
 
     switch (role) {
       case 'customer':
-        response = await fetch('http://localhost:4000/user/login/', {
+        response = await fetch('/user/login/', {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
@@ -45,7 +45,7 @@ const LoginPage = () => {
         break;
 
       case 'hospital':
-        response = await fetch('http://localhost:4000/hospital/login/', {
+        response = await fetch('/hospital/login/', {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
@@ -63,7 +63,7 @@ const LoginPage = () => {
         break;
 
       case 'insurer':
-        response = await fetch('http://localhost:4000/insurer/login/', {
+        response = await fetch('/insurer/login/', {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
