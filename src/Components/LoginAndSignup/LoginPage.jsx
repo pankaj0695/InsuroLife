@@ -39,7 +39,7 @@ const LoginPage = () => {
 
         resData = await response.json();
         localStorage.setItem('auth-token', resData.token);
-        window.location.replace('/');
+        window.location.replace('/user/profile');
         // console.log(resData.user);
 
         break;
@@ -57,13 +57,13 @@ const LoginPage = () => {
 
         resData = await response.json();
         localStorage.setItem('auth-token', resData.token);
-        window.location.replace('/');
+        window.location.replace('/hospital/profile');
         // console.log(resData.hospital);
 
         break;
 
-      case 'company':
-        response = await fetch('http://localhost:4000/company/login/', {
+      case 'insurer':
+        response = await fetch('http://localhost:4000/insurer/login/', {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
@@ -75,8 +75,8 @@ const LoginPage = () => {
 
         resData = await response.json();
         localStorage.setItem('auth-token', resData.token);
-        window.location.replace('/');
-        // console.log(resData.company);
+        window.location.replace('/insurer/profile');
+        // console.log(resData.insurer);
 
         break;
 

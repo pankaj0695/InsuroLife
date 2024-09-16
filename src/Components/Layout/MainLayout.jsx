@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
 import { Outlet } from 'react-router-dom';
-import Navbar from './Home/Navbar';
-import Footer from './Home/Footer';
+import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer/Footer';
 
-const Layout = () => {
+const MainLayout = () => {
   return (
     <Fragment>
       <Navbar />
@@ -15,4 +15,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default MainLayout;

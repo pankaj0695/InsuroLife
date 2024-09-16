@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 import { Outlet } from 'react-router-dom';
-import Footer from './Home/Footer';
-import GSNavbar from './GetStarted/GSNavbar';
+import GSNavbar from '../Navbar/GSNavbar';
 
 const GetStartedLayout = () => {
   return (

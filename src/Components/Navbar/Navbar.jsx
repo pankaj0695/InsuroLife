@@ -40,6 +40,11 @@ function Navbar() {
               </NavLink>
             </li>
             <li className='navitem'>
+              <NavLink to='/hospitals' className='navlink' onClick={toggleMenu}>
+                Hospitals
+              </NavLink>
+            </li>
+            <li className='navitem'>
               <NavLink
                 to='/appointment'
                 className='navlink'

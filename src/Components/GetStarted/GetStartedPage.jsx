@@ -25,7 +25,7 @@ const GetStartedPage = () => {
           Hospital Authority
         </button>
         <button
-          onClick={() => handleNavigation('company')}
+          onClick={() => handleNavigation('insurer')}
           className='get-started-btn'
         >
           Insurance Company Authority

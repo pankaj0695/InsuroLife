@@ -1,13 +1,17 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import Layout from './Components/Layout';
-import GetStartedLayout from './Components/GetStartedLayout';
+import MainLayout from './Components/Layout/MainLayout';
+import GetStartedLayout from './Components/Layout/GetStartedLayout';
+import ProfileLayout from './Components/Layout/ProfileLayout';
+import UserProfilePage from './Components/Profile/UserProfile/UserProfilePage';
+import HospitalProfilePage from './Components/Profile/HospitalProfile/HospitalProfilePage';
+import InsurerProfilePage from './Components/Profile/InsurerProfile/InsurerProfilePage';
 import HomePage from './Components/Home/HomePage';
 import GetStartedPage from './Components/GetStarted/GetStartedPage';
 import LoginPage from './Components/LoginAndSignup/LoginPage';
 import SignupPage from './Components/LoginAndSignup/SignupPage';
-import ProfilePage from './Components/Profile/ProfilePage';
 import InsurancesPage from './Components/Insurances/InsurancesPage';
+import HospitalsPage from './Components/Hospitals/HospitalsPage';
 import AppointmentPage from './Components/Appointment/AppointmentPage';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,13 +19,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: <MainLayout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: '/profile', element: <ProfilePage /> },
       {
         path: '/insurances',
         element: <InsurancesPage />,
+      },
+      {
+        path: '/hospitals',
+        element: <HospitalsPage />,
       },
       {
         path: '/appointment',
@@ -42,6 +49,21 @@ const router = createBrowserRouter([
         element: <LoginPage />,
       },
       { path: '/signup', element: <SignupPage /> },
+    ],
+  },
+  {
+    path: '/',
+    element: <ProfileLayout />,
+    children: [
+      {
+        path: '/user/profile',
+        element: <UserProfilePage />,
+      },
+      {
+        path: '/hospital/profile',
+        element: <HospitalProfilePage />,
+      },
+      { path: '/insurer/profile', element: <InsurerProfilePage /> },
     ],
   },
 ]);
