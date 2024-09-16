@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import PhoneInput from 'react-phone-input-2';
 
+import 'react-phone-input-2/lib/style.css';
 import './LoginAndSignupPage.css';
 
 const SignupPage = () => {
   const [name, setName] = useState('');
   const [dob, setDob] = useState('');
+  const [gender, setGender] = useState('');
+  const [contactNo, setContactNo] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [email, setEmail] = useState('');
@@ -21,6 +25,7 @@ const SignupPage = () => {
     if (
       !name ||
       name.trim().length === 0 ||
+      !contactNo ||
       !email ||
       !email.includes('@') ||
       !password ||
@@ -34,6 +39,7 @@ const SignupPage = () => {
     switch (role) {
       case 'customer':
         if (
+          !gender ||
           !dob ||
           dob.trim().length === 0 ||
           !city ||
@@ -45,9 +51,11 @@ const SignupPage = () => {
 
         userData = {
           name,
+          gender,
           dob,
           city: city.toLowerCase(),
           state: state.toLowerCase(),
+          contactNo,
           email,
           password,
         };
@@ -65,7 +73,6 @@ const SignupPage = () => {
         resData = await response.json();
         localStorage.setItem('auth-token', resData.token);
         window.location.replace('/');
-        // console.log(resData.user);
 
         break;
 
@@ -80,6 +87,7 @@ const SignupPage = () => {
 
         userData = {
           hospital_name: name.toLowerCase(),
+          contactNo,
           city: city.toLowerCase(),
           state: state.toLowerCase(),
           email,
@@ -106,6 +114,7 @@ const SignupPage = () => {
       case 'company':
         userData = {
           company_name: name.toLowerCase(),
+          contactNo,
           email,
           password,
         };
@@ -174,6 +183,22 @@ const SignupPage = () => {
                 setDob(e.target.value);
               }}
             />
+            <label htmlFor='gender'>Gender</label>
+            <select
+              id='gender'
+              value={gender}
+              onChange={e => {
+                setGender(e.target.value);
+              }}
+              required
+            >
+              <option value='' disabled>
+                Select your gender
+              </option>
+              <option value='male'>Male</option>
+              <option value='female'>Female</option>
+              <option value='other'>Other</option>
+            </select>
           </>
         )}
 
@@ -204,7 +229,14 @@ const SignupPage = () => {
             />
           </>
         )}
-
+        <label htmlFor='contact-no'>Contact No</label>
+        <PhoneInput
+          country={'in'}
+          enableSearch={true}
+          disableDropdown={false}
+          value={contactNo}
+          onChange={phone => setContactNo(phone)}
+        />
         <label htmlFor='email'>Email</label>
         <input
           type='email'
@@ -254,8 +286,7 @@ const SignupPage = () => {
         >
           Login here
         </span>
-      </p>{' '}
-      {/* Link to login page */}
+      </p>
     </div>
   );
 };

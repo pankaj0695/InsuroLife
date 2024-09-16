@@ -134,8 +134,7 @@ const LoginPage = () => {
         >
           Signup here
         </span>
-      </p>{' '}
-      {/* Link to signup page */}
+      </p>
     </div>
   );
 };

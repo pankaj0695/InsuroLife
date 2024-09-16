@@ -33,7 +33,8 @@
 }
 
 .login-form input,
-.signup-form input {
+.signup-form input,
+.signup-form select {
   margin-bottom: 5px;
   padding: 10px;
   font-size: 1rem;
