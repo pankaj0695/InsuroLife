@@ -268,7 +268,7 @@ const AppointmentPage = () => {
             <img
               src={counsellor.insurer_logo}
               alt={counsellor.insurer}
-              className='insurer-logo'
+              className='c-insurer-logo'
             />
             <img
               src={counsellor.image}

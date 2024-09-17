@@ -15,7 +15,9 @@ import {
 function HospitalProfilePage() {
   const [key, setKey] = useState('insurances');
 
-  const handleTabSelect = k => setKey(k);
+  const handleTabSelect = k => {
+    setKey(k);
+  };
 
   return (
     <div className='container profile-page'>

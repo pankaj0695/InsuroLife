@@ -1,0 +1,100 @@
+.hospital-detail-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.d-hospital-info {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.h-hospital-image {
+  width: 400px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.d-hospital-info h2 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.d-point {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.d-point span {
+  font-weight: bold;
+  color: black;
+}
+
+.d-point span:hover {
+  text-decoration: none;
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+}
+
+.star-rating img {
+  margin-left: 4px;
+}
+
+.d-hospital-details {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 20px;
+}
+
+.d-insurance-list {
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
+
+.d-insurance-list h3 {
+  margin: 80px 0 40px;
+  font-weight: bold;
+}
+
+.d-insurance-cards-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.d-insurance-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px 20px;
+  width: auto;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.d-insurance-card:hover {
+  transform: translateY(-5px);
+}
+
+.d-insurance-image {
+  width: 100px;
+  object-fit: contain;
+  border-radius: 5px;
+  margin-right: 8px;
+}
+
+.d-insurance-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+}

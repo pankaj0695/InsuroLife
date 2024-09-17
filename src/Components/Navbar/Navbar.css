@@ -28,6 +28,10 @@
   transition: all 0.1s ease;
 }
 
+.active {
+  font-weight: bold;
+}
+
 .navlink:hover {
   color: rgb(111, 111, 111);
 }

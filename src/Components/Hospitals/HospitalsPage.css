@@ -118,6 +118,15 @@
   margin: 4px 0;
 }
 
+.star-rating {
+  display: flex;
+  align-items: center;
+}
+
+.star-rating img {
+  margin-left: 4px;
+}
+
 .view-details-btn {
   min-width: 45%;
   margin-left: auto;

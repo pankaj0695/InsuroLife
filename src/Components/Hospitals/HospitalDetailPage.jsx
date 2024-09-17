@@ -1,12 +1,10 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-import downArrowIcon from '../../assets/icons/down-arrow.svg';
-import locationIcon from '../../assets/icons/location.svg';
+import bajajLogo from '../../assets/insurance-images/bajaj-logo.png';
 import hospitalImage from '../../assets/hospital-images/hospital-image.jpg';
 import starIcon from '../../assets/icons/star-fill-icon.svg';
-
-import './HospitalsPage.css';
+import './HospitalDetailPage.css';
 
 // Sample hospital data
 const hospitalsData = [
@@ -231,148 +229,78 @@ const hospitalsData = [
     avgRating: 4.4,
   },
 ];
-const HospitalsPage = () => {
-  const [state, setState] = useState('Maharashtra');
-  const [city, setCity] = useState('');
 
-  const [filteredData, setFilteredData] = useState(hospitalsData);
+const insurances = [
+  {
+    insuranceName: 'Health Shield Plan',
+    insurerLogo: bajajLogo, // Placeholder image for insurer logo
+  },
+  {
+    insuranceName: 'Star Plan',
+    insurerLogo: bajajLogo, // Placeholder image for insurer logo
+  },
+];
 
-  const [isStateDropdownOpen, setIsStateDropdownOpen] = useState(false);
-  const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
+const HospitalDetailPage = () => {
+  const { hospital_id } = useParams(); // Extract hospital_id from URL
+  const [hospital, setHospital] = useState(null);
 
-  const navigate = useNavigate();
-
-  const stateOptions = [
-    ...new Set(hospitalsData.map(hospital => hospital.state)),
-  ];
-  const cityOptions = [
-    ...new Set(
-      hospitalsData
-        .filter(hospital => hospital.state === state)
-        .map(hospital => hospital.city)
-    ),
-  ];
-
-  const stateChangeHandler = e => {
-    setState(e.target.value);
-  };
-
-  const cityChangeHandler = e => {
-    setCity(prevCity => (prevCity === e.target.value ? '' : e.target.value));
-  };
-
-  // Apply filters and sorting
-  const applyFilters = () => {
-    setIsStateDropdownOpen(false);
-    setIsCityDropdownOpen(false);
-
-    let data = hospitalsData;
-
-    if (state) {
-      data = data.filter(item => item.state === state);
+  useEffect(() => {
+    const fetchedhospital = hospitalsData.find(item => item.id === hospital_id);
+    if (fetchedhospital) {
+      setHospital(fetchedhospital);
     }
+  }, [hospital_id]);
 
-    if (city) {
-      data = data.filter(item => item.city === city);
-    }
-
-    setFilteredData(data);
-  };
+  if (!hospital) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div className='hospital-page-container'>
-      <div className='filters-container'>
-        {/* State Filter */}
-        <div className='dropdown'>
-          <button
-            className='dropdown-btn'
-            onClick={() => setIsStateDropdownOpen(!isStateDropdownOpen)}
-          >
-            State
-            <img src={downArrowIcon} width={20} alt='down arrow' />
-          </button>
-          {isStateDropdownOpen && (
-            <div className='h-dropdown-content'>
-              {stateOptions.map(item => (
-                <label key={item} className='checkbox-label'>
-                  <input
-                    type='checkbox'
-                    value={item}
-                    checked={item === state}
-                    name='state'
-                    onChange={stateChangeHandler}
-                  />
-                  {item}
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
+    <div className='hospital-detail-page'>
+      <div className='d-hospital-info'>
+        <img
+          src={hospital.image}
+          alt={hospital.hospital_name}
+          className='h-hospital-image'
+        />
+        <h2>{hospital.hospital_name}</h2>
+        <p className='d-point'>
+          City: <span>{hospital.city}</span>
+        </p>
+        <p className='d-point'>
+          State: <span>{hospital.state}</span>
+        </p>
 
-        {/* City Filter */}
-        <div className='dropdown'>
-          <button
-            className='dropdown-btn'
-            onClick={() => setIsCityDropdownOpen(!isCityDropdownOpen)}
-          >
-            City
-            <img src={downArrowIcon} width={20} alt='down arrow' />
-          </button>
-          {isCityDropdownOpen && (
-            <div className='h-dropdown-content'>
-              {cityOptions.map(item => (
-                <label key={item} className='checkbox-label'>
-                  <input
-                    type='checkbox'
-                    value={item}
-                    checked={item === city}
-                    name='city'
-                    onChange={cityChangeHandler}
-                  />
-                  {item}
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Apply Filters Button */}
-        <button className='apply-filters-btn' onClick={applyFilters}>
-          Apply Filters
-        </button>
+        <p className='star-rating d-point'>
+          Rating: {hospital.avgRating}
+          <img src={starIcon} alt='star icon' width={16} />
+        </p>
+        <p className='d-point'>
+          Contact No: <span>{hospital.contactNo}</span>
+        </p>
+        <p className='d-point'>
+          Email Id: <span>{hospital.email}</span>
+        </p>
       </div>
 
-      {/* hospital Cards */}
-      <div className='hospital-cards-container'>
-        {filteredData.map((hospital, index) => (
-          <div key={index} className='hospital-card'>
-            <img
-              src={hospital.image}
-              alt={hospital.hospital_name}
-              className='hospital-image'
-            />
-            <h3>{hospital.hospital_name}</h3>
-            <p>
-              <img src={locationIcon} alt='location icon' width={20} />
-              {hospital.city}, {hospital.state}
-            </p>
-            <p className='star-rating'>
-              {hospital.avgRating}{' '}
-              <img src={starIcon} alt='star icon' width={16} />
-            </p>
-            <button
-              className='view-details-btn'
-              onClick={() => {
-                navigate(`/hospitals/${hospital.id}`);
-              }}
-            >
-              View Details →
-            </button>
-          </div>
-        ))}
+      <div className='d-insurance-list'>
+        <h3>Insurances that can be use in our Hospital</h3>
+        <div className='d-insurance-cards-container'>
+          {insurances.map((insurance, index) => (
+            <div key={index} className='d-insurance-card'>
+              <img
+                src={insurance.insurerLogo}
+                alt={insurance.insuranceName}
+                className='d-insurance-image'
+              />
+              <h4 className='d-insurance-name'>{insurance.insuranceName}</h4>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
-export default HospitalsPage;
+export default HospitalDetailPage;

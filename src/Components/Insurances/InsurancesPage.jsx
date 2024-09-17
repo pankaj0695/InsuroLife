@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import insurerIcon from '../../assets/icons/insurer.svg';
 import claimIcon from '../../assets/icons/claim.svg';
@@ -12,6 +13,7 @@ import './InsurancesPage.css';
 // Sample insurance data
 const insuranceData = [
   {
+    id: 'insurance-1',
     insuranceName: 'Health Shield Plan',
     insurer: 'Apollo India',
     insurerLogo: bajajLogo, // Placeholder image for insurer logo
@@ -26,6 +28,7 @@ const insuranceData = [
       'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
   },
   {
+    id: 'insurance-2',
     insuranceName: 'Health Shield Plan',
     insurer: 'Apollo India',
     insurerLogo: bajajLogo, // Placeholder image for insurer logo
@@ -40,6 +43,7 @@ const insuranceData = [
       'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
   },
   {
+    id: 'insurance-3',
     insuranceName: 'Health Shield Plan',
     insurer: 'Apollo India',
     insurerLogo: bajajLogo, // Placeholder image for insurer logo
@@ -54,6 +58,7 @@ const insuranceData = [
       'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
   },
   {
+    id: 'insurance-4',
     insuranceName: 'Health Shield Plan',
     insurer: 'Apollo India',
     insurerLogo: bajajLogo, // Placeholder image for insurer logo
@@ -68,6 +73,7 @@ const insuranceData = [
       'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
   },
   {
+    id: 'insurance-5',
     insuranceName: 'Health Shield Plan',
     insurer: 'Apollo India',
     insurerLogo: bajajLogo, // Placeholder image for insurer logo
@@ -82,6 +88,7 @@ const insuranceData = [
       'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
   },
   {
+    id: 'insurance-6',
     insuranceName: 'Health Shield Plan',
     insurer: 'LIC',
     insurerLogo: bajajLogo, // Placeholder image for insurer logo
@@ -96,6 +103,7 @@ const insuranceData = [
       'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
   },
   {
+    id: 'insurance-7',
     insuranceName: 'Health Shield Plan',
     insurer: 'Star Health',
     insurerLogo: bajajLogo, // Placeholder image for insurer logo
@@ -110,6 +118,7 @@ const insuranceData = [
       'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
   },
   {
+    id: 'insurance-8',
     insuranceName: 'Health Shield Plan',
     insurer: 'Bajaj Allianz',
     insurerLogo: bajajLogo, // Placeholder image for insurer logo
@@ -139,6 +148,8 @@ const InsurancesPage = () => {
   const [isClaimDropdownOpen, setIsClaimDropdownOpen] = useState(false);
   const [isPremiumDropdownOpen, setIsPremiumDropdownOpen] = useState(false);
   const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const insurers = [
     ...new Set(insuranceData.map(insurance => insurance.insurer)),
@@ -198,7 +209,6 @@ const InsurancesPage = () => {
   const handleSortChange = field => {
     const newOrder = sortOption.order === 'asc' ? 'desc' : 'asc';
     setSortOption({ field, order: newOrder });
-    applyFilters();
   };
 
   return (
@@ -340,7 +350,14 @@ const InsurancesPage = () => {
                 <li key={idx}>★ {point}</li>
               ))}
             </ul>
-            <button className='view-details-btn'>View Details →</button>
+            <button
+              className='view-details-btn'
+              onClick={() => {
+                navigate(`/insurances/${insurance.id}`);
+              }}
+            >
+              View Details →
+            </button>
           </div>
         ))}
       </div>

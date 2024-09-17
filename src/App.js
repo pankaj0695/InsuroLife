@@ -11,7 +11,9 @@ import GetStartedPage from './Components/GetStarted/GetStartedPage';
 import LoginPage from './Components/LoginAndSignup/LoginPage';
 import SignupPage from './Components/LoginAndSignup/SignupPage';
 import InsurancesPage from './Components/Insurances/InsurancesPage';
+import InsuranceDetailPage from './Components/Insurances/InsuranceDetailPage';
 import HospitalsPage from './Components/Hospitals/HospitalsPage';
+import HospitalDetailPage from './Components/Hospitals/HospitalDetailPage';
 import AppointmentPage from './Components/Appointment/AppointmentPage';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -26,10 +28,12 @@ const router = createBrowserRouter([
         path: '/insurances',
         element: <InsurancesPage />,
       },
+      { path: '/insurances/:insurance_id', element: <InsuranceDetailPage /> },
       {
         path: '/hospitals',
         element: <HospitalsPage />,
       },
+      { path: '/hospitals/:hospital_id', element: <HospitalDetailPage /> },
       {
         path: '/appointment',
         element: <AppointmentPage />,

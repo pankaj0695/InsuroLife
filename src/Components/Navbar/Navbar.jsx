@@ -26,7 +26,13 @@ function Navbar() {
         <nav className={`nav-menu ${menuOpen ? 'active' : ''}`}>
           <ul className='nav align-items-center'>
             <li className='navitem'>
-              <NavLink to='/' className='navlink' onClick={toggleMenu}>
+              <NavLink
+                to='/'
+                className={({ isActive }) =>
+                  ` navlink ${isActive ? 'active' : ''}`
+                }
+                onClick={toggleMenu}
+              >
                 Home
               </NavLink>
             </li>

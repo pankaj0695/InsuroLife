@@ -123,6 +123,10 @@
   color: black;
 }
 
+.insurance-card p span:hover {
+  text-decoration: none;
+}
+
 .insurance-insurer {
   font-weight: bold;
   margin: 10px 0;
