@@ -3,128 +3,10 @@ import { useState } from 'react';
 import insurerIcon from '../../assets/icons/insurer.svg';
 import claimIcon from '../../assets/icons/claim.svg';
 import premiumIcon from '../../assets/icons/money-bag.svg';
-// import sortIcon from '../../assets/icons/sort-icon.svg';
 import downArrowIcon from '../../assets/icons/down-arrow.svg';
 
-import bajajLogo from '../../assets/insurance-images/bajaj-logo.png';
+import insuranceJSON from '../../assets/JSON/insurance.json';
 import './InsurancesPage.css';
-
-// Sample insurance data
-const insuranceData = [
-  {
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    insuranceName: 'Health Shield Plan',
-    insurer: 'LIC',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Star Health',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Bajaj Allianz',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  // Add more insurances similarly
-];
 
 const InsurancesPage = () => {
   const [filters, setFilters] = useState({
@@ -133,7 +15,7 @@ const InsurancesPage = () => {
     premium: '',
   });
   const [sortOption, setSortOption] = useState({ field: '', order: '' });
-  const [filteredData, setFilteredData] = useState(insuranceData);
+  const [filteredData, setFilteredData] = useState(insuranceJSON);
 
   const [isInsurerDropdownOpen, setIsInsurerDropdownOpen] = useState(false);
   const [isClaimDropdownOpen, setIsClaimDropdownOpen] = useState(false);
@@ -141,21 +23,21 @@ const InsurancesPage = () => {
   const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
 
   const insurers = [
-    ...new Set(insuranceData.map(insurance => insurance.insurer)),
+    ...new Set(insuranceJSON.map((insurance) => insurance.insurer)),
   ];
   const claimOptions = ['300000', '500000', '1000000']; // Predefined claim options
   const premiumOptions = ['500', '800', '1500']; // Predefined premium options
 
   // Handle insurer filter
-  const handleInsurerChange = insurer => {
+  const handleInsurerChange = (insurer) => {
     const selectedInsurers = filters.insurers.includes(insurer)
-      ? filters.insurers.filter(item => item !== insurer)
+      ? filters.insurers.filter((item) => item !== insurer)
       : [...filters.insurers, insurer];
     setFilters({ ...filters, insurers: selectedInsurers });
   };
 
   // Handle claim and premium filters
-  const handleOtherFilterChange = e => {
+  const handleOtherFilterChange = (e) => {
     if (filters[e.target.name] === e.target.value) {
       setFilters({ ...filters, [e.target.name]: '' });
     } else setFilters({ ...filters, [e.target.name]: e.target.value });
@@ -168,18 +50,20 @@ const InsurancesPage = () => {
     setIsPremiumDropdownOpen(false);
     setIsSortDropdownOpen(false);
 
-    let data = insuranceData;
+    let data = insuranceJSON;
 
     if (filters.insurers.length > 0) {
-      data = data.filter(item => filters.insurers.includes(item.insurer));
+      data = data.filter((item) => filters.insurers.includes(item.insurer));
     }
 
     if (filters.claim) {
-      data = data.filter(item => item.claim <= parseInt(filters.claim));
+      data = data.filter(
+        (item) => parseInt(item.claim.replace(/[^0-9]/g, '')) <= parseInt(filters.claim)
+      );
     }
 
     if (filters.premium) {
-      data = data.filter(item => item.premium <= parseInt(filters.premium));
+      data = data.filter((item) => item.premium <= parseInt(filters.premium));
     }
 
     if (sortOption.field) {
@@ -191,11 +75,12 @@ const InsurancesPage = () => {
         }
       });
     }
+
     setFilteredData(data);
   };
 
   // Handle sort change
-  const handleSortChange = field => {
+  const handleSortChange = (field) => {
     const newOrder = sortOption.order === 'asc' ? 'desc' : 'asc';
     setSortOption({ field, order: newOrder });
     applyFilters();
@@ -216,7 +101,7 @@ const InsurancesPage = () => {
           </button>
           {isInsurerDropdownOpen && (
             <div className='dropdown-content'>
-              {insurers.map(insurer => (
+              {insurers.map((insurer) => (
                 <label key={insurer} className='checkbox-label'>
                   <input
                     type='checkbox'
@@ -243,7 +128,7 @@ const InsurancesPage = () => {
           </button>
           {isClaimDropdownOpen && (
             <div className='dropdown-content'>
-              {claimOptions.map(claim => (
+              {claimOptions.map((claim) => (
                 <label key={claim} className='checkbox-label'>
                   <input
                     type='checkbox'
@@ -271,7 +156,7 @@ const InsurancesPage = () => {
           </button>
           {isPremiumDropdownOpen && (
             <div className='dropdown-content'>
-              {premiumOptions.map(premium => (
+              {premiumOptions.map((premium) => (
                 <label key={premium} className='checkbox-label'>
                   <input
                     type='checkbox'
@@ -328,7 +213,6 @@ const InsurancesPage = () => {
               className='insurer-logo'
             />
             <h3>{insurance.insuranceName}</h3>
-            {/* <p className='insurance-insurer'>{insurance.insurer}</p> */}
             <p>
               Claim: <span>₹{insurance.claim}</span>
             </p>
@@ -349,3 +233,4 @@ const InsurancesPage = () => {
 };
 
 export default InsurancesPage;
+
