@@ -1,0 +1,674 @@
+[
+    {
+        "insuranceName": "Health Shield Plan",
+        "insurer": "Apollo India",
+        "claim": "Up to 5 Lakhs",
+        "premium": 800,
+        "keyPoints": [
+            "Covers hospitalization and outpatient treatments",
+            "Cashless facility at 4500+ network hospitals",
+            "Includes maternity cover after 3 years"
+        ],
+        "details": "The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments. It includes pre and post-hospitalization expenses for 60 days and 90 days respectively. Daycare procedures, which do not require 24-hour hospitalization, are also covered. The policy offers a cashless facility across 4500+ network hospitals in India. In addition, the plan includes maternity cover after a waiting period of 3 years, along with coverage for newborn babies. Free annual health check-ups are also part of the package, ensuring you can stay on top of your health."
+    },
+    {
+        "insuranceName": "Max Bupa Health Companion",
+        "insurer": "Max Bupa",
+        "claim": "Up to 10 Lakhs",
+        "premium": 1500,
+        "keyPoints": [
+            "Covers pre and post-hospitalization expenses",
+            "Cashless treatment at 5000+ hospitals",
+            "Includes ambulance charges and daycare surgeries"
+        ],
+        "details": "The Health Companion plan from Max Bupa is a comprehensive health insurance plan designed for individuals and families. It covers hospitalization costs, including pre and post-hospitalization expenses, for up to 10 Lakhs. The plan offers cashless treatment at over 5000 hospitals nationwide. With coverage for ambulance charges, daycare surgeries, and domiciliary hospitalization, this plan ensures a wide range of medical contingencies are addressed. The family floater option allows multiple family members to be covered under one plan, making it an ideal solution for families. Critical illness coverage and cancer treatment are also included."
+    },
+    {
+        "insuranceName": "Star Family Health Optima",
+        "insurer": "Star Health",
+        "claim": "Up to 25 Lakhs",
+        "premium": 2000,
+        "keyPoints": [
+            "Covers hospitalization and critical illnesses",
+            "Includes maternity benefits and newborn care",
+            "Free telemedicine consultations"
+        ],
+        "details": "Star Family Health Optima is an all-inclusive family health insurance plan offering coverage of up to 25 Lakhs. This plan covers hospitalization expenses, including pre and post-hospitalization for a specified period. The policy also provides coverage for daycare treatments and advanced procedures, such as robotic surgeries. Coverage extends to critical illnesses like cancer, kidney failure, and heart attacks. The policy includes maternity benefits after a specified waiting period and provides care for newborn babies. Star Health also offers free telemedicine consultations, making healthcare access easier and more convenient."
+    },
+    {
+        "insuranceName": "Religare Care Plan",
+        "insurer": "Religare Health Insurance",
+        "claim": "Up to 50 Lakhs",
+        "premium": 2500,
+        "keyPoints": [
+            "Extensive coverage including organ donor expenses",
+            "No-claim bonus feature increases coverage annually",
+            "Global coverage for medical emergencies"
+        ],
+        "details": "Religare Care Plan offers extensive health coverage for individuals and families, providing up to 50 Lakhs in claims. This plan covers hospitalization, daycare procedures, critical illnesses, and even organ donor expenses. The policy includes a no-claim bonus feature, which increases the coverage amount each year if no claim is made. The Religare Care Plan offers global coverage for medical emergencies and also includes an annual health check-up. The plan is known for its cashless claim settlements at more than 7000 hospitals in India, making it one of the most flexible and robust health plans available."
+    },
+    {
+        "insuranceName": "HDFC ERGO Health Suraksha",
+        "insurer": "HDFC ERGO",
+        "claim": "Up to 1 Crore",
+        "premium": 4000,
+        "keyPoints": [
+            "Covers advanced medical procedures and critical illnesses",
+            "Includes AYUSH treatments",
+            "Global coverage and second opinion for critical illnesses"
+        ],
+        "details": "HDFC ERGO Health Suraksha is a premium health insurance plan offering up to 1 Crore in coverage. The plan covers hospitalization costs, critical illness treatment, cancer therapies, and advanced medical procedures like robotic surgeries. It includes coverage for pre and post-hospitalization expenses, daycare treatments, and even global coverage for treatments. With this plan, you also get a range of add-ons, such as coverage for alternative treatments like Ayurveda, Unani, Siddha, and Homeopathy (AYUSH). The policy also provides a second opinion for critical illnesses and offers cashless treatments across an extensive hospital network."
+    },
+    {
+        "insuranceName": "Health Secure Plan",
+        "insurer": "Bajaj Allianz",
+        "claim": "5 Lakhs",
+        "premium": 700,
+        "keyPoints": [
+            "Covers pre-existing diseases after 4 years",
+            "Includes maternity expenses",
+            "Network of over 6500 hospitals"
+        ],
+        "details": "The Health Secure Plan provides comprehensive health coverage with cashless hospitalization, coverage for pre-existing diseases after 4 years, and a network of over 6500 hospitals. It includes coverage for maternity expenses and annual health check-ups."
+    },
+    {
+        "insuranceName": "Mediclaim Plus",
+        "insurer": "HDFC Ergo",
+        "claim": "10 Lakhs",
+        "premium": 1200,
+        "keyPoints": [
+            "Covers pre and post-hospitalization",
+            "Includes maternity and newborn care",
+            "Covers ambulance charges and day care procedures"
+        ],
+        "details": "This plan offers extensive coverage including pre and post hospitalization, maternity, and newborn care. The policy also covers ambulance charges, day care procedures, and provides lifelong renewability."
+    },
+    {
+        "insuranceName": "Max Bupa Reassure",
+        "insurer": "Max Bupa",
+        "claim": "3 Lakhs",
+        "premium": 500,
+        "keyPoints": [
+            "Covers hospitalization and pre-existing diseases after 2 years",
+            "Optional critical illness cover",
+            "Cashless treatment at 4500+ hospitals"
+        ],
+        "details": "Max Bupa Reassure is a comprehensive plan covering hospitalization, pre-existing diseases after 2 years, and offers an optional critical illness cover. The plan provides cashless treatment across 4500+ hospitals."
+    },
+    {
+        "insuranceName": "Care Health Insurance",
+        "insurer": "Care Health",
+        "claim": "8 Lakhs",
+        "premium": 900,
+        "keyPoints": [
+            "Covers COVID-19 and critical illnesses",
+            "Includes wellness program and renewal discounts",
+            "Comprehensive health benefits"
+        ],
+        "details": "The Care Health Insurance plan offers coverage for COVID-19, critical illness, and comprehensive health benefits including pre and post-hospitalization expenses. The plan also provides a wellness program and discounts on renewal."
+    },
+    {
+        "insuranceName": "Star Family Health Optima",
+        "insurer": "Star Health",
+        "claim": "15 Lakhs",
+        "premium": 1500,
+        "keyPoints": [
+            "Family floater plan with comprehensive coverage",
+            "Includes critical illnesses and maternity expenses",
+            "Lifetime renewability with free health check-ups"
+        ],
+        "details": "This family floater plan covers all members under one policy, with comprehensive coverage for critical illnesses, maternity expenses, and day care procedures. The plan provides lifetime renewability and includes free health check-ups."
+    },
+    {
+        "insuranceName": "ICICI Lombard Complete Health",
+        "insurer": "ICICI Lombard",
+        "claim": "5 Lakhs",
+        "premium": 800,
+        "keyPoints": [
+            "Covers wellness services and critical illness",
+            "Extensive coverage including 400+ day care treatments",
+            "Cashless hospitalization"
+        ],
+        "details": "ICICI Lombard’s Complete Health plan offers extensive coverage with cashless hospitalization, wellness services, and additional features like critical illness cover. The policy covers over 400 day care treatments."
+    },
+    {
+        "insuranceName": "Religare Care Freedom",
+        "insurer": "Religare",
+        "claim": "20 Lakhs",
+        "premium": 2000,
+        "keyPoints": [
+            "Includes coverage for pre-existing diseases and critical illnesses",
+            "Free health check-ups and wellness benefits",
+            "Comprehensive coverage for lifestyle-related diseases"
+        ],
+        "details": "Care Freedom is a comprehensive plan that includes coverage for pre-existing diseases, critical illnesses, and lifestyle-related diseases. It offers free health check-ups and wellness benefits as well."
+    },
+    {
+        "insuranceName": "Tata AIG MediCare",
+        "insurer": "Tata AIG",
+        "claim": "7 Lakhs",
+        "premium": 1100,
+        "keyPoints": [
+            "Broad health coverage including critical illnesses",
+            "Covers over 5000 hospitals with cashless treatment",
+            "Includes post-discharge expenses"
+        ],
+        "details": "Tata AIG MediCare provides broad health coverage including critical illnesses, hospitalization, and post-discharge expenses. The plan covers over 5000 hospitals across India with cashless treatment facilities."
+    },
+    {
+        "insuranceName": "Aditya Birla Activ Health",
+        "insurer": "Aditya Birla",
+        "claim": "10 Lakhs",
+        "premium": 1300,
+        "keyPoints": [
+            "Includes wellness benefits and fitness discounts",
+            "Cashless hospitalization and critical illness rider",
+            "Free annual health check-ups"
+        ],
+        "details": "This plan offers holistic health coverage including wellness benefits like fitness discounts, cashless hospitalization, and an optional critical illness rider. It also provides free health check-ups every year."
+    },
+    {
+        "insuranceName": "New India Floater Mediclaim",
+        "insurer": "New India Assurance",
+        "claim": "12 Lakhs",
+        "premium": 1000,
+        "keyPoints": [
+            "Family coverage with multiple members under one policy",
+            "Includes emergency ambulance services",
+            "Covers pre and post-hospitalization and day care treatments"
+        ],
+        "details": "New India Floater Mediclaim is designed for families, offering coverage for multiple members under one policy. It covers pre and post-hospitalization, day care treatments, and emergency ambulance services."
+    },
+    {
+        "insuranceName": "Royal Sundaram Lifeline Supreme",
+        "insurer": "Royal Sundaram",
+        "claim": "7 Lakhs",
+        "premium": 950,
+        "keyPoints": [
+            "International treatment for specified illnesses",
+            "Includes second opinions and maternity cover",
+            "Covers post-hospitalization expenses up to 60 days"
+        ],
+        "details": "This health insurance plan offers comprehensive coverage including international treatment for specified illnesses, second opinions, and maternity cover. It also covers post-hospitalization expenses up to 60 days."
+    },
+    {
+        "insuranceName": "Future Generali Health Total",
+        "insurer": "Future Generali",
+        "claim": "5 Lakhs",
+        "premium": 780,
+        "keyPoints": [
+            "Includes critical illness cover as an add-on",
+            "Covers maternity benefits",
+            "Includes pre-existing diseases after 4 years"
+        ],
+        "details": "The Health Total plan covers hospitalization, day care treatments, and critical illness cover as an add-on. The plan also includes maternity benefits and covers pre-existing diseases after 4 years."
+    },
+    {
+        "insuranceName": "Bharti AXA Smart Health",
+        "insurer": "Bharti AXA",
+        "claim": "4 Lakhs",
+        "premium": 650,
+        "keyPoints": [
+            "Covers maternity and critical illness",
+            "Cashless hospitalization at 4500 hospitals",
+            "Includes day care treatments"
+        ],
+        "details": "This policy offers cashless hospitalization across 4500 hospitals, coverage for maternity, and critical illness benefits. It also covers hospitalization expenses and day care treatments."
+    },
+    {
+        "insuranceName": "SBI Health Insurance",
+        "insurer": "SBI General",
+        "claim": "10 Lakhs",
+        "premium": 1100,
+        "keyPoints": [
+            "Includes ambulance charges and critical illnesses",
+            "Offers maternity benefits and wellness programs",
+            "Comprehensive health check-ups"
+        ],
+        "details": "SBI Health Insurance provides coverage for hospitalization, ambulance charges, and critical illnesses. It offers a range of add-ons such as maternity benefits, wellness programs, and health check-ups."
+    },
+    {
+        "insuranceName": "Oriental Happy Family Floater",
+        "insurer": "Oriental Insurance",
+        "claim": "15 Lakhs",
+        "premium": 1350,
+        "keyPoints": [
+            "Complete family coverage under one policy",
+            "Includes critical illness, maternity, and day care treatments",
+            "Cashless facility at 4000+ network hospitals"
+        ],
+        "details": "The Happy Family Floater provides complete coverage for the family under one policy, including critical illness, maternity, and day care treatments. It offers a cashless facility at 4000+ network hospitals."
+    },
+    {
+        "insuranceName": "United India Family Medicare",
+        "insurer": "United India Insurance",
+        "claim": "8 Lakhs",
+        "premium": 900,
+        "keyPoints": [
+            "Coverage for all family members",
+            "Includes hospitalization and day care treatments",
+            "Pre and post-hospitalization expenses covered"
+        ],
+        "details": "This family medicare plan offers coverage for all family members under one policy with a sum insured of up to 8 lakhs. It covers hospitalization, pre and post-hospitalization expenses, and day care treatments."
+    },
+    {
+        "insuranceName": "Reliance Health Infinity",
+        "insurer": "Reliance General",
+        "claim": "12 Lakhs",
+        "premium": 1050,
+        "keyPoints": [
+            "Extensive coverage for hospitalization and critical illnesses",
+            "Includes maternity cover and wellness benefits",
+            "Covers day care treatments"
+        ],
+        "details": "The Health Infinity plan by Reliance offers extensive coverage for hospitalization, day care treatments, and critical illnesses. It includes maternity cover and wellness benefits."
+    },
+    {
+        "insuranceName": "IFFCO Tokio Health Protector",
+        "insurer": "IFFCO Tokio",
+        "claim": "6 Lakhs",
+        "premium": 720,
+        "keyPoints": [
+            "Coverage for hospitalization and critical illness",
+            "Pre-existing diseases covered after 3 years",
+            "Includes free health check-ups and wellness programs"
+        ],
+        "details": "The Health Protector plan covers hospitalization, pre-existing diseases after 3 years, and critical illness coverage. It provides free health check-ups and wellness programs."
+    },
+    {
+        "insuranceName": "Kotak Health Premier",
+        "insurer": "Kotak Mahindra",
+        "claim": "9 Lakhs",
+        "premium": 980,
+        "keyPoints": [
+            "Covers hospitalization and critical illness",
+            "Cashless hospitalization at over 4000 hospitals",
+            "Includes free annual health check-ups"
+        ],
+        "details": "Kotak Health Premier offers coverage for hospitalization, critical illness, and wellness benefits. It provides cashless hospitalization at over 4000 hospitals and includes free annual health check-ups."
+    },
+    {
+        "insuranceName": "Chola MS Healthline",
+        "insurer": "Cholamandalam MS",
+        "claim": "4 Lakhs",
+        "premium": 600,
+        "keyPoints": [
+            "Coverage for hospitalization and day care treatments",
+            "Includes emergency ambulance services",
+            "Option for lifelong renewability"
+        ],
+        "details": "Chola MS Healthline offers coverage for hospitalization, day care treatments, and emergency ambulance services. It covers critical illnesses and provides an option for lifelong renewability."
+    },
+    {
+        "insuranceName": "Shriram Life Family Health Plan",
+        "insurer": "Shriram Life",
+        "claim": "7 Lakhs",
+        "premium": 850,
+        "keyPoints": [
+            "Extensive coverage for hospitalization and critical illnesses",
+            "Cashless facilities provided",
+            "Includes wellness programs"
+        ],
+        "details": "The Family Health Plan covers all family members under one policy and provides extensive coverage for hospitalization, critical illnesses, and wellness programs. It also offers cashless facilities."
+    },
+    {
+        "insuranceName": "Liberty Health Connect",
+        "insurer": "Liberty General Insurance",
+        "claim": "5 Lakhs",
+        "premium": 780,
+        "keyPoints": [
+            "Coverage for hospitalization and critical illness",
+            "Pre-existing diseases covered after 3 years",
+            "Cashless treatment at 5000+ hospitals"
+        ],
+        "details": "Liberty Health Connect provides comprehensive health coverage for hospitalization, critical illness, and pre-existing diseases after 3 years. It offers lifelong renewability and cashless treatment at 5000+ hospitals."
+    },
+    {
+        "insuranceName": "Digit Health Plus",
+        "insurer": "Digit Insurance",
+        "claim": "10 Lakhs",
+        "premium": 1200,
+        "keyPoints": [
+            "Covers hospitalization, critical illness, and maternity expenses",
+            "Cashless facility across 5000 hospitals",
+            "Includes wellness programs"
+        ],
+        "details": "The Digit Health Plus plan covers hospitalization, critical illness, and maternity expenses. It offers a cashless facility across 5000 hospitals and includes wellness programs for policyholders."
+    },
+    {
+        "insuranceName": "Manipal Cigna ProHealth Plus",
+        "insurer": "Manipal Cigna",
+        "claim": "6 Lakhs",
+        "premium": 880,
+        "keyPoints": [
+            "Extensive health coverage including critical illnesses",
+            "Covers day care treatments",
+            "Offers lifelong renewability"
+        ],
+        "details": "ProHealth Plus offers extensive health coverage, including critical illnesses, wellness benefits, and hospitalization. It also covers day care treatments and offers lifelong renewability."
+    },
+    {
+        "insuranceName": "Niva Bupa Health Companion",
+        "insurer": "Niva Bupa",
+        "claim": "8 Lakhs",
+        "premium": 950,
+        "keyPoints": [
+            "Comprehensive health insurance with cashless hospitalization",
+            "Covers maternity and day care treatments",
+            "Includes wellness benefits"
+        ],
+        "details": "The Health Companion plan offers comprehensive health insurance with cashless hospitalization, wellness benefits, and coverage for critical illness. The plan also covers maternity and day care treatments."
+    },
+    {
+        "insuranceName": "Star Health Family Delight",
+        "insurer": "Star Health",
+        "claim": "7 Lakhs",
+        "premium": 900,
+        "keyPoints": [
+            "Coverage for hospitalization, critical illnesses, and maternity expenses",
+            "Cashless treatment at 4000+ hospitals",
+            "Includes free annual health check-ups"
+        ],
+        "details": "Star Health Family Delight offers coverage for hospitalization, critical illnesses, and maternity expenses. It includes cashless treatment at 4000+ hospitals and free annual health check-ups."
+    },
+    {
+        "insuranceName": "HDFC ERGO Health Suraksha",
+        "insurer": "HDFC ERGO",
+        "claim": "12 Lakhs",
+        "premium": 1100,
+        "keyPoints": [
+            "Coverage for hospitalization, pre-existing conditions after 4 years",
+            "Includes wellness benefits and maternity cover",
+            "Cashless treatment at a wide network of hospitals"
+        ],
+        "details": "Health Suraksha covers hospitalization, pre-existing conditions after 4 years, and critical illness. It also includes wellness benefits, maternity cover, and cashless treatment at a wide network of hospitals."
+    },
+    {
+        "insuranceName": "Aditya Birla Health Secure",
+        "insurer": "Aditya Birla",
+        "claim": "6 Lakhs",
+        "premium": 800,
+        "keyPoints": [
+            "Coverage for hospitalization and critical illnesses",
+            "Cashless treatment at over 3500 hospitals",
+            "Includes free health check-ups"
+        ],
+        "details": "The Health Secure plan offers coverage for hospitalization, critical illnesses, and wellness benefits. It provides cashless treatment at over 3500 hospitals and includes free health check-ups."
+    },
+    {
+        "insuranceName": "Go Digit Health Protect",
+        "insurer": "Go Digit",
+        "claim": "5 Lakhs",
+        "premium": 750,
+        "keyPoints": [
+            "Covers hospitalization and day care treatments",
+            "Includes a cashless facility at 4000+ network hospitals",
+            "Offers lifelong renewability"
+        ],
+        "details": "Health Protect by Go Digit covers hospitalization, day care treatments, and critical illness. It includes a cashless facility at 4000+ network hospitals and offers lifelong renewability."
+    },
+    {
+        "insuranceName": "Bajaj Allianz Health Guard",
+        "insurer": "Bajaj Allianz",
+        "claim": "8 Lakhs",
+        "premium": 950,
+        "keyPoints": [
+            "Coverage for hospitalization, pre-existing diseases after 3 years",
+            "Includes wellness benefits and maternity cover",
+            "Cashless treatment at 4500 hospitals"
+        ],
+        "details": "Health Guard provides coverage for hospitalization, pre-existing diseases after 3 years, and critical illness. It includes wellness benefits, maternity cover, and cashless treatment at 4500 hospitals."
+    },
+    {
+        "insuranceName": "Reliance General Health Care",
+        "insurer": "Reliance General",
+        "claim": "10 Lakhs",
+        "premium": 1150,
+        "keyPoints": [
+            "Extensive coverage for hospitalization and critical illness",
+            "Includes maternity and annual health check-ups",
+            "Cashless treatment at over 5000 hospitals"
+        ],
+        "details": "Health Care offers extensive coverage for hospitalization, critical illness, and maternity. It provides cashless treatment at over 5000 hospitals and includes annual health check-ups."
+    },
+    {
+        "insuranceName": "ICICI Lombard Complete Health",
+        "insurer": "ICICI Lombard",
+        "claim": "9 Lakhs",
+        "premium": 1050,
+        "keyPoints": [
+            "Covers hospitalization and critical illnesses",
+            "Cashless treatment at 4500+ hospitals",
+            "Includes free health check-ups and preventive care"
+        ],
+        "details": "The Complete Health plan covers hospitalization, critical illnesses, and wellness benefits. It includes cashless treatment at 4500+ hospitals and offers free health check-ups and preventive care."
+    },
+    {
+        "insuranceName": "National Insurance Star Package",
+        "insurer": "National Insurance",
+        "claim": "7 Lakhs",
+        "premium": 850,
+        "keyPoints": [
+            "Coverage for hospitalization, day care treatments, and critical illness",
+            "Includes cashless facilities at 4000 hospitals",
+            "Provides free wellness programs and health check-ups"
+        ],
+        "details": "Star Package covers hospitalization, day care treatments, and critical illness. It includes cashless facilities at 4000 hospitals and provides free wellness programs and health check-ups."
+    },
+    {
+        "insuranceName": "Oriental Insurance Happy Family",
+        "insurer": "Oriental Insurance",
+        "claim": "6 Lakhs",
+        "premium": 780,
+        "keyPoints": [
+            "Coverage for hospitalization and critical illness",
+            "Includes maternity cover and free health check-ups",
+            "Cashless facility at 3000+ hospitals"
+        ],
+        "details": "The Happy Family plan provides coverage for hospitalization, critical illness, and wellness benefits. It offers a cashless facility at 3000+ hospitals and includes maternity cover and free health check-ups."
+    },
+    {
+        "insuranceName": "United India Mediclaim",
+        "insurer": "United India Insurance",
+        "claim": "10 Lakhs",
+        "premium": 1150,
+        "keyPoints": [
+            "Comprehensive coverage for hospitalization and critical illness",
+            "Includes maternity and wellness benefits",
+            "Cashless treatment at 4000 hospitals"
+        ],
+        "details": "Mediclaim offers comprehensive coverage for hospitalization, critical illness, and maternity. It includes cashless treatment at 4000 hospitals and provides wellness benefits and free annual health check-ups."
+    },
+    {
+        "insuranceName": "SBI Health Cover",
+        "insurer": "SBI General",
+        "claim": "8 Lakhs",
+        "premium": 900,
+        "keyPoints": [
+            "Coverage for hospitalization, critical illness, and day care treatments",
+            "Includes cashless treatment at a wide network of hospitals",
+            "Offers wellness benefits and free health check-ups"
+        ],
+        "details": "Health Cover provides coverage for hospitalization, critical illness, and day care treatments. It includes cashless treatment at a wide network of hospitals and offers wellness benefits and free health check-ups."
+    },
+    {
+        "insuranceName": "Future Generali Health Cover",
+        "insurer": "Future Generali",
+        "claim": "6 Lakhs",
+        "premium": 800,
+        "keyPoints": [
+            "Coverage for hospitalization and critical illness",
+            "Includes cashless treatment at 3500+ hospitals",
+            "Provides free annual health check-ups"
+        ],
+        "details": "The Health Cover plan offers hospitalization, critical illness coverage, and wellness benefits. It includes cashless treatment at 3500+ hospitals and provides free annual health check-ups."
+    },
+    {
+        "insuranceName": "HDFC ERGO Health Shield",
+        "insurer": "HDFC ERGO",
+        "claim": "7 Lakhs",
+        "premium": 850,
+        "keyPoints": [
+            "Covers hospitalization, critical illness, and maternity expenses",
+            "Includes cashless treatment at 4000+ hospitals",
+            "Provides free wellness programs and health check-ups"
+        ],
+        "details": "Health Shield covers hospitalization, critical illness, and maternity expenses. It provides cashless treatment at 4000+ hospitals and includes free wellness programs and health check-ups."
+    },
+    {
+        "insuranceName": "Aditya Birla Health Protect Plus",
+        "insurer": "Aditya Birla",
+        "claim": "8 Lakhs",
+        "premium": 950,
+        "keyPoints": [
+            "Comprehensive coverage for hospitalization and critical illness",
+            "Includes cashless treatment at 3500+ hospitals",
+            "Provides annual health check-ups"
+        ],
+        "details": "Health Protect Plus offers comprehensive coverage for hospitalization, critical illness, and wellness benefits. It includes cashless treatment at 3500+ hospitals and provides annual health check-ups."
+    },
+    {
+        "insuranceName": "Go Digit Health Secure",
+        "insurer": "Go Digit",
+        "claim": "5 Lakhs",
+        "premium": 750,
+        "keyPoints": [
+            "Covers hospitalization and critical illness",
+            "Includes cashless treatment at over 4000 hospitals",
+            "Provides free health check-ups and preventive care"
+        ],
+        "details": "The Health Secure plan covers hospitalization, critical illness, and wellness benefits. It offers cashless treatment at over 4000 hospitals and includes free health check-ups and preventive care."
+    },
+    {
+        "insuranceName": "Bajaj Allianz Health Prime",
+        "insurer": "Bajaj Allianz",
+        "claim": "9 Lakhs",
+        "premium": 1050,
+        "keyPoints": [
+            "Coverage for hospitalization, critical illness, and maternity",
+            "Includes cashless treatment at 5000 hospitals",
+            "Provides free wellness programs and annual health check-ups"
+        ],
+        "details": "Health Prime offers coverage for hospitalization, critical illness, and maternity. It includes cashless treatment at 5000 hospitals and provides free wellness programs and annual health check-ups."
+    },
+    {
+        "insuranceName": "Reliance Health Plus",
+        "insurer": "Reliance General",
+        "claim": "10 Lakhs",
+        "premium": 1200,
+        "keyPoints": [
+            "Covers hospitalization, critical illness, and wellness benefits",
+            "Cashless treatment at over 5000 hospitals",
+            "Includes maternity cover and free health check-ups"
+        ],
+        "details": "The Health Plus plan covers hospitalization, critical illness, and wellness benefits. It provides cashless treatment at over 5000 hospitals and includes maternity cover and free health check-ups."
+    },
+    {
+        "insuranceName": "ICICI Lombard Health Essentials",
+        "insurer": "ICICI Lombard",
+        "claim": "7 Lakhs",
+        "premium": 850,
+        "keyPoints": [
+            "Comprehensive coverage for hospitalization, critical illness, and wellness benefits",
+            "Cashless treatment at 4500 hospitals",
+            "Includes free annual health check-ups"
+        ],
+        "details": "Health Essentials offers comprehensive coverage for hospitalization, critical illness, and wellness benefits. It includes cashless treatment at 4500 hospitals and provides free annual health check-ups."
+    },
+    {
+        "insuranceName": "National Insurance Family Floater",
+        "insurer": "National Insurance",
+        "claim": "6 Lakhs",
+        "premium": 780,
+        "keyPoints": [
+            "Covers hospitalization, critical illness, and wellness benefits for the entire family",
+            "Cashless treatment at 4000 hospitals",
+            "Includes free health check-ups"
+        ],
+        "details": "The Family Floater plan covers hospitalization, critical illness, and wellness benefits for the entire family. It offers cashless treatment at 4000 hospitals and includes free health check-ups."
+    },
+    {
+        "insuranceName": "Oriental Insurance Health Supreme",
+        "insurer": "Oriental Insurance",
+        "claim": "8 Lakhs",
+        "premium": 950,
+        "keyPoints": [
+            "Coverage for hospitalization, critical illness, and maternity",
+            "Cashless treatment at over 3500 hospitals",
+            "Includes free wellness programs and annual health check-ups"
+        ],
+        "details": "Health Supreme offers coverage for hospitalization, critical illness, and maternity. It includes cashless treatment at over 3500 hospitals and provides free wellness programs and annual health check-ups."
+    },
+    {
+        "insuranceName": "United India Health Secure",
+        "insurer": "United India Insurance",
+        "claim": "7 Lakhs",
+        "premium": 850,
+        "keyPoints": [
+            "Coverage for hospitalization, critical illness, and wellness benefits",
+            "Cashless treatment at 4000 hospitals",
+            "Includes maternity cover and free health check-ups"
+        ],
+        "details": "The Health Secure plan covers hospitalization, critical illness, and wellness benefits. It provides cashless treatment at 4000 hospitals and includes maternity cover and free health check-ups."
+    },
+    {
+        "insuranceName": "SBI Health Shield",
+        "insurer": "SBI General",
+        "claim": "10 Lakhs",
+        "premium": 1150,
+        "keyPoints": [
+            "Comprehensive coverage for hospitalization, critical illness, and maternity",
+            "Cashless treatment at 5000+ hospitals",
+            "Includes wellness benefits and annual health check-ups"
+        ],
+        "details": "Health Shield provides comprehensive coverage for hospitalization, critical illness, and maternity. It includes cashless treatment at 5000+ hospitals and offers wellness benefits and annual health check-ups."
+    },
+    {
+        "insuranceName": "Future Generali Health Premier",
+        "insurer": "Future Generali",
+        "claim": "9 Lakhs",
+        "premium": 1050,
+        "keyPoints": [
+            "Coverage for hospitalization, critical illness, and wellness benefits",
+            "Cashless treatment at 4000+ hospitals",
+            "Provides free annual health check-ups and preventive care"
+        ],
+        "details": "The Health Premier plan covers hospitalization, critical illness, and wellness benefits. It includes cashless treatment at 4000+ hospitals and provides free annual health check-ups and preventive care."
+    },
+    {
+        "insuranceName": "HDFC ERGO Health Care",
+        "insurer": "HDFC ERGO",
+        "claim": "12 Lakhs",
+        "premium": 1200,
+        "keyPoints": [
+            "Extensive coverage for hospitalization, critical illness, and maternity",
+            "Cashless treatment at over 5000 hospitals",
+            "Includes wellness benefits and annual health check-ups"
+        ],
+        "details": "Health Care offers extensive coverage for hospitalization, critical illness, and maternity. It provides cashless treatment at over 5000 hospitals and includes wellness benefits and annual health check-ups."
+    },
+    {
+        "insuranceName": "Aditya Birla Health Ultimate",
+        "insurer": "Aditya Birla",
+        "claim": "10 Lakhs",
+        "premium": 1150,
+        "keyPoints": [
+            "Comprehensive coverage for hospitalization, critical illness, and wellness benefits",
+            "Cashless treatment at over 4000 hospitals",
+            "Includes free health check-ups and preventive care"
+        ],
+        "details": "The Health Ultimate plan provides comprehensive coverage for hospitalization, critical illness, and wellness benefits. It includes cashless treatment at over 4000 hospitals and offers free health check-ups and preventive care."
+    },
+    {
+        "insuranceName": "Go Digit Health Elite",
+        "insurer": "Go Digit",
+        "claim": "8 Lakhs",
+        "premium": 950,
+        "keyPoints": [
+            "Coverage for hospitalization, critical illness, and wellness benefits",
+            "Cashless treatment at 5000+ hospitals",
+            "Provides free health check-ups and preventive care"
+        ],
+        "details": "Health Elite offers coverage for hospitalization, critical illness, and wellness benefits. It includes cashless treatment at 5000+ hospitals and provides free health check-ups and preventive care."
+    }
+]

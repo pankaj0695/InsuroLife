@@ -1,0 +1,186 @@
+  .profile-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .header-section {
+    position: relative;
+    margin-bottom: 60px;
+  }
+
+  .cover-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  .cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .profile-pic {
+    position: absolute;
+    bottom: -50px;
+    left: 20px;
+    width: 100px;
+    height: 100px;
+    border: 5px solid white;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .profile-info {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a90e2;
+    position: relative;
+    left: 150px;
+    bottom: 45px;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 10px;
+    position: relative;
+    bottom: 45px;
+  }
+
+  .body-section {
+    margin-top: 20px;
+  }
+
+  .about-section .card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+  }
+
+  .toggle-section .nav-tabs {
+    border-bottom: none;
+  }
+
+  .toggle-section .nav-link {
+    color: #4a90e2;
+    border: none;
+  }
+
+  .toggle-section .nav-link.active {
+    color: #4a90e2;
+    border-bottom: 2px solid #4a90e2;
+    font-weight: bold;
+  }
+
+  .health-records .card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .health-records .card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .record-img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .update-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .update-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+
+  .update-info {
+    flex-grow: 1;
+  }
+
+  .update-info h5 {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .update-info p {
+    margin: 0;
+    color: #666;
+  }
+
+  .update-time {
+    color: #999;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .action-buttons .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .icon {
+    margin-right: 5px;
+    color: #4a90e2;
+  }
+
+  .about-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .icon-text {
+    display: flex;
+    align-items: center;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .icon-text p {
+    position: relative;
+    top: 7px;
+    padding-left: 7px;
+  }
+
+  .about-section Card {
+    width: auto;
+  }
+
+  .action-buttons :nth-child(1),
+  .action-buttons :nth-child(2) {
+      color: #4a90e2;
+      background-color: white;
+  }
+
+  .toggle-section, .body-section{
+      position: relative;
+      bottom: 5px;
+  }

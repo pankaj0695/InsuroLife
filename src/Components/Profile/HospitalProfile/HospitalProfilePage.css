@@ -1,0 +1,13 @@
+.buttons Button{
+    position: relative;
+    bottom: 45px;
+}
+
+.keypoints span{
+    color: #7D7987;
+}
+.action-btns{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
