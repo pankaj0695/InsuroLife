@@ -60,7 +60,7 @@ const SignupPage = () => {
           password,
         };
 
-        response = await fetch('http://localhost:4000/user/signup/', {
+        response = await fetch('/user/signup/', {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
@@ -94,7 +94,7 @@ const SignupPage = () => {
           password,
         };
 
-        response = await fetch('http://localhost:4000/hospital/signup/', {
+        response = await fetch('/hospital/signup/', {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
@@ -118,7 +118,7 @@ const SignupPage = () => {
           email,
           password,
         };
-        response = await fetch('http://localhost:4000/company/signup/', {
+        response = await fetch('/company/signup/', {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
