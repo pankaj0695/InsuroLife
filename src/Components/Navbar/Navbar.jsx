@@ -29,7 +29,9 @@ function Navbar() {
               <NavLink
                 to='/'
                 className={({ isActive }) =>
-                  ` navlink ${isActive ? 'active' : ''}`
+                  `navlink ${
+                    isActive && window.location.pathname ? 'active' : ''
+                  }`
                 }
                 onClick={toggleMenu}
               >
@@ -39,21 +41,31 @@ function Navbar() {
             <li className='navitem'>
               <NavLink
                 to='/insurances'
-                className='navlink'
+                className={({ isActive }) =>
+                  `navlink ${isActive ? 'active' : ''}`
+                }
                 onClick={toggleMenu}
               >
                 Insurances
               </NavLink>
             </li>
             <li className='navitem'>
-              <NavLink to='/hospitals' className='navlink' onClick={toggleMenu}>
+              <NavLink
+                to='/hospitals'
+                className={({ isActive }) =>
+                  `navlink ${isActive ? 'active' : ''}`
+                }
+                onClick={toggleMenu}
+              >
                 Hospitals
               </NavLink>
             </li>
             <li className='navitem'>
               <NavLink
                 to='/appointment'
-                className='navlink'
+                className={({ isActive }) =>
+                  `navlink ${isActive ? 'active' : ''}`
+                }
                 onClick={toggleMenu}
               >
                 Appointment
