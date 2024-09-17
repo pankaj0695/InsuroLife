@@ -4,136 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import insurerIcon from '../../assets/icons/insurer.svg';
 import claimIcon from '../../assets/icons/claim.svg';
 import premiumIcon from '../../assets/icons/money-bag.svg';
-// import sortIcon from '../../assets/icons/sort-icon.svg';
 import downArrowIcon from '../../assets/icons/down-arrow.svg';
 
-import bajajLogo from '../../assets/insurance-images/bajaj-logo.png';
+import insuranceJSON from '../../assets/JSON/insurance.json';
 import './InsurancesPage.css';
-
-// Sample insurance data
-const insuranceData = [
-  {
-    id: 'insurance-1',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-2',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-3',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-4',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-5',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-6',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'LIC',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-7',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Star Health',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-8',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Bajaj Allianz',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  // Add more insurances similarly
-];
 
 const InsurancesPage = () => {
   const [filters, setFilters] = useState({
@@ -142,7 +16,7 @@ const InsurancesPage = () => {
     premium: '',
   });
   const [sortOption, setSortOption] = useState({ field: '', order: '' });
-  const [filteredData, setFilteredData] = useState(insuranceData);
+  const [filteredData, setFilteredData] = useState(insuranceJSON);
 
   const [isInsurerDropdownOpen, setIsInsurerDropdownOpen] = useState(false);
   const [isClaimDropdownOpen, setIsClaimDropdownOpen] = useState(false);
@@ -152,7 +26,7 @@ const InsurancesPage = () => {
   const navigate = useNavigate();
 
   const insurers = [
-    ...new Set(insuranceData.map(insurance => insurance.insurer)),
+    ...new Set(insuranceJSON.map(insurance => insurance.insurer)),
   ];
   const claimOptions = ['300000', '500000', '1000000']; // Predefined claim options
   const premiumOptions = ['500', '800', '1500']; // Predefined premium options
@@ -179,14 +53,17 @@ const InsurancesPage = () => {
     setIsPremiumDropdownOpen(false);
     setIsSortDropdownOpen(false);
 
-    let data = insuranceData;
+    let data = insuranceJSON;
 
     if (filters.insurers.length > 0) {
       data = data.filter(item => filters.insurers.includes(item.insurer));
     }
 
     if (filters.claim) {
-      data = data.filter(item => item.claim <= parseInt(filters.claim));
+      data = data.filter(
+        item =>
+          parseInt(item.claim.replace(/[^0-9]/g, '')) <= parseInt(filters.claim)
+      );
     }
 
     if (filters.premium) {
@@ -202,6 +79,7 @@ const InsurancesPage = () => {
         }
       });
     }
+
     setFilteredData(data);
   };
 
@@ -338,7 +216,6 @@ const InsurancesPage = () => {
               className='insurer-logo'
             />
             <h3>{insurance.insuranceName}</h3>
-            {/* <p className='insurance-insurer'>{insurance.insurer}</p> */}
             <p>
               Claim: <span>₹{insurance.claim}</span>
             </p>

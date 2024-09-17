@@ -9,6 +9,7 @@
             "Cashless facility at 4500+ network hospitals",
             "Includes maternity cover after 3 years"
         ],
+        "insurerLogo": "https://www.hrkatha.com/wp-content/uploads/2017/12/788d4790740036c255a4f0d77de6b3d2.jpg",
         "details": "The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments. It includes pre and post-hospitalization expenses for 60 days and 90 days respectively. Daycare procedures, which do not require 24-hour hospitalization, are also covered. The policy offers a cashless facility across 4500+ network hospitals in India. In addition, the plan includes maternity cover after a waiting period of 3 years, along with coverage for newborn babies. Free annual health check-ups are also part of the package, ensuring you can stay on top of your health."
     },
     {
@@ -21,6 +22,7 @@
             "Cashless treatment at 5000+ hospitals",
             "Includes ambulance charges and daycare surgeries"
         ],
+        "insurerLogo": "https://www.exchange4media.com/news-photo/1521103184_ZjBdMt_Max-Bupa_(1).jpg",
         "details": "The Health Companion plan from Max Bupa is a comprehensive health insurance plan designed for individuals and families. It covers hospitalization costs, including pre and post-hospitalization expenses, for up to 10 Lakhs. The plan offers cashless treatment at over 5000 hospitals nationwide. With coverage for ambulance charges, daycare surgeries, and domiciliary hospitalization, this plan ensures a wide range of medical contingencies are addressed. The family floater option allows multiple family members to be covered under one plan, making it an ideal solution for families. Critical illness coverage and cancer treatment are also included."
     },
     {
@@ -32,7 +34,7 @@
             "Covers hospitalization and critical illnesses",
             "Includes maternity benefits and newborn care",
             "Free telemedicine consultations"
-        ],
+        ],"insurerLogo":"https://pbs.twimg.com/profile_images/1798284482853650432/yQOowjqG_400x400.jpg",
         "details": "Star Family Health Optima is an all-inclusive family health insurance plan offering coverage of up to 25 Lakhs. This plan covers hospitalization expenses, including pre and post-hospitalization for a specified period. The policy also provides coverage for daycare treatments and advanced procedures, such as robotic surgeries. Coverage extends to critical illnesses like cancer, kidney failure, and heart attacks. The policy includes maternity benefits after a specified waiting period and provides care for newborn babies. Star Health also offers free telemedicine consultations, making healthcare access easier and more convenient."
     },
     {
@@ -44,7 +46,7 @@
             "Extensive coverage including organ donor expenses",
             "No-claim bonus feature increases coverage annually",
             "Global coverage for medical emergencies"
-        ],
+        ],"insurerLogo":"https://bsmedia.business-standard.com/_media/bs/img/article/2017-02/18/full/1487369545-1308.jpg?im=FeatureCrop,size=(826,465)",
         "details": "Religare Care Plan offers extensive health coverage for individuals and families, providing up to 50 Lakhs in claims. This plan covers hospitalization, daycare procedures, critical illnesses, and even organ donor expenses. The policy includes a no-claim bonus feature, which increases the coverage amount each year if no claim is made. The Religare Care Plan offers global coverage for medical emergencies and also includes an annual health check-up. The plan is known for its cashless claim settlements at more than 7000 hospitals in India, making it one of the most flexible and robust health plans available."
     },
     {
@@ -56,7 +58,7 @@
             "Covers advanced medical procedures and critical illnesses",
             "Includes AYUSH treatments",
             "Global coverage and second opinion for critical illnesses"
-        ],
+        ],"insurerLogo":"https://logowik.com/content/uploads/images/hdfc-ergo-general-insurance-company9922.logowik.com.webp",
         "details": "HDFC ERGO Health Suraksha is a premium health insurance plan offering up to 1 Crore in coverage. The plan covers hospitalization costs, critical illness treatment, cancer therapies, and advanced medical procedures like robotic surgeries. It includes coverage for pre and post-hospitalization expenses, daycare treatments, and even global coverage for treatments. With this plan, you also get a range of add-ons, such as coverage for alternative treatments like Ayurveda, Unani, Siddha, and Homeopathy (AYUSH). The policy also provides a second opinion for critical illnesses and offers cashless treatments across an extensive hospital network."
     },
     {
@@ -68,7 +70,7 @@
             "Covers pre-existing diseases after 4 years",
             "Includes maternity expenses",
             "Network of over 6500 hospitals"
-        ],
+        ],"insurerLogo":"https://m.economictimes.com/thumb/msid-73152868,width-1200,height-900,resizemode-4,imgsize-145233/bajaj-allianz-general-insurance.jpg",
         "details": "The Health Secure Plan provides comprehensive health coverage with cashless hospitalization, coverage for pre-existing diseases after 4 years, and a network of over 6500 hospitals. It includes coverage for maternity expenses and annual health check-ups."
     },
     {
@@ -80,7 +82,7 @@
             "Covers pre and post-hospitalization",
             "Includes maternity and newborn care",
             "Covers ambulance charges and day care procedures"
-        ],
+        ],"insurerLogo":"https://logowik.com/content/uploads/images/hdfc-ergo-general-insurance-company9922.logowik.com.webp",
         "details": "This plan offers extensive coverage including pre and post hospitalization, maternity, and newborn care. The policy also covers ambulance charges, day care procedures, and provides lifelong renewability."
     },
     {
@@ -93,6 +95,7 @@
             "Optional critical illness cover",
             "Cashless treatment at 4500+ hospitals"
         ],
+        "insurerLogo": "https://www.exchange4media.com/news-photo/1521103184_ZjBdMt_Max-Bupa_(1).jpg",
         "details": "Max Bupa Reassure is a comprehensive plan covering hospitalization, pre-existing diseases after 2 years, and offers an optional critical illness cover. The plan provides cashless treatment across 4500+ hospitals."
     },
     {
@@ -104,7 +107,7 @@
             "Covers COVID-19 and critical illnesses",
             "Includes wellness program and renewal discounts",
             "Comprehensive health benefits"
-        ],
+        ], "insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf4sW8HbOzypXr6ANhJuZcA9nSmBidaxgoAA&s",
         "details": "The Care Health Insurance plan offers coverage for COVID-19, critical illness, and comprehensive health benefits including pre and post-hospitalization expenses. The plan also provides a wellness program and discounts on renewal."
     },
     {
@@ -116,7 +119,7 @@
             "Family floater plan with comprehensive coverage",
             "Includes critical illnesses and maternity expenses",
             "Lifetime renewability with free health check-ups"
-        ],
+        ],"insurerLogo":"https://pbs.twimg.com/profile_images/1798284482853650432/yQOowjqG_400x400.jpg",
         "details": "This family floater plan covers all members under one policy, with comprehensive coverage for critical illnesses, maternity expenses, and day care procedures. The plan provides lifetime renewability and includes free health check-ups."
     },
     {
@@ -128,7 +131,7 @@
             "Covers wellness services and critical illness",
             "Extensive coverage including 400+ day care treatments",
             "Cashless hospitalization"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu0HpNUDFKLJXgGuTeS0hlAjkNe0d2Zx08lQ&s",
         "details": "ICICI Lombard’s Complete Health plan offers extensive coverage with cashless hospitalization, wellness services, and additional features like critical illness cover. The policy covers over 400 day care treatments."
     },
     {
@@ -140,7 +143,7 @@
             "Includes coverage for pre-existing diseases and critical illnesses",
             "Free health check-ups and wellness benefits",
             "Comprehensive coverage for lifestyle-related diseases"
-        ],
+        ],"insurerLogo":"https://bsmedia.business-standard.com/_media/bs/img/article/2017-02/18/full/1487369545-1308.jpg?im=FeatureCrop,size=(826,465)",
         "details": "Care Freedom is a comprehensive plan that includes coverage for pre-existing diseases, critical illnesses, and lifestyle-related diseases. It offers free health check-ups and wellness benefits as well."
     },
     {
@@ -152,7 +155,7 @@
             "Broad health coverage including critical illnesses",
             "Covers over 5000 hospitals with cashless treatment",
             "Includes post-discharge expenses"
-        ],
+        ],"insurerLogo":"https://yt3.googleusercontent.com/maKVIY9w1Srr_ha_MdK_wpeShBCSf5_Dt7wqTS1z_alI4NSskIcuDsppHErmnWWFxg4cvvBT=s900-c-k-c0x00ffffff-no-rj",
         "details": "Tata AIG MediCare provides broad health coverage including critical illnesses, hospitalization, and post-discharge expenses. The plan covers over 5000 hospitals across India with cashless treatment facilities."
     },
     {
@@ -164,7 +167,7 @@
             "Includes wellness benefits and fitness discounts",
             "Cashless hospitalization and critical illness rider",
             "Free annual health check-ups"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSj5ghf9jLc6em9gKVU8t6daJJp4g_QdA53w&s",
         "details": "This plan offers holistic health coverage including wellness benefits like fitness discounts, cashless hospitalization, and an optional critical illness rider. It also provides free health check-ups every year."
     },
     {
@@ -176,7 +179,7 @@
             "Family coverage with multiple members under one policy",
             "Includes emergency ambulance services",
             "Covers pre and post-hospitalization and day care treatments"
-        ],
+        ],"insurerLogo":"https://logowik.com/content/uploads/images/new-india-assurance2991.logowik.com.webp",
         "details": "New India Floater Mediclaim is designed for families, offering coverage for multiple members under one policy. It covers pre and post-hospitalization, day care treatments, and emergency ambulance services."
     },
     {
@@ -188,7 +191,7 @@
             "International treatment for specified illnesses",
             "Includes second opinions and maternity cover",
             "Covers post-hospitalization expenses up to 60 days"
-        ],
+        ],"insurerLogo":"https://www.livelaw.in/h-upload/2023/08/31/1600x960_489767-3544.webp",
         "details": "This health insurance plan offers comprehensive coverage including international treatment for specified illnesses, second opinions, and maternity cover. It also covers post-hospitalization expenses up to 60 days."
     },
     {
@@ -200,7 +203,7 @@
             "Includes critical illness cover as an add-on",
             "Covers maternity benefits",
             "Includes pre-existing diseases after 4 years"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsoettpMY6m4j5cGVMJ4DOrzVl5fi0igrWeg&s",
         "details": "The Health Total plan covers hospitalization, day care treatments, and critical illness cover as an add-on. The plan also includes maternity benefits and covers pre-existing diseases after 4 years."
     },
     {
@@ -212,7 +215,7 @@
             "Covers maternity and critical illness",
             "Cashless hospitalization at 4500 hospitals",
             "Includes day care treatments"
-        ],
+        ],"insurerLogo":"https://d28wu8o6itv89t.cloudfront.net/images/BhartiAXALifeInsuranceCompanyL-1542951482606.png",
         "details": "This policy offers cashless hospitalization across 4500 hospitals, coverage for maternity, and critical illness benefits. It also covers hospitalization expenses and day care treatments."
     },
     {
@@ -224,7 +227,7 @@
             "Includes ambulance charges and critical illnesses",
             "Offers maternity benefits and wellness programs",
             "Comprehensive health check-ups"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpGuI7J3LkxwxiwvKTiqKUzv-JyKeHpTHg2g&s",
         "details": "SBI Health Insurance provides coverage for hospitalization, ambulance charges, and critical illnesses. It offers a range of add-ons such as maternity benefits, wellness programs, and health check-ups."
     },
     {
@@ -236,7 +239,7 @@
             "Complete family coverage under one policy",
             "Includes critical illness, maternity, and day care treatments",
             "Cashless facility at 4000+ network hospitals"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPHLRc2NHk8BJS5570xlPszqVnuTFijcfeSA&s",
         "details": "The Happy Family Floater provides complete coverage for the family under one policy, including critical illness, maternity, and day care treatments. It offers a cashless facility at 4000+ network hospitals."
     },
     {
@@ -248,7 +251,7 @@
             "Coverage for all family members",
             "Includes hospitalization and day care treatments",
             "Pre and post-hospitalization expenses covered"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUJLpAv5cpnvlfbg-unQyxH7HGEnIV2ueHLA&s",
         "details": "This family medicare plan offers coverage for all family members under one policy with a sum insured of up to 8 lakhs. It covers hospitalization, pre and post-hospitalization expenses, and day care treatments."
     },
     {
@@ -260,7 +263,7 @@
             "Extensive coverage for hospitalization and critical illnesses",
             "Includes maternity cover and wellness benefits",
             "Covers day care treatments"
-        ],
+        ],"insurerLogo":"https://pimwp.s3-accelerate.amazonaws.com/2022/01/4425_reliance.jpg",
         "details": "The Health Infinity plan by Reliance offers extensive coverage for hospitalization, day care treatments, and critical illnesses. It includes maternity cover and wellness benefits."
     },
     {
@@ -272,7 +275,7 @@
             "Coverage for hospitalization and critical illness",
             "Pre-existing diseases covered after 3 years",
             "Includes free health check-ups and wellness programs"
-        ],
+        ],"insurerLogo":"https://h2o.ai/case-studies/iffco-tokio-saves-over-1m-annually-on-fraud-with-h2o-ai/_jcr_content/root/container/section_1959747385_c/par/advancedcolumncontro_1480028958/columns1/image.coreimg.png/1674764417150/iffco-tokio-logo.png",
         "details": "The Health Protector plan covers hospitalization, pre-existing diseases after 3 years, and critical illness coverage. It provides free health check-ups and wellness programs."
     },
     {
@@ -284,7 +287,7 @@
             "Covers hospitalization and critical illness",
             "Cashless hospitalization at over 4000 hospitals",
             "Includes free annual health check-ups"
-        ],
+        ],"insurerLogo":"https://upload.wikimedia.org/wikipedia/commons/0/0e/Kotak_Life.png",
         "details": "Kotak Health Premier offers coverage for hospitalization, critical illness, and wellness benefits. It provides cashless hospitalization at over 4000 hospitals and includes free annual health check-ups."
     },
     {
@@ -296,7 +299,7 @@
             "Coverage for hospitalization and day care treatments",
             "Includes emergency ambulance services",
             "Option for lifelong renewability"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUA7Ur0Turi441GiVfuBGNch260XZrdEHSHA&s",
         "details": "Chola MS Healthline offers coverage for hospitalization, day care treatments, and emergency ambulance services. It covers critical illnesses and provides an option for lifelong renewability."
     },
     {
@@ -308,7 +311,7 @@
             "Extensive coverage for hospitalization and critical illnesses",
             "Cashless facilities provided",
             "Includes wellness programs"
-        ],
+        ],"insurerLogo":"https://media.assettype.com/freepressjournal/2024-06/9532613f-7bd1-44bc-b980-0de9234c6a6a/download__8_.png",
         "details": "The Family Health Plan covers all family members under one policy and provides extensive coverage for hospitalization, critical illnesses, and wellness programs. It also offers cashless facilities."
     },
     {
@@ -320,7 +323,7 @@
             "Coverage for hospitalization and critical illness",
             "Pre-existing diseases covered after 3 years",
             "Cashless treatment at 5000+ hospitals"
-        ],
+        ],"insurerLogo":"https://upload.wikimedia.org/wikipedia/commons/6/6c/Liberty_General_Insurance.jpg",
         "details": "Liberty Health Connect provides comprehensive health coverage for hospitalization, critical illness, and pre-existing diseases after 3 years. It offers lifelong renewability and cashless treatment at 5000+ hospitals."
     },
     {
@@ -332,7 +335,7 @@
             "Covers hospitalization, critical illness, and maternity expenses",
             "Cashless facility across 5000 hospitals",
             "Includes wellness programs"
-        ],
+        ],"insurerLogo":"https://static.startuptalky.com/2021/07/digit_insurance_company_profile_startuptalky.jpg",
         "details": "The Digit Health Plus plan covers hospitalization, critical illness, and maternity expenses. It offers a cashless facility across 5000 hospitals and includes wellness programs for policyholders."
     },
     {
@@ -344,7 +347,7 @@
             "Extensive health coverage including critical illnesses",
             "Covers day care treatments",
             "Offers lifelong renewability"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFA1slamJdOfODFJuRxmUPe8U6-Ymbo8eQ9w&s",
         "details": "ProHealth Plus offers extensive health coverage, including critical illnesses, wellness benefits, and hospitalization. It also covers day care treatments and offers lifelong renewability."
     },
     {
@@ -356,7 +359,7 @@
             "Comprehensive health insurance with cashless hospitalization",
             "Covers maternity and day care treatments",
             "Includes wellness benefits"
-        ],
+        ],"insurerLogo":"https://m.economictimes.com/thumb/msid-87848602,width-1200,height-900,resizemode-4,imgsize-16860/untitled-13.jpg",
         "details": "The Health Companion plan offers comprehensive health insurance with cashless hospitalization, wellness benefits, and coverage for critical illness. The plan also covers maternity and day care treatments."
     },
     {
@@ -368,7 +371,7 @@
             "Coverage for hospitalization, critical illnesses, and maternity expenses",
             "Cashless treatment at 4000+ hospitals",
             "Includes free annual health check-ups"
-        ],
+        ],"insurerLogo":"https://pbs.twimg.com/profile_images/1798284482853650432/yQOowjqG_400x400.jpg",
         "details": "Star Health Family Delight offers coverage for hospitalization, critical illnesses, and maternity expenses. It includes cashless treatment at 4000+ hospitals and free annual health check-ups."
     },
     {
@@ -380,7 +383,7 @@
             "Coverage for hospitalization, pre-existing conditions after 4 years",
             "Includes wellness benefits and maternity cover",
             "Cashless treatment at a wide network of hospitals"
-        ],
+        ],"insurerLogo":"https://logowik.com/content/uploads/images/hdfc-ergo-general-insurance-company9922.logowik.com.webp",
         "details": "Health Suraksha covers hospitalization, pre-existing conditions after 4 years, and critical illness. It also includes wellness benefits, maternity cover, and cashless treatment at a wide network of hospitals."
     },
     {
@@ -392,7 +395,7 @@
             "Coverage for hospitalization and critical illnesses",
             "Cashless treatment at over 3500 hospitals",
             "Includes free health check-ups"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSj5ghf9jLc6em9gKVU8t6daJJp4g_QdA53w&s",
         "details": "The Health Secure plan offers coverage for hospitalization, critical illnesses, and wellness benefits. It provides cashless treatment at over 3500 hospitals and includes free health check-ups."
     },
     {
@@ -404,7 +407,7 @@
             "Covers hospitalization and day care treatments",
             "Includes a cashless facility at 4000+ network hospitals",
             "Offers lifelong renewability"
-        ],
+        ],"insurerLogo":"https://m.economictimes.com/thumb/msid-87848602,width-1200,height-900,resizemode-4,imgsize-16860/untitled-13.jpg",
         "details": "Health Protect by Go Digit covers hospitalization, day care treatments, and critical illness. It includes a cashless facility at 4000+ network hospitals and offers lifelong renewability."
     },
     {
@@ -416,7 +419,7 @@
             "Coverage for hospitalization, pre-existing diseases after 3 years",
             "Includes wellness benefits and maternity cover",
             "Cashless treatment at 4500 hospitals"
-        ],
+        ],"insurerLogo":"https://m.economictimes.com/thumb/msid-73152868,width-1200,height-900,resizemode-4,imgsize-145233/bajaj-allianz-general-insurance.jpg",
         "details": "Health Guard provides coverage for hospitalization, pre-existing diseases after 3 years, and critical illness. It includes wellness benefits, maternity cover, and cashless treatment at 4500 hospitals."
     },
     {
@@ -428,7 +431,7 @@
             "Extensive coverage for hospitalization and critical illness",
             "Includes maternity and annual health check-ups",
             "Cashless treatment at over 5000 hospitals"
-        ],
+        ],"insurerLogo":"https://pimwp.s3-accelerate.amazonaws.com/2022/01/4425_reliance.jpg",
         "details": "Health Care offers extensive coverage for hospitalization, critical illness, and maternity. It provides cashless treatment at over 5000 hospitals and includes annual health check-ups."
     },
     {
@@ -440,7 +443,7 @@
             "Covers hospitalization and critical illnesses",
             "Cashless treatment at 4500+ hospitals",
             "Includes free health check-ups and preventive care"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu0HpNUDFKLJXgGuTeS0hlAjkNe0d2Zx08lQ&s",
         "details": "The Complete Health plan covers hospitalization, critical illnesses, and wellness benefits. It includes cashless treatment at 4500+ hospitals and offers free health check-ups and preventive care."
     },
     {
@@ -452,7 +455,7 @@
             "Coverage for hospitalization, day care treatments, and critical illness",
             "Includes cashless facilities at 4000 hospitals",
             "Provides free wellness programs and health check-ups"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXeDQ7Wvnzb2CzzLghwUvW-laDyG47EaLrtA&s",
         "details": "Star Package covers hospitalization, day care treatments, and critical illness. It includes cashless facilities at 4000 hospitals and provides free wellness programs and health check-ups."
     },
     {
@@ -464,7 +467,7 @@
             "Coverage for hospitalization and critical illness",
             "Includes maternity cover and free health check-ups",
             "Cashless facility at 3000+ hospitals"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPHLRc2NHk8BJS5570xlPszqVnuTFijcfeSA&s",
         "details": "The Happy Family plan provides coverage for hospitalization, critical illness, and wellness benefits. It offers a cashless facility at 3000+ hospitals and includes maternity cover and free health check-ups."
     },
     {
@@ -476,7 +479,7 @@
             "Comprehensive coverage for hospitalization and critical illness",
             "Includes maternity and wellness benefits",
             "Cashless treatment at 4000 hospitals"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUJLpAv5cpnvlfbg-unQyxH7HGEnIV2ueHLA&s",
         "details": "Mediclaim offers comprehensive coverage for hospitalization, critical illness, and maternity. It includes cashless treatment at 4000 hospitals and provides wellness benefits and free annual health check-ups."
     },
     {
@@ -488,7 +491,7 @@
             "Coverage for hospitalization, critical illness, and day care treatments",
             "Includes cashless treatment at a wide network of hospitals",
             "Offers wellness benefits and free health check-ups"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpGuI7J3LkxwxiwvKTiqKUzv-JyKeHpTHg2g&s",
         "details": "Health Cover provides coverage for hospitalization, critical illness, and day care treatments. It includes cashless treatment at a wide network of hospitals and offers wellness benefits and free health check-ups."
     },
     {
@@ -500,7 +503,7 @@
             "Coverage for hospitalization and critical illness",
             "Includes cashless treatment at 3500+ hospitals",
             "Provides free annual health check-ups"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsoettpMY6m4j5cGVMJ4DOrzVl5fi0igrWeg&s",
         "details": "The Health Cover plan offers hospitalization, critical illness coverage, and wellness benefits. It includes cashless treatment at 3500+ hospitals and provides free annual health check-ups."
     },
     {
@@ -512,7 +515,7 @@
             "Covers hospitalization, critical illness, and maternity expenses",
             "Includes cashless treatment at 4000+ hospitals",
             "Provides free wellness programs and health check-ups"
-        ],
+        ],"insurerLogo":"https://logowik.com/content/uploads/images/hdfc-ergo-general-insurance-company9922.logowik.com.webp",
         "details": "Health Shield covers hospitalization, critical illness, and maternity expenses. It provides cashless treatment at 4000+ hospitals and includes free wellness programs and health check-ups."
     },
     {
@@ -524,7 +527,7 @@
             "Comprehensive coverage for hospitalization and critical illness",
             "Includes cashless treatment at 3500+ hospitals",
             "Provides annual health check-ups"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSj5ghf9jLc6em9gKVU8t6daJJp4g_QdA53w&s",
         "details": "Health Protect Plus offers comprehensive coverage for hospitalization, critical illness, and wellness benefits. It includes cashless treatment at 3500+ hospitals and provides annual health check-ups."
     },
     {
@@ -536,7 +539,7 @@
             "Covers hospitalization and critical illness",
             "Includes cashless treatment at over 4000 hospitals",
             "Provides free health check-ups and preventive care"
-        ],
+        ],"insurerLogo":"https://m.economictimes.com/thumb/msid-87848602,width-1200,height-900,resizemode-4,imgsize-16860/untitled-13.jpg",
         "details": "The Health Secure plan covers hospitalization, critical illness, and wellness benefits. It offers cashless treatment at over 4000 hospitals and includes free health check-ups and preventive care."
     },
     {
@@ -548,7 +551,7 @@
             "Coverage for hospitalization, critical illness, and maternity",
             "Includes cashless treatment at 5000 hospitals",
             "Provides free wellness programs and annual health check-ups"
-        ],
+        ],"insurerLogo":"https://m.economictimes.com/thumb/msid-73152868,width-1200,height-900,resizemode-4,imgsize-145233/bajaj-allianz-general-insurance.jpg",
         "details": "Health Prime offers coverage for hospitalization, critical illness, and maternity. It includes cashless treatment at 5000 hospitals and provides free wellness programs and annual health check-ups."
     },
     {
@@ -560,7 +563,7 @@
             "Covers hospitalization, critical illness, and wellness benefits",
             "Cashless treatment at over 5000 hospitals",
             "Includes maternity cover and free health check-ups"
-        ],
+        ],"insurerLogo":"https://pimwp.s3-accelerate.amazonaws.com/2022/01/4425_reliance.jpg",
         "details": "The Health Plus plan covers hospitalization, critical illness, and wellness benefits. It provides cashless treatment at over 5000 hospitals and includes maternity cover and free health check-ups."
     },
     {
@@ -572,7 +575,7 @@
             "Comprehensive coverage for hospitalization, critical illness, and wellness benefits",
             "Cashless treatment at 4500 hospitals",
             "Includes free annual health check-ups"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu0HpNUDFKLJXgGuTeS0hlAjkNe0d2Zx08lQ&s",
         "details": "Health Essentials offers comprehensive coverage for hospitalization, critical illness, and wellness benefits. It includes cashless treatment at 4500 hospitals and provides free annual health check-ups."
     },
     {
@@ -584,7 +587,7 @@
             "Covers hospitalization, critical illness, and wellness benefits for the entire family",
             "Cashless treatment at 4000 hospitals",
             "Includes free health check-ups"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXeDQ7Wvnzb2CzzLghwUvW-laDyG47EaLrtA&s",
         "details": "The Family Floater plan covers hospitalization, critical illness, and wellness benefits for the entire family. It offers cashless treatment at 4000 hospitals and includes free health check-ups."
     },
     {
@@ -596,7 +599,7 @@
             "Coverage for hospitalization, critical illness, and maternity",
             "Cashless treatment at over 3500 hospitals",
             "Includes free wellness programs and annual health check-ups"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPHLRc2NHk8BJS5570xlPszqVnuTFijcfeSA&s",
         "details": "Health Supreme offers coverage for hospitalization, critical illness, and maternity. It includes cashless treatment at over 3500 hospitals and provides free wellness programs and annual health check-ups."
     },
     {
@@ -608,7 +611,7 @@
             "Coverage for hospitalization, critical illness, and wellness benefits",
             "Cashless treatment at 4000 hospitals",
             "Includes maternity cover and free health check-ups"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUJLpAv5cpnvlfbg-unQyxH7HGEnIV2ueHLA&s",
         "details": "The Health Secure plan covers hospitalization, critical illness, and wellness benefits. It provides cashless treatment at 4000 hospitals and includes maternity cover and free health check-ups."
     },
     {
@@ -620,7 +623,7 @@
             "Comprehensive coverage for hospitalization, critical illness, and maternity",
             "Cashless treatment at 5000+ hospitals",
             "Includes wellness benefits and annual health check-ups"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpGuI7J3LkxwxiwvKTiqKUzv-JyKeHpTHg2g&s",
         "details": "Health Shield provides comprehensive coverage for hospitalization, critical illness, and maternity. It includes cashless treatment at 5000+ hospitals and offers wellness benefits and annual health check-ups."
     },
     {
@@ -632,7 +635,7 @@
             "Coverage for hospitalization, critical illness, and wellness benefits",
             "Cashless treatment at 4000+ hospitals",
             "Provides free annual health check-ups and preventive care"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsoettpMY6m4j5cGVMJ4DOrzVl5fi0igrWeg&s",
         "details": "The Health Premier plan covers hospitalization, critical illness, and wellness benefits. It includes cashless treatment at 4000+ hospitals and provides free annual health check-ups and preventive care."
     },
     {
@@ -644,7 +647,7 @@
             "Extensive coverage for hospitalization, critical illness, and maternity",
             "Cashless treatment at over 5000 hospitals",
             "Includes wellness benefits and annual health check-ups"
-        ],
+        ],"insurerLogo":"https://logowik.com/content/uploads/images/hdfc-ergo-general-insurance-company9922.logowik.com.webp",
         "details": "Health Care offers extensive coverage for hospitalization, critical illness, and maternity. It provides cashless treatment at over 5000 hospitals and includes wellness benefits and annual health check-ups."
     },
     {
@@ -656,7 +659,7 @@
             "Comprehensive coverage for hospitalization, critical illness, and wellness benefits",
             "Cashless treatment at over 4000 hospitals",
             "Includes free health check-ups and preventive care"
-        ],
+        ],"insurerLogo":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSj5ghf9jLc6em9gKVU8t6daJJp4g_QdA53w&s",
         "details": "The Health Ultimate plan provides comprehensive coverage for hospitalization, critical illness, and wellness benefits. It includes cashless treatment at over 4000 hospitals and offers free health check-ups and preventive care."
     },
     {
@@ -668,7 +671,7 @@
             "Coverage for hospitalization, critical illness, and wellness benefits",
             "Cashless treatment at 5000+ hospitals",
             "Provides free health check-ups and preventive care"
-        ],
+        ],"insurerLogo":"https://m.economictimes.com/thumb/msid-87848602,width-1200,height-900,resizemode-4,imgsize-16860/untitled-13.jpg",
         "details": "Health Elite offers coverage for hospitalization, critical illness, and wellness benefits. It includes cashless treatment at 5000+ hospitals and provides free health check-ups and preventive care."
     }
 ]
