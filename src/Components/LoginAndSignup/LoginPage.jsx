@@ -43,7 +43,7 @@ const LoginPage = () => {
 
         resData = await response.json();
         login(resData.token, role, resData.user);
-        navigate('/user/profile');
+        navigate('/customer/profile');
 
         break;
 

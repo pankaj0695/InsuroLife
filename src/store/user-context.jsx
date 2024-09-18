@@ -7,15 +7,18 @@ const initialState = {
 
 export const UserContext = createContext({
   user: initialState,
+  isLoggedIn: false,
   login: (token, userType, userData) => {},
   logout: () => {},
 });
 
 const UserProvider = props => {
   const [user, setUser] = useState(initialState);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const login = (token, userType, userData) => {
     setUser({ type: userType, data: userData });
+    setIsLoggedIn(true);
     localStorage.setItem('auth-token', token);
     localStorage.setItem('user-type', userType);
     localStorage.setItem('user-id', userData._id);
@@ -23,6 +26,7 @@ const UserProvider = props => {
 
   const logout = () => {
     setUser(initialState);
+    setIsLoggedIn(false);
     localStorage.removeItem('auth-token');
     localStorage.removeItem('user-type');
     localStorage.removeItem('user-id');
@@ -43,12 +47,13 @@ const UserProvider = props => {
 
       const userData = await response.json();
       setUser({ type: role, data: userData });
+      setIsLoggedIn(true);
     };
     fetchUser();
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <UserContext.Provider value={{ user, isLoggedIn, login, logout }}>
       {props.children}
     </UserContext.Provider>
   );

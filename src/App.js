@@ -91,7 +91,7 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: '/user/profile',
+        path: '/customer/profile',
         element: <UserProfilePage />,
       },
       {

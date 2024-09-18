@@ -96,7 +96,7 @@ const SignupPage = () => {
         resData = await response.json();
         console.log(resData.user);
         login(resData.token, role, resData.user);
-        // navigate('/user/profile');
+        navigate('/customer/profile');
 
         break;
 

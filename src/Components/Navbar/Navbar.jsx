@@ -1,11 +1,15 @@
+import { useState, useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { useState } from 'react';
+
+import { UserContext } from '../../store/user-context';
 
 import MainLogo from '../../assets/insurolife-logo.svg';
 import './Navbar.css';
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { isLoggedIn, user } = useContext(UserContext);
 
   const toggleMenu = () => setMenuOpen(prevState => !prevState);
 
@@ -72,13 +76,23 @@ function Navbar() {
               </NavLink>
             </li>
             <li className='navitem'>
-              <Link
-                to='/get-started'
-                className='nav-button'
-                onClick={toggleMenu}
-              >
-                Login
-              </Link>
+              {isLoggedIn ? (
+                <Link to={`/${user.type}/profile`}>
+                  <img
+                    src={user.data.image}
+                    alt='profile pic'
+                    className='profile-image'
+                  />
+                </Link>
+              ) : (
+                <Link
+                  to='/get-started'
+                  className='nav-button'
+                  onClick={toggleMenu}
+                >
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </nav>
