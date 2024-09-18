@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Modal, Button } from 'react-bootstrap';
 
 import insurerIcon from '../../assets/icons/insurer.svg';
 import downArrowIcon from '../../assets/icons/down-arrow.svg';
@@ -11,7 +12,6 @@ import counsellorImage from '../../assets/cousellor-images/counsellor.png';
 
 import './AppointmentPage.css';
 
-// Sample counsellor data
 const counsellorsData = [
   {
     name: 'Ravi Sharma',
@@ -196,8 +196,11 @@ const counsellorsData = [
 ];
 
 const AppointmentPage = () => {
+  const [showBookAppointmentModal, setShowBookAppointmentModal] =
+    useState(false);
   const [insurersFilter, setInsurersFilter] = useState([]);
   const [filteredData, setFilteredData] = useState(counsellorsData);
+  const [todayDate, setTodayDate] = useState('');
 
   const [isInsurerDropdownOpen, setIsInsurerDropdownOpen] = useState(false);
 
@@ -205,7 +208,39 @@ const AppointmentPage = () => {
     ...new Set(counsellorsData.map(counsellor => counsellor.insurer)),
   ];
 
-  // Handle insurer filter
+  useEffect(() => {
+    const today = new Date().toISOString().split('T')[0];
+    setTodayDate(today);
+  }, []);
+
+  const [appointmentData, setAppointmentData] = useState({
+    date: '',
+    time: '',
+    timeSlot: '',
+  });
+  const handleBookAppointment = () => {
+    setShowBookAppointmentModal(true);
+  };
+
+  const handleCloseAppointmentModal = () => {
+    setShowBookAppointmentModal(false);
+    setAppointmentData({ date: '', time: '', timeSlot: '' });
+  };
+
+  const handleAppointmentChange = e => {
+    const { name, value } = e.target;
+    setAppointmentData({ ...appointmentData, [name]: value });
+  };
+
+  const handleTimeSlotChange = e => {
+    const selectedSlot = e.target.value;
+    setAppointmentData({
+      ...appointmentData,
+      timeSlot: selectedSlot,
+      time: '',
+    });
+  };
+
   const handleInsurerChange = insurer => {
     const selectedInsurers = insurersFilter.includes(insurer)
       ? insurersFilter.filter(item => item !== insurer)
@@ -228,7 +263,6 @@ const AppointmentPage = () => {
   return (
     <div className='appointment-page-container'>
       <div className='filters-container'>
-        {/* Insurer Dropdown */}
         <div className='dropdown'>
           <button
             className='dropdown-btn'
@@ -255,13 +289,10 @@ const AppointmentPage = () => {
           )}
         </div>
 
-        {/* Apply Filters Button */}
         <button className='apply-filters-btn' onClick={applyFilters}>
           Apply Filters
         </button>
       </div>
-
-      {/* counsellor Cards */}
       <div className='counsellor-cards-container'>
         {filteredData.map((counsellor, index) => (
           <div key={index} className='counsellor-card'>
@@ -291,10 +322,107 @@ const AppointmentPage = () => {
                 </li>
               ))}
             </ul>
-            <button className='view-details-btn'>Book Appointment</button>
+            <button
+              className='view-details-btn'
+              onClick={handleBookAppointment}
+            >
+              Book Appointment
+            </button>
           </div>
         ))}
       </div>
+
+      <Modal
+        show={showBookAppointmentModal}
+        onHide={handleCloseAppointmentModal}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Book an Appointment</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <div className='mb-3'>
+              <label htmlFor='date' className='form-label'>
+                Date
+              </label>
+              <input
+                type='date'
+                className='form-control'
+                id='date'
+                name='date'
+                value={appointmentData.date}
+                onChange={handleAppointmentChange}
+                min={todayDate}
+                required
+              />
+            </div>
+
+            <div className='mb-3'>
+              <label htmlFor='timeSlot' className='form-label'>
+                Time Slot
+              </label>
+              <select
+                className='form-control'
+                id='timeSlot'
+                name='timeSlot'
+                value={appointmentData.timeSlot}
+                onChange={handleTimeSlotChange}
+                required
+              >
+                <option value=''>Select Time Slot</option>
+                <option value='morning'>Morning</option>
+                <option value='evening'>Evening</option>
+                <option value='night'>Night</option>
+              </select>
+            </div>
+
+            {appointmentData.timeSlot && (
+              <div className='mb-3'>
+                <label htmlFor='time' className='form-label'>
+                  Available Time
+                </label>
+                <select
+                  className='form-control'
+                  id='time'
+                  name='time'
+                  value={appointmentData.time}
+                  onChange={handleAppointmentChange}
+                  required
+                >
+                  <option value=''>Select Time</option>
+                  {appointmentData.timeSlot === 'morning' && (
+                    <>
+                      <option value='8:00 AM'>8:00 AM</option>
+                      <option value='9:00 AM'>9:00 AM</option>
+                      <option value='10:00 AM'>10:00 AM</option>
+                      <option value='11:00 AM'>11:00 AM</option>
+                    </>
+                  )}
+                  {appointmentData.timeSlot === 'evening' && (
+                    <>
+                      <option value='4:00 PM'>4:00 PM</option>
+                      <option value='5:00 PM'>5:00 PM</option>
+                      <option value='6:00 PM'>6:00 PM</option>
+                      <option value='7:00 PM'>7:00 PM</option>
+                    </>
+                  )}
+                  {appointmentData.timeSlot === 'night' && (
+                    <>
+                      <option value='8:00 PM'>8:00 PM</option>
+                      <option value='9:00 PM'>9:00 PM</option>
+                      <option value='10:00 PM'>10:00 PM</option>
+                    </>
+                  )}
+                </select>
+              </div>
+            )}
+
+            <Button type='submit' className='btn btn-primary'>
+              Submit
+            </Button>
+          </form>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };

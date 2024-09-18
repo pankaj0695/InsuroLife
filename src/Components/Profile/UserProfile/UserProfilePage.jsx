@@ -16,8 +16,6 @@ import './UserProfilePage.css';
 const UserProfilePage = () => {
   const [key, setKey] = useState('healthRecords');
   const [showAddRecordModal, setShowAddRecordModal] = useState(false);
-  const [showBookAppointmentModal, setShowBookAppointmentModal] =
-    useState(false);
   const [newRecordData, setNewRecordData] = useState({
     date: '',
     description: '',
@@ -26,12 +24,6 @@ const UserProfilePage = () => {
   const [healthRecords, setHealthRecords] = useState([]);
 
   const navigate = useNavigate();
-
-  const [appointmentData, setAppointmentData] = useState({
-    date: '',
-    time: '',
-    timeSlot: '',
-  });
 
   useEffect(() => {
     const storedRecords = localStorage.getItem('healthRecords');
@@ -88,40 +80,11 @@ const UserProfilePage = () => {
     setShowAddRecordModal(false);
   };
 
-  const handleBookAppointment = () => {
-    setShowBookAppointmentModal(true);
-  };
-
-  const handleCloseAppointmentModal = () => {
-    setShowBookAppointmentModal(false);
-    setAppointmentData({ date: '', time: '', timeSlot: '' });
-  };
-
-  const handleAppointmentChange = e => {
-    const { name, value } = e.target;
-    setAppointmentData({ ...appointmentData, [name]: value });
-  };
-
-  const handleTimeSlotChange = e => {
-    const selectedSlot = e.target.value;
-    setAppointmentData({
-      ...appointmentData,
-      timeSlot: selectedSlot,
-      time: '',
-    });
-  };
-
-  const handleAppointmentSubmit = e => {
+  const handleAppointmentBtn = e => {
     e.preventDefault();
     navigate('/appointment');
-    setShowBookAppointmentModal(false);
   };
 
-  const [todayDate, setTodayDate] = useState('');
-  useEffect(() => {
-    const today = new Date().toISOString().split('T')[0];
-    setTodayDate(today);
-  }, []);
 
   return (
     <div className='container profile-page'>
@@ -141,7 +104,7 @@ const UserProfilePage = () => {
           <Button variant='primary' onClick={handleAddRecord}>
             Add Health Record
           </Button>
-          <Button variant='primary' onClick={handleBookAppointment}>
+          <Button variant='primary' onClick={handleAppointmentBtn}>
             Book an Appointment
           </Button>
           <Button variant='danger'>Logout</Button>
@@ -306,99 +269,6 @@ const UserProfilePage = () => {
             <button type='submit' className='btn btn-primary'>
               Add Record
             </button>
-          </form>
-        </Modal.Body>
-      </Modal>
-
-      <Modal
-        show={showBookAppointmentModal}
-        onHide={handleCloseAppointmentModal}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Book an Appointment</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <form onSubmit={handleAppointmentSubmit}>
-            <div className='mb-3'>
-              <label htmlFor='date' className='form-label'>
-                Date
-              </label>
-              <input
-                type='date'
-                className='form-control'
-                id='date'
-                name='date'
-                value={appointmentData.date}
-                onChange={handleAppointmentChange}
-                min={todayDate}
-                required
-              />
-            </div>
-
-            <div className='mb-3'>
-              <label htmlFor='timeSlot' className='form-label'>
-                Time Slot
-              </label>
-              <select
-                className='form-control'
-                id='timeSlot'
-                name='timeSlot'
-                value={appointmentData.timeSlot}
-                onChange={handleTimeSlotChange}
-                required
-              >
-                <option value=''>Select Time Slot</option>
-                <option value='morning'>Morning</option>
-                <option value='evening'>Evening</option>
-                <option value='night'>Night</option>
-              </select>
-            </div>
-
-            {/* Show time options based on selected time slot */}
-            {appointmentData.timeSlot && (
-              <div className='mb-3'>
-                <label htmlFor='time' className='form-label'>
-                  Available Time
-                </label>
-                <select
-                  className='form-control'
-                  id='time'
-                  name='time'
-                  value={appointmentData.time}
-                  onChange={handleAppointmentChange}
-                  required
-                >
-                  <option value=''>Select Time</option>
-                  {appointmentData.timeSlot === 'morning' && (
-                    <>
-                      <option value='8:00 AM'>8:00 AM</option>
-                      <option value='9:00 AM'>9:00 AM</option>
-                      <option value='10:00 AM'>10:00 AM</option>
-                      <option value='11:00 AM'>11:00 AM</option>
-                    </>
-                  )}
-                  {appointmentData.timeSlot === 'evening' && (
-                    <>
-                      <option value='4:00 PM'>4:00 PM</option>
-                      <option value='5:00 PM'>5:00 PM</option>
-                      <option value='6:00 PM'>6:00 PM</option>
-                      <option value='7:00 PM'>7:00 PM</option>
-                    </>
-                  )}
-                  {appointmentData.timeSlot === 'night' && (
-                    <>
-                      <option value='8:00 PM'>8:00 PM</option>
-                      <option value='9:00 PM'>9:00 PM</option>
-                      <option value='10:00 PM'>10:00 PM</option>
-                    </>
-                  )}
-                </select>
-              </div>
-            )}
-
-            <Button type='submit' className='btn btn-primary'>
-              Submit
-            </Button>
           </form>
         </Modal.Body>
       </Modal>
