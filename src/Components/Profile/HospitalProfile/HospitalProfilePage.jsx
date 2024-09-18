@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { UserContext } from '../../../store/user-context';
 
@@ -17,6 +18,7 @@ import {
 
 function HospitalProfilePage() {
   const [key, setKey] = useState('insurances');
+  const navigate = useNavigate();
 
   const { logout } = useContext(UserContext);
 
@@ -43,6 +45,7 @@ function HospitalProfilePage() {
             variant='danger'
             onClick={() => {
               logout();
+              navigate('/');
             }}
           >
             Logout

@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, Button, Modal, Form, Tabs, Tab } from 'react-bootstrap';
 
 import { UserContext } from '../../../store/user-context';
@@ -24,8 +25,9 @@ function InsurerProfilePage() {
   const [insurances, setInsurances] = useState([]);
   const [counselors, setCounselors] = useState([]);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const {logout} = useContext(UserContext);
+  const { logout } = useContext(UserContext);
 
   const handleAddInsurance = async e => {
     e.preventDefault();
@@ -73,11 +75,15 @@ function InsurerProfilePage() {
       description: description.value,
     };
 
-    await fetch('/insurer/insurance/new', {
+    const response = await fetch('/insurer/insurance/new', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newInsurance),
     });
+
+    const resData = await response.json();
+
+    console.log(resData.insurance);
 
     setInsurances([...insurances, newInsurance]);
     setShowInsuranceModal(false);
@@ -120,7 +126,15 @@ function InsurerProfilePage() {
           <Button variant='primary' onClick={() => setShowCounselorModal(true)}>
             Add Counselor
           </Button>
-          <Button variant='danger' onClick={()=>{logout()}}>Logout</Button>
+          <Button
+            variant='danger'
+            onClick={() => {
+              logout();
+              navigate('/');
+            }}
+          >
+            Logout
+          </Button>
         </div>
       </div>
 

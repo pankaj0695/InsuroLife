@@ -43,7 +43,7 @@ const LoginPage = () => {
 
         resData = await response.json();
         login(resData.token, role, resData.user);
-        window.location.replace('/user/profile');
+        navigate('/user/profile');
 
         break;
 

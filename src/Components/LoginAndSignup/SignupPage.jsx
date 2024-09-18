@@ -8,6 +8,7 @@ import './LoginAndSignupPage.css';
 
 const SignupPage = () => {
   const [name, setName] = useState('');
+  const [image, setImage] = useState(null);
   const [dob, setDob] = useState('');
   const [gender, setGender] = useState('');
   const [contactNo, setContactNo] = useState('');
@@ -27,6 +28,7 @@ const SignupPage = () => {
     if (
       !name ||
       name.trim().length === 0 ||
+      !image ||
       !contactNo ||
       !email ||
       !email.includes('@') ||
@@ -35,6 +37,22 @@ const SignupPage = () => {
       confirmPassword !== password
     )
       return;
+
+    const imgExtension = image.type.split('/')[1];
+
+    const { url } = await fetch('/s3url', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ imgExtension }),
+    }).then(res => res.json());
+
+    await fetch(url, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'multipart/form-data' },
+      body: image,
+    });
+
+    const imageUrl = url.split('?')[0];
 
     let userData, response, resData;
 
@@ -53,6 +71,7 @@ const SignupPage = () => {
 
         userData = {
           name,
+          image: imageUrl,
           gender,
           dob,
           city: city.toLowerCase(),
@@ -61,6 +80,8 @@ const SignupPage = () => {
           email,
           password,
         };
+
+        console.log(userData);
 
         response = await fetch('/customer/signup/', {
           method: 'POST',
@@ -73,8 +94,9 @@ const SignupPage = () => {
         if (response.status !== 200) return;
 
         resData = await response.json();
+        console.log(resData.user);
         login(resData.token, role, resData.user);
-        window.location.replace('/');
+        // navigate('/user/profile');
 
         break;
 
@@ -89,6 +111,7 @@ const SignupPage = () => {
 
         userData = {
           hospital_name: name.toLowerCase(),
+          image: imageUrl,
           contactNo,
           city: city.toLowerCase(),
           state: state.toLowerCase(),
@@ -115,6 +138,7 @@ const SignupPage = () => {
       case 'insurer':
         userData = {
           company_name: name.toLowerCase(),
+          image: imageUrl,
           contactNo,
           email,
           password,
@@ -168,6 +192,15 @@ const SignupPage = () => {
           onChange={e => {
             setName(e.target.value);
           }}
+        />
+
+        <label htmlFor='image'>Profile Image</label>
+        <input
+          type='file'
+          id='image'
+          name='image'
+          accept='.png, .jpg, .jpeg'
+          onChange={e => setImage(e.target.files[0])}
         />
 
         {role === 'customer' && (
@@ -236,6 +269,11 @@ const SignupPage = () => {
           disableDropdown={false}
           value={contactNo}
           onChange={phone => setContactNo(phone)}
+          inputProps={{
+            id: 'contact-no',
+            name: 'contact-no',
+            required: true,
+          }}
         />
         <label htmlFor='email'>Email</label>
         <input

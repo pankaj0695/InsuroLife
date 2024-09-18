@@ -15,6 +15,7 @@ import InsuranceDetailPage from './Components/Insurances/InsuranceDetailPage';
 import HospitalsPage from './Components/Hospitals/HospitalsPage';
 import HospitalDetailPage from './Components/Hospitals/HospitalDetailPage';
 import AppointmentPage from './Components/Appointment/AppointmentPage';
+import ProtectedRoute from './helpers/ProtectedRoute';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -26,17 +27,43 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       {
         path: '/insurances',
-        element: <InsurancesPage />,
+        element: (
+          <ProtectedRoute>
+            <InsurancesPage />
+          </ProtectedRoute>
+        ),
       },
-      { path: '/insurances/:insurance_id', element: <InsuranceDetailPage /> },
+      {
+        path: '/insurances/:insurance_id',
+        element: (
+          <ProtectedRoute>
+            <InsuranceDetailPage />
+          </ProtectedRoute>
+        ),
+      },
       {
         path: '/hospitals',
-        element: <HospitalsPage />,
+        element: (
+          <ProtectedRoute>
+            <HospitalsPage />
+          </ProtectedRoute>
+        ),
       },
-      { path: '/hospitals/:hospital_id', element: <HospitalDetailPage /> },
+      {
+        path: '/hospitals/:hospital_id',
+        element: (
+          <ProtectedRoute>
+            <HospitalDetailPage />
+          </ProtectedRoute>
+        ),
+      },
       {
         path: '/appointment',
-        element: <AppointmentPage />,
+        element: (
+          <ProtectedRoute>
+            <AppointmentPage />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
@@ -57,7 +84,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <ProfileLayout />,
+    element: (
+      <ProtectedRoute>
+        <ProfileLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: '/user/profile',

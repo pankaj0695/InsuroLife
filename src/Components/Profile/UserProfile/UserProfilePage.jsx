@@ -28,7 +28,7 @@ const UserProfilePage = () => {
 
   const navigate = useNavigate();
 
-  const {logout} = useContext(UserContext);
+  const { logout } = useContext(UserContext);
 
   useEffect(() => {
     const storedRecords = localStorage.getItem('healthRecords');
@@ -111,7 +111,15 @@ const UserProfilePage = () => {
           <Button variant='primary' onClick={handleAppointmentBtn}>
             Book an Appointment
           </Button>
-          <Button variant='danger' onClick={()=>{logout()}}>Logout</Button>
+          <Button
+            variant='danger'
+            onClick={() => {
+              logout();
+              navigate('/');
+            }}
+          >
+            Logout
+          </Button>
         </div>
       </div>
 
