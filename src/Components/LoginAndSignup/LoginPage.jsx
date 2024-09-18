@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+
+import { UserContext } from '../../store/user-context';
 
 import './LoginAndSignupPage.css';
 
@@ -9,6 +11,8 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const { login } = useContext(UserContext);
+
   const { role } = location.state || { role: 'customer' };
 
   const submitHandler = async e => {
@@ -27,7 +31,7 @@ const LoginPage = () => {
 
     switch (role) {
       case 'customer':
-        response = await fetch('/user/login/', {
+        response = await fetch('/customer/login/', {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
@@ -38,9 +42,8 @@ const LoginPage = () => {
         if (response.status !== 200) return;
 
         resData = await response.json();
-        localStorage.setItem('auth-token', resData.token);
+        login(resData.token, role, resData.user);
         window.location.replace('/user/profile');
-        // console.log(resData.user);
 
         break;
 
@@ -56,9 +59,8 @@ const LoginPage = () => {
         if (response.status !== 200) return;
 
         resData = await response.json();
-        localStorage.setItem('auth-token', resData.token);
+        login(resData.token, role, resData.hospital);
         window.location.replace('/hospital/profile');
-        // console.log(resData.hospital);
 
         break;
 
@@ -74,9 +76,8 @@ const LoginPage = () => {
         if (response.status !== 200) return;
 
         resData = await response.json();
-        localStorage.setItem('auth-token', resData.token);
+        login(resData.token, role, resData.company);
         window.location.replace('/insurer/profile');
-        // console.log(resData.insurer);
 
         break;
 

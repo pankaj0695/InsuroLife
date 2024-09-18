@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import { useState, useContext } from 'react';
+
+import { UserContext } from '../../../store/user-context';
+
 import hospitalCoverImg from '../../../assets/images/undoc.svg';
 import ProfilePic from '../../../assets/images/hosppfp.jpg';
 import { Button, Card, Tabs, Tab } from 'react-bootstrap';
@@ -14,6 +17,8 @@ import {
 
 function HospitalProfilePage() {
   const [key, setKey] = useState('insurances');
+
+  const { logout } = useContext(UserContext);
 
   const handleTabSelect = k => {
     setKey(k);
@@ -34,7 +39,14 @@ function HospitalProfilePage() {
       <div className='profile-info'>
         <h2 className='profile-name'>City Hospital</h2>
         <div className='buttons'>
-          <Button variant='danger'>Logout</Button>
+          <Button
+            variant='danger'
+            onClick={() => {
+              logout();
+            }}
+          >
+            Logout
+          </Button>
         </div>
       </div>
 

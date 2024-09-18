@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import PhoneInput from 'react-phone-input-2';
+import { UserContext } from '../../store/user-context';
 
 import 'react-phone-input-2/lib/style.css';
 import './LoginAndSignupPage.css';
@@ -17,6 +18,7 @@ const SignupPage = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
+  const { login } = useContext(UserContext);
   const { role } = location.state || { role: 'customer' };
 
   const submitHandler = async e => {
@@ -60,7 +62,7 @@ const SignupPage = () => {
           password,
         };
 
-        response = await fetch('/user/signup/', {
+        response = await fetch('/customer/signup/', {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
@@ -71,7 +73,7 @@ const SignupPage = () => {
         if (response.status !== 200) return;
 
         resData = await response.json();
-        localStorage.setItem('auth-token', resData.token);
+        login(resData.token, role, resData.user);
         window.location.replace('/');
 
         break;
@@ -105,20 +107,19 @@ const SignupPage = () => {
         if (response.status !== 200) return;
 
         resData = await response.json();
-        localStorage.setItem('auth-token', resData.token);
+        login(resData.token, role, resData.hospital);
         window.location.replace('/');
-        // console.log(resData.hospital);
 
         break;
 
-      case 'company':
+      case 'insurer':
         userData = {
           company_name: name.toLowerCase(),
           contactNo,
           email,
           password,
         };
-        response = await fetch('/company/signup/', {
+        response = await fetch('/insurer/signup/', {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
@@ -129,9 +130,8 @@ const SignupPage = () => {
         if (response.status !== 200) return;
 
         resData = await response.json();
-        localStorage.setItem('auth-token', resData.token);
+        login(resData.token, role, resData.company);
         window.location.replace('/');
-        // console.log(resData.company);
 
         break;
 

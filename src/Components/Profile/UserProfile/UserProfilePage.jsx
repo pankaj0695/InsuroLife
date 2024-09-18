@@ -1,5 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { UserContext } from '../../../store/user-context';
+
 import { Card, Button, Tabs, Tab, Modal } from 'react-bootstrap';
 import CoverImg from '../../../assets/images/unsplash_0aMMMUjiiEQ.svg';
 import ProfilePic from '../../../assets/images/img& bg.svg';
@@ -24,6 +27,8 @@ const UserProfilePage = () => {
   const [healthRecords, setHealthRecords] = useState([]);
 
   const navigate = useNavigate();
+
+  const {logout} = useContext(UserContext);
 
   useEffect(() => {
     const storedRecords = localStorage.getItem('healthRecords');
@@ -85,7 +90,6 @@ const UserProfilePage = () => {
     navigate('/appointment');
   };
 
-
   return (
     <div className='container profile-page'>
       <div className='header-section'>
@@ -107,7 +111,7 @@ const UserProfilePage = () => {
           <Button variant='primary' onClick={handleAppointmentBtn}>
             Book an Appointment
           </Button>
-          <Button variant='danger'>Logout</Button>
+          <Button variant='danger' onClick={()=>{logout()}}>Logout</Button>
         </div>
       </div>
 

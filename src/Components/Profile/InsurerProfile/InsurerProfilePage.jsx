@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Card, Button, Modal, Form, Tabs, Tab } from 'react-bootstrap';
+
+import { UserContext } from '../../../store/user-context';
+
 import InsurerCoverImg from '../../../assets/images/insurercover.svg';
 import InsurerProfilePic from '../../../assets/images/insurerpfp.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,28 +15,70 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import './InsurerProfilePage.css';
 
+const validFileTypes = ['image/jpg', 'image/jpeg', 'image/png'];
+
 function InsurerProfilePage() {
   const [key, setKey] = useState('insurances');
   const [showInsuranceModal, setShowInsuranceModal] = useState(false);
   const [showCounselorModal, setShowCounselorModal] = useState(false);
   const [insurances, setInsurances] = useState([]);
   const [counselors, setCounselors] = useState([]);
+  const [error, setError] = useState('');
 
-  const handleAddInsurance = e => {
+  const {logout} = useContext(UserContext);
+
+  const handleAddInsurance = async e => {
     e.preventDefault();
+
+    const {
+      insuranceName,
+      insurer,
+      insurerLogo,
+      claim,
+      premium,
+      tag1,
+      tag2,
+      tag3,
+      description,
+    } = e.target.elements;
+
+    if (!validFileTypes.find(type => type === insurerLogo.files[0].type)) {
+      setError('File must be in JPG/PNG format');
+      return;
+    }
+
+    const imgExtension = insurerLogo.files[0].type.split('/')[1];
+
+    const { url } = await fetch('/s3url', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ imgExtension }),
+    }).then(res => res.json());
+
+    await fetch(url, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'multipart/form-data' },
+      body: insurerLogo.files[0],
+    });
+
+    const imageUrl = url.split('?')[0];
+
     const newInsurance = {
-      name: e.target.elements.insuranceName.value,
-      insurer: e.target.elements.insurer.value,
-      logo: URL.createObjectURL(e.target.elements.insurerLogo.files[0]),
-      claim: e.target.elements.claim.value,
-      premium: e.target.elements.premium.value,
-      tags: [
-        e.target.elements.tag1.value,
-        e.target.elements.tag2.value,
-        e.target.elements.tag3.value,
-      ],
-      description: e.target.elements.description.value,
+      insurance_name: insuranceName.value,
+      insurer: insurer.value,
+      logo: imageUrl,
+      claim: claim.value,
+      premium: premium.value,
+      tags: [tag1.value, tag2.value, tag3.value],
+      description: description.value,
     };
+
+    await fetch('/insurer/insurance/new', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newInsurance),
+    });
+
     setInsurances([...insurances, newInsurance]);
     setShowInsuranceModal(false);
   };
@@ -75,7 +120,7 @@ function InsurerProfilePage() {
           <Button variant='primary' onClick={() => setShowCounselorModal(true)}>
             Add Counselor
           </Button>
-          <Button variant='danger'>Logout</Button>
+          <Button variant='danger' onClick={()=>{logout()}}>Logout</Button>
         </div>
       </div>
 
@@ -110,42 +155,46 @@ function InsurerProfilePage() {
           </Card>
         </div>
 
-      <Tabs activeKey={key} onSelect={k => setKey(k)} className='toggle-section'>
-        <Tab eventKey='insurances' title='Insurances'>
-          <div className='insurance-section'>
-            {insurances.map((insurance, index) => (
-              <Card key={index} className='insurance-card'>
-                <Card.Img variant='top' src={insurance.logo} />
-                <Card.Body>
-                  <Card.Title>{insurance.name}</Card.Title>
-                  <Card.Text>Insurer: {insurance.insurer}</Card.Text>
-                  <Card.Text>Claim: {insurance.claim}</Card.Text>
-                  <Card.Text>Premium: ₹{insurance.premium}/month</Card.Text>
-                  <Card.Text>Tags: {insurance.tags.join(', ')}</Card.Text>
-                  <Card.Text>{insurance.description}</Card.Text>
-                </Card.Body>
-              </Card>
-            ))}
-          </div>
-        </Tab>
+        <Tabs
+          activeKey={key}
+          onSelect={k => setKey(k)}
+          className='toggle-section'
+        >
+          <Tab eventKey='insurances' title='Insurances'>
+            <div className='insurance-section'>
+              {insurances.map((insurance, index) => (
+                <Card key={index} className='insurance-card'>
+                  <Card.Img variant='top' src={insurance.logo} />
+                  <Card.Body>
+                    <Card.Title>{insurance.name}</Card.Title>
+                    <Card.Text>Insurer: {insurance.insurer}</Card.Text>
+                    <Card.Text>Claim: {insurance.claim}</Card.Text>
+                    <Card.Text>Premium: ₹{insurance.premium}/month</Card.Text>
+                    <Card.Text>Tags: {insurance.tags.join(', ')}</Card.Text>
+                    <Card.Text>{insurance.description}</Card.Text>
+                  </Card.Body>
+                </Card>
+              ))}
+            </div>
+          </Tab>
 
-        <Tab eventKey='counselors' title='Counselors'>
-          <div className='counselor-section'>
-            {counselors.map((counselor, index) => (
-              <Card key={index} className='counselor-card'>
-                <Card.Img variant='top' src={counselor.logo} />
-                <Card.Body>
-                  <Card.Title>{counselor.name}</Card.Title>
-                  <Card.Text>Phone: {counselor.phone}</Card.Text>
-                  <Card.Text>Email: {counselor.email}</Card.Text>
-                  <Card.Text>Tags: {counselor.tags.join(', ')}</Card.Text>
-                </Card.Body>
-              </Card>
-            ))}
-          </div>
-        </Tab>
-      </Tabs>
-      </div>        
+          <Tab eventKey='counselors' title='Counselors'>
+            <div className='counselor-section'>
+              {counselors.map((counselor, index) => (
+                <Card key={index} className='counselor-card'>
+                  <Card.Img variant='top' src={counselor.logo} />
+                  <Card.Body>
+                    <Card.Title>{counselor.name}</Card.Title>
+                    <Card.Text>Phone: {counselor.phone}</Card.Text>
+                    <Card.Text>Email: {counselor.email}</Card.Text>
+                    <Card.Text>Tags: {counselor.tags.join(', ')}</Card.Text>
+                  </Card.Body>
+                </Card>
+              ))}
+            </div>
+          </Tab>
+        </Tabs>
+      </div>
 
       <Modal
         show={showInsuranceModal}
@@ -173,12 +222,12 @@ function InsurerProfilePage() {
 
             <Form.Group>
               <Form.Label>Claim</Form.Label>
-              <Form.Control type='number' name='claim' step="50000" required />
+              <Form.Control type='number' name='claim' step='50000' required />
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Premium (per month)</Form.Label>
-              <Form.Control type='number' name='premium' step="100" required />
+              <Form.Control type='number' name='premium' step='100' required />
             </Form.Group>
 
             <Form.Group>
@@ -198,7 +247,7 @@ function InsurerProfilePage() {
               <Form.Label>Description</Form.Label>
               <Form.Control as='textarea' name='description' required />
             </Form.Group>
-
+            {error && <h2>{error}</h2>}
             <Button variant='primary' type='submit'>
               Submit
             </Button>
