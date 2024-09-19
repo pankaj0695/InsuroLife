@@ -74,9 +74,15 @@ function InsurerProfilePage() {
       description: description.value,
     };
 
+    const token = localStorage.getItem('auth-token');
+
     const response = await fetch('/insurer/insurance/new', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'auth-token': `${token}`,
+      },
       body: JSON.stringify(newInsurance),
     });
 
@@ -84,24 +90,65 @@ function InsurerProfilePage() {
 
     console.log(resData.insurance);
 
-    setInsurances([...insurances, newInsurance]);
+    setInsurances([...insurances, resData.insurance]);
     setShowInsuranceModal(false);
   };
 
-  const handleAddCounselor = e => {
+  const handleAddCounselor = async e => {
     e.preventDefault();
+
+    if (!isImageValid(e.target.elements.counselorLogo.files[0].type)) {
+      setError('File must be in JPG/PNG format');
+      return;
+    }
+
+    const imgExtension =
+      e.target.elements.counselorLogo.files[0].type.split('/')[1];
+
+    const { url } = await fetch('/s3url', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ imgExtension }),
+    }).then(res => res.json());
+
+    await fetch(url, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'multipart/form-data' },
+      body: e.target.elements.counselorLogo.files[0],
+    });
+
+    const imageUrl = url.split('?')[0];
+
     const newCounselor = {
       company_id: user.data._id,
       name: e.target.elements.counselorName.value,
       phone_no: e.target.elements.counselorPhone.value,
       email: e.target.elements.counselorEmail.value,
-      image: URL.createObjectURL(e.target.elements.counselorLogo.files[0]),
+      company_logo: user.data.image,
+      image: imageUrl,
       tags: [
         e.target.elements.counselorTag1.value,
         e.target.elements.counselorTag2.value,
       ],
     };
-    setCounselors([...counselors, newCounselor]);
+
+    const token = localStorage.getItem('auth-token');
+
+    const response = await fetch('/insurer/counsellor', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'auth-token': `${token}`,
+      },
+      body: JSON.stringify(newCounselor),
+    });
+
+    const resData = await response.json();
+
+    console.log(resData.counsellor);
+
+    setCounselors([...counselors, resData.counsellor]);
     setShowCounselorModal(false);
   };
 
@@ -196,10 +243,10 @@ function InsurerProfilePage() {
             <div className='counselor-section'>
               {counselors.map((counselor, index) => (
                 <Card key={index} className='counselor-card'>
-                  <Card.Img variant='top' src={counselor.logo} />
+                  <Card.Img variant='top' src={counselor.image} />
                   <Card.Body>
                     <Card.Title>{counselor.name}</Card.Title>
-                    <Card.Text>Phone: {counselor.phone}</Card.Text>
+                    <Card.Text>Phone: {counselor.phone_no}</Card.Text>
                     <Card.Text>Email: {counselor.email}</Card.Text>
                     <Card.Text>Tags: {counselor.tags.join(', ')}</Card.Text>
                   </Card.Body>
@@ -295,7 +342,7 @@ function InsurerProfilePage() {
 
             <Form.Group>
               <Form.Label>Councelor Photo</Form.Label>
-              <Form.Control type='file' name='councelorLogo' required />
+              <Form.Control type='file' name='counselorLogo' required />
             </Form.Group>
 
             <Form.Group>
