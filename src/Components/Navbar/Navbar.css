@@ -55,6 +55,7 @@
 .profile-image {
   border-radius: 50%;
   width: 60px;
+  object-fit: 'contain';
 }
 
 .hamburger {

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card, Button, Modal, Form, Tabs, Tab } from 'react-bootstrap';
 
 import { UserContext } from '../../../store/user-context';
+import { isImageValid } from '../../../helpers/helper';
 
 import InsurerCoverImg from '../../../assets/images/insurercover.svg';
 import InsurerProfilePic from '../../../assets/images/insurerpfp.svg';
@@ -16,8 +17,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import './InsurerProfilePage.css';
 
-const validFileTypes = ['image/jpg', 'image/jpeg', 'image/png'];
-
 function InsurerProfilePage() {
   const [key, setKey] = useState('insurances');
   const [showInsuranceModal, setShowInsuranceModal] = useState(false);
@@ -27,7 +26,7 @@ function InsurerProfilePage() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const { logout } = useContext(UserContext);
+  const { logout, user } = useContext(UserContext);
 
   const handleAddInsurance = async e => {
     e.preventDefault();
@@ -44,7 +43,7 @@ function InsurerProfilePage() {
       description,
     } = e.target.elements;
 
-    if (!validFileTypes.find(type => type === insurerLogo.files[0].type)) {
+    if (!isImageValid(insurerLogo.files[0].type)) {
       setError('File must be in JPG/PNG format');
       return;
     }
@@ -92,10 +91,11 @@ function InsurerProfilePage() {
   const handleAddCounselor = e => {
     e.preventDefault();
     const newCounselor = {
+      company_id: user.data._id,
       name: e.target.elements.counselorName.value,
-      phone: e.target.elements.counselorPhone.value,
+      phone_no: e.target.elements.counselorPhone.value,
       email: e.target.elements.counselorEmail.value,
-      logo: URL.createObjectURL(e.target.elements.counselorLogo.files[0]),
+      image: URL.createObjectURL(e.target.elements.counselorLogo.files[0]),
       tags: [
         e.target.elements.counselorTag1.value,
         e.target.elements.counselorTag2.value,

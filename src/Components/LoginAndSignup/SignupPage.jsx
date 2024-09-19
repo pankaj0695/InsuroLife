@@ -139,6 +139,8 @@ const SignupPage = () => {
         userData = {
           company_name: name.toLowerCase(),
           image: imageUrl,
+          city,
+          state,
           contactNo,
           email,
           password,
