@@ -3,14 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { Card, Button, Modal, Form, Tabs, Tab } from 'react-bootstrap';
 
 import { UserContext } from '../../../store/user-context';
-import { isImageValid } from '../../../helpers/helper';
+import { isImageValid, capitalize } from '../../../helpers/helper';
 
 import InsurerCoverImg from '../../../assets/images/insurercover.svg';
-import InsurerProfilePic from '../../../assets/images/insurerpfp.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faUser,
-  faCalendar,
   faLocationDot,
   faEnvelope,
   faPhone,
@@ -160,12 +157,12 @@ function InsurerProfilePage() {
         </div>
 
         <div className='profile-pic'>
-          <img src={InsurerProfilePic} alt='Profile' className='profile-img' />
+          <img src={user.data.image} alt='Profile' className='profile-img' />
         </div>
       </div>
 
       <div className='profile-info'>
-        <h2 className='profile-name'>Bajaj Allianz</h2>
+        <h2 className='profile-name'>{capitalize(user.data.company_name)}</h2>
         <div className='action-buttons'>
           <Button variant='primary' onClick={() => setShowInsuranceModal(true)}>
             Add New Insurance
@@ -192,24 +189,18 @@ function InsurerProfilePage() {
               <Card.Title>About</Card.Title>
               <div className='about-info'>
                 <div className='icon-text'>
-                  <FontAwesomeIcon icon={faUser} className='icon' />
-                  <p>Male</p>
-                </div>
-                <div className='icon-text'>
-                  <FontAwesomeIcon icon={faCalendar} className='icon' />
-                  <p>Born June 26, 1980</p>
-                </div>
-                <div className='icon-text'>
                   <FontAwesomeIcon icon={faLocationDot} className='icon' />
-                  <p>Surat, Gujarat</p>
+                  <p>
+                    {capitalize(user.data.city)}, {capitalize(user.data.state)}
+                  </p>
                 </div>
                 <div className='icon-text'>
                   <FontAwesomeIcon icon={faEnvelope} className='icon' />
-                  <p>pankajgupta0695@gmail.com</p>
+                  <p>{user.data.email}</p>
                 </div>
                 <div className='icon-text'>
                   <FontAwesomeIcon icon={faPhone} className='icon' />
-                  <p>33757005467</p>
+                  <p>{user.data.contactNo}</p>
                 </div>
               </div>
             </Card.Body>

@@ -83,29 +83,29 @@
   border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 15px; 
-  border: 1px solid #ddd; 
+  padding: 15px;
+  border: 1px solid #ddd;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .insurance-section .card:hover {
-  transform: translateY(-5px); 
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .insurance-section .card .card-body {
-  padding: 15px;}
+  padding: 15px;
+}
 
 .insurance-section .card .card-title {
-  font-size: 1.25rem; 
-  font-weight: bold; 
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .insurance-section .card .card-text {
-  font-size: 1rem; 
+  font-size: 1rem;
   color: #333;
 }
-
 
 .icon {
   margin-right: 5px;
@@ -114,17 +114,13 @@
 
 .about-info {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 10px;
 }
 
 .icon-text {
   display: flex;
   align-items: center;
-  max-width: 200px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .icon-text p {
@@ -139,10 +135,9 @@
 }
 
 .about-section {
-  flex: 1; 
+  flex: 1;
 }
 
 .toggle-section {
-  flex: 2; 
+  flex: 2;
 }
-

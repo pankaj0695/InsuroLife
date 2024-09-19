@@ -2,11 +2,10 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { UserContext } from '../../../store/user-context';
-import { isImageValid } from '../../../helpers/helper';
+import { isImageValid, capitalize, formatDate } from '../../../helpers/helper';
 
 import { Card, Button, Tabs, Tab, Modal } from 'react-bootstrap';
 import CoverImg from '../../../assets/images/unsplash_0aMMMUjiiEQ.svg';
-import ProfilePic from '../../../assets/images/img& bg.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUser,
@@ -131,12 +130,12 @@ const UserProfilePage = () => {
         </div>
 
         <div className='profile-pic'>
-          <img src={ProfilePic} alt='Profile' className='profile-img' />
+          <img src={user.data.image} alt='Profile' className='profile-img' />
         </div>
       </div>
 
       <div className='profile-info'>
-        <h2 className='profile-name'>Pankaj Gupta</h2>
+        <h2 className='profile-name'>{user.data.name}</h2>
         <div className='action-buttons'>
           <Button variant='primary' onClick={handleAddRecord}>
             Add Health Record
@@ -164,23 +163,25 @@ const UserProfilePage = () => {
               <div className='about-info'>
                 <div className='icon-text'>
                   <FontAwesomeIcon icon={faUser} className='icon' />
-                  <p>Male</p>
+                  <p>{capitalize(user.data.gender)}</p>
                 </div>
                 <div className='icon-text'>
                   <FontAwesomeIcon icon={faCalendar} className='icon' />
-                  <p>Born June 26, 1980</p>
+                  <p>Born {formatDate(user.data.dob)}</p>
                 </div>
                 <div className='icon-text'>
                   <FontAwesomeIcon icon={faLocationDot} className='icon' />
-                  <p>Surat, Gujarat</p>
+                  <p>
+                    {capitalize(user.data.city)}, {capitalize(user.data.state)}
+                  </p>
                 </div>
                 <div className='icon-text'>
                   <FontAwesomeIcon icon={faEnvelope} className='icon' />
-                  <p>pankajgupta0695@gmail.com</p>
+                  <p>{user.data.email}</p>
                 </div>
                 <div className='icon-text'>
                   <FontAwesomeIcon icon={faPhone} className='icon' />
-                  <p>33757005467</p>
+                  <p>{user.data.contactNo}</p>
                 </div>
               </div>
             </Card.Body>
