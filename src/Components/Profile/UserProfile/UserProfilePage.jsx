@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { UserContext } from '../../../store/user-context';
+import { isImageValid } from '../../../helpers/helper';
 
 import { Card, Button, Tabs, Tab, Modal } from 'react-bootstrap';
 import CoverImg from '../../../assets/images/unsplash_0aMMMUjiiEQ.svg';
@@ -22,13 +23,14 @@ const UserProfilePage = () => {
   const [newRecordData, setNewRecordData] = useState({
     date: '',
     description: '',
-    image: '',
+    image: null,
   });
   const [healthRecords, setHealthRecords] = useState([]);
+  const [error, setError] = useState('');
 
   const navigate = useNavigate();
 
-  const { logout } = useContext(UserContext);
+  const { logout, user } = useContext(UserContext);
 
   useEffect(() => {
     const storedRecords = localStorage.getItem('healthRecords');
@@ -45,7 +47,7 @@ const UserProfilePage = () => {
     }
   }, [healthRecords]);
 
-  const handleAddRecord = () => {
+  const handleAddRecord = e => {
     setShowAddRecordModal(true);
   };
 
@@ -54,35 +56,66 @@ const UserProfilePage = () => {
     setNewRecordData({
       date: '',
       description: '',
-      image: '',
+      image: null,
     });
   };
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    let updatedData = { ...newRecordData };
+  const handleChange = (e, data) => {
+    setNewRecordData(prevData => ({
+      ...prevData,
+      [e.target.name]: data,
+    }));
+  };
 
-    if (name === 'image') {
-      const file = e.target.files[0];
-      const fileUrl = URL.createObjectURL(file);
-      updatedData = { ...updatedData, image: fileUrl };
-    } else {
-      updatedData = { ...updatedData, [name]: value };
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    if (!isImageValid(newRecordData.image.type)) {
+      setError('File must be in JPG/PNG format');
+      return;
     }
 
-    setNewRecordData(updatedData);
-  };
+    const imgExtension = newRecordData.image.type.split('/')[1];
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    setHealthRecords([...healthRecords, newRecordData]);
-    setNewRecordData({
-      date: '',
-      description: '',
-      image: '',
+    const { url } = await fetch('/s3url', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ imgExtension }),
+    }).then(res => res.json());
+
+    await fetch(url, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'multipart/form-data' },
+      body: newRecordData.image,
     });
 
-    setShowAddRecordModal(false);
+    const imageUrl = url.split('?')[0];
+
+    const newHealthRecord = {
+      user_id: user.data._id,
+      date: newRecordData.date,
+      image: imageUrl,
+      description: newRecordData.description,
+    };
+
+    const token = localStorage.getItem('auth-token');
+
+    const response = await fetch('/customer/profile/medical_records', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'auth-token': `${token}`,
+      },
+      body: JSON.stringify(newHealthRecord),
+    });
+
+    const resData = await response.json();
+
+    console.log(resData);
+
+    setHealthRecords([...healthRecords, resData]);
+    setShowAddRecordModal(true);
   };
 
   const handleAppointmentBtn = e => {
@@ -249,7 +282,7 @@ const UserProfilePage = () => {
                 id='date'
                 name='date'
                 value={newRecordData.date}
-                onChange={handleChange}
+                onChange={e => handleChange(e, e.target.value)}
                 required
               />
             </div>
@@ -262,7 +295,7 @@ const UserProfilePage = () => {
                 id='description'
                 name='description'
                 value={newRecordData.description}
-                onChange={handleChange}
+                onChange={e => handleChange(e, e.target.value)}
                 required
               ></textarea>
             </div>
@@ -272,15 +305,16 @@ const UserProfilePage = () => {
               </label>
               <input
                 type='file'
-                className='form-control'
                 id='image'
                 name='image'
-                onChange={handleChange}
+                accept='.png, .jpg, .jpeg'
+                onChange={e => handleChange(e, e.target.files[0])}
               />
             </div>
             <button type='submit' className='btn btn-primary'>
               Add Record
             </button>
+            {error && <p>{error}</p>}
           </form>
         </Modal.Body>
       </Modal>
