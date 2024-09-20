@@ -7,210 +7,49 @@ import callIcon from '../../assets/icons/call-icon.svg';
 import emailIcon from '../../assets/icons/email-icon.svg';
 import tickIcon from '../../assets/icons/tick-icon.svg';
 
-import bajajLogo from '../../assets/insurance-images/bajaj-logo.png';
-import counsellorImage from '../../assets/cousellor-images/counsellor.png';
-
 import './AppointmentPage.css';
-
-const counsellorsData = [
-  {
-    name: 'Ravi Sharma',
-    insurer_logo: bajajLogo,
-    insurer: 'Bajaj Allianz',
-    image: counsellorImage,
-    tags: ['Health', 'Family'],
-    email: 'ravi.sharma@bajajallianz.com',
-    contactNo: '+91-9876543210',
-  },
-  {
-    name: 'Priya Desai',
-    insurer_logo: bajajLogo,
-    insurer: 'Apollo India',
-    image: counsellorImage,
-    tags: ['Critical Illness', 'Individual'],
-    email: 'priya.desai@apolloindia.com',
-    contactNo: '+91-9123456780',
-  },
-  {
-    name: 'Amit Verma',
-    insurer_logo: bajajLogo,
-    insurer: 'LIC',
-    image: counsellorImage,
-    tags: ['Health', 'Family'],
-    email: 'amit.verma@lic.com',
-    contactNo: '+91-9871234567',
-  },
-  {
-    name: 'Sunita Gupta',
-    insurer_logo: bajajLogo,
-    insurer: 'Star Health',
-    image: counsellorImage,
-    tags: ['Critical Illness', 'Individual'],
-    email: 'sunita.gupta@starhealth.com',
-    contactNo: '+91-9823456789',
-  },
-  {
-    name: 'Manoj Kumar',
-    insurer_logo: bajajLogo,
-    insurer: 'Bajaj Allianz',
-    image: counsellorImage,
-    tags: ['Health', 'Senior Citizens'],
-    email: 'manoj.kumar@bajajallianz.com',
-    contactNo: '+91-9987654321',
-  },
-  {
-    name: 'Neha Bhatia',
-    insurer_logo: bajajLogo,
-    insurer: 'Apollo India',
-    image: counsellorImage,
-    tags: ['Health', 'Maternity'],
-    email: 'neha.bhatia@apolloindia.com',
-    contactNo: '+91-9823456712',
-  },
-  {
-    name: 'Rajiv Mehra',
-    insurer_logo: bajajLogo,
-    insurer: 'LIC',
-    image: counsellorImage,
-    tags: ['Health', 'Critical Illness'],
-    email: 'rajiv.mehra@lic.com',
-    contactNo: '+91-9981234560',
-  },
-  {
-    name: 'Pooja Sinha',
-    insurer_logo: bajajLogo,
-    insurer: 'Star Health',
-    image: counsellorImage,
-    tags: ['Family', 'Maternity'],
-    email: 'pooja.sinha@starhealth.com',
-    contactNo: '+91-9876123450',
-  },
-  {
-    name: 'Ashok Patel',
-    insurer_logo: bajajLogo,
-    insurer: 'Bajaj Allianz',
-    image: counsellorImage,
-    tags: ['Health', 'Individual'],
-    email: 'ashok.patel@bajajallianz.com',
-    contactNo: '+91-9834567890',
-  },
-  {
-    name: 'Meena Rao',
-    insurer_logo: bajajLogo,
-    insurer: 'Apollo India',
-    image: counsellorImage,
-    tags: ['Senior Citizens', 'Health'],
-    email: 'meena.rao@apolloindia.com',
-    contactNo: '+91-9945678123',
-  },
-  {
-    name: 'Gaurav Singh',
-    insurer_logo: bajajLogo,
-    insurer: 'LIC',
-    image: counsellorImage,
-    tags: ['Health', 'Senior Citizens'],
-    email: 'gaurav.singh@lic.com',
-    contactNo: '+91-9841234567',
-  },
-  {
-    name: 'Swati Joshi',
-    insurer_logo: bajajLogo,
-    insurer: 'Star Health',
-    image: counsellorImage,
-    tags: ['Maternity', 'Family'],
-    email: 'swati.joshi@starhealth.com',
-    contactNo: '+91-9712345678',
-  },
-  {
-    name: 'Vikas Reddy',
-    insurer_logo: bajajLogo,
-    insurer: 'Bajaj Allianz',
-    image: counsellorImage,
-    tags: ['Critical Illness', 'Health'],
-    email: 'vikas.reddy@bajajallianz.com',
-    contactNo: '+91-9821123456',
-  },
-  {
-    name: 'Anita Jain',
-    insurer_logo: bajajLogo,
-    insurer: 'Apollo India',
-    image: counsellorImage,
-    tags: ['Individual', 'Critical Illness'],
-    email: 'anita.jain@apolloindia.com',
-    contactNo: '+91-9932456789',
-  },
-  {
-    name: 'Sameer Naik',
-    insurer_logo: bajajLogo,
-    insurer: 'LIC',
-    image: counsellorImage,
-    tags: ['Health', 'Maternity'],
-    email: 'sameer.naik@lic.com',
-    contactNo: '+91-9871123456',
-  },
-  {
-    name: 'Sneha Kapoor',
-    insurer_logo: bajajLogo,
-    insurer: 'Star Health',
-    image: counsellorImage,
-    tags: ['Family', 'Health'],
-    email: 'sneha.kapoor@starhealth.com',
-    contactNo: '+91-9945123450',
-  },
-  {
-    name: 'Arvind Malhotra',
-    insurer_logo: bajajLogo,
-    insurer: 'Bajaj Allianz',
-    image: counsellorImage,
-    tags: ['Senior Citizens', 'Critical Illness'],
-    email: 'arvind.malhotra@bajajallianz.com',
-    contactNo: '+91-9912345678',
-  },
-  {
-    name: 'Kavita Iyer',
-    insurer_logo: bajajLogo,
-    insurer: 'Apollo India',
-    image: counsellorImage,
-    tags: ['Health', 'Maternity'],
-    email: 'kavita.iyer@apolloindia.com',
-    contactNo: '+91-9834123456',
-  },
-  {
-    name: 'Rahul Thakur',
-    insurer_logo: bajajLogo,
-    insurer: 'LIC',
-    image: counsellorImage,
-    tags: ['Health', 'Family'],
-    email: 'rahul.thakur@lic.com',
-    contactNo: '+91-9845234567',
-  },
-  {
-    name: 'Divya Menon',
-    insurer_logo: bajajLogo,
-    insurer: 'Star Health',
-    image: counsellorImage,
-    tags: ['Senior Citizens', 'Health'],
-    email: 'divya.menon@starhealth.com',
-    contactNo: '+91-9823456789',
-  },
-];
 
 const AppointmentPage = () => {
   const [showBookAppointmentModal, setShowBookAppointmentModal] =
     useState(false);
+  const [insurers, setInsurers] = useState([]);
   const [insurersFilter, setInsurersFilter] = useState([]);
-  const [filteredData, setFilteredData] = useState(counsellorsData);
+  const [filteredData, setFilteredData] = useState([]);
+  const [counsellors, setCounsellors] = useState([]);
   const [todayDate, setTodayDate] = useState('');
 
   const [isInsurerDropdownOpen, setIsInsurerDropdownOpen] = useState(false);
 
-  const insurers = [
-    ...new Set(counsellorsData.map(counsellor => counsellor.insurer)),
-  ];
-
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0];
     setTodayDate(today);
+  }, []);
+
+  useEffect(() => {
+    const fetchCounsellors = async () => {
+      const token = localStorage.getItem('auth-token');
+
+      const response = await fetch('/customer/get-counsellors', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'auth-token': `${token}`,
+        },
+      });
+
+      const resData = await response.json();
+      console.log(resData);
+
+      const insurersData = [
+        ...new Set(resData.map(counsellor => counsellor.insurer)),
+      ];
+
+      setInsurers(insurersData);
+      setCounsellors(resData);
+      setFilteredData(resData);
+    };
+    fetchCounsellors();
   }, []);
 
   const [appointmentData, setAppointmentData] = useState({
@@ -251,7 +90,7 @@ const AppointmentPage = () => {
   const applyFilters = () => {
     setIsInsurerDropdownOpen(false);
 
-    let data = counsellorsData;
+    let data = counsellors;
 
     if (insurersFilter.length > 0) {
       data = data.filter(item => insurersFilter.includes(item.insurer));

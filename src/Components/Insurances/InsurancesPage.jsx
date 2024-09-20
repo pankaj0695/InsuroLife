@@ -7,133 +7,7 @@ import premiumIcon from '../../assets/icons/money-bag.svg';
 // import sortIcon from '../../assets/icons/sort-icon.svg';
 import downArrowIcon from '../../assets/icons/down-arrow.svg';
 
-import bajajLogo from '../../assets/insurance-images/bajaj-logo.png';
 import './InsurancesPage.css';
-
-// Sample insurance data
-const insuranceData = [
-  {
-    id: 'insurance-1',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-2',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-3',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-4',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-5',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-6',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'LIC',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-7',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Star Health',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-8',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Bajaj Allianz',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  // Add more insurances similarly
-];
 
 const InsurancesPage = () => {
   const [filters, setFilters] = useState({
@@ -142,6 +16,7 @@ const InsurancesPage = () => {
     premium: '',
   });
   const [sortOption, setSortOption] = useState({ field: '', order: '' });
+  const [insurances, setInsurances] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
   const [isInsurerDropdownOpen, setIsInsurerDropdownOpen] = useState(false);
@@ -151,9 +26,7 @@ const InsurancesPage = () => {
 
   const navigate = useNavigate();
 
-  const insurers = [
-    ...new Set(insuranceData.map(insurance => insurance.insurer)),
-  ];
+  const insurers = [...new Set(insurances.map(insurance => insurance.insurer))];
   const claimOptions = ['300000', '500000', '1000000']; // Predefined claim options
   const premiumOptions = ['500', '800', '1500']; // Predefined premium options
 
@@ -180,6 +53,7 @@ const InsurancesPage = () => {
 
       const resData = await response.json();
       console.log(resData);
+      setInsurances(resData);
       setFilteredData(resData);
     };
     fetchInsurances();
@@ -199,7 +73,7 @@ const InsurancesPage = () => {
     setIsPremiumDropdownOpen(false);
     setIsSortDropdownOpen(false);
 
-    let data = insuranceData;
+    let data = insurances;
 
     if (filters.insurers.length > 0) {
       data = data.filter(item => filters.insurers.includes(item.insurer));
