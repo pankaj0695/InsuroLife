@@ -80,7 +80,7 @@ function HospitalProfilePage() {
         <div className='col-md-9 toggle-section'>
           <Tabs activeKey={key} onSelect={handleTabSelect} className='mb-3'>
             <Tab eventKey='insurances' title='Insurances'>
-              <div className='insurances'>
+              {/* <div className='insurances'>
                 <Card className='mb-3'>
                   <Card.Body>
                     <img src={logo} alt='insurance-img' className='insurance-img' />
@@ -90,7 +90,7 @@ function HospitalProfilePage() {
                     </p>
                   </Card.Body>
                 </Card>
-              </div>
+              </div> */}
             </Tab>
             <Tab eventKey='requests' title='Requests'>
               <div className='requests'>

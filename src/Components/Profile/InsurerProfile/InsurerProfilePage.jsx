@@ -1,18 +1,13 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, Button, Modal, Form, Tabs, Tab } from 'react-bootstrap';
 
 import { UserContext } from '../../../store/user-context';
 import { isImageValid, capitalize } from '../../../helpers/helper';
-import logo from '../../../assets/hospital-images/logo.png';
 
-import InsurerCoverImg from '../../../assets/images/insurercover.svg';
+import InsurerCoverImg from '../../../assets/images/insurer-bg.jpeg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faLocationDot,
-  faEnvelope,
-  faPhone,
-} from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import './InsurerProfilePage.css';
 
 function InsurerProfilePage() {
@@ -26,11 +21,42 @@ function InsurerProfilePage() {
 
   const { logout, user } = useContext(UserContext);
 
-  const handleAddInsurance = async e => {
-    e.preventDefault();
+  useEffect(() => {
+    const fetchInsurances = async () => {
+      const token = localStorage.getItem('auth-token');
+      const response = await fetch('/insurer/insurances', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'auth-token': `${token}`,
+        },
+      });
+      const resData = await response.json();
+      setInsurances(resData.insurances || []);
+    };
 
-    const { insuranceName, claim, premium, tag1, tag2, tag3, description } =
-      e.target.elements;
+    const fetchCounselors = async () => {
+      const token = localStorage.getItem('auth-token');
+      const response = await fetch('/insurer/counselors', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'auth-token': `${token}`,
+        },
+      });
+      const resData = await response.json();
+      setCounselors(resData.counselors || []);
+    };
+
+    fetchInsurances();
+    fetchCounselors();
+  }, []);
+
+  const handleAddInsurance = async (e) => {
+    e.preventDefault();
+    const { insuranceName, claim, premium, tag1, tag2, tag3, description } = e.target.elements;
 
     const newInsurance = {
       company_id: user.data._id,
@@ -43,8 +69,6 @@ function InsurerProfilePage() {
       description: description.value,
     };
 
-    console.log(newInsurance);
-
     const token = localStorage.getItem('auth-token');
 
     const response = await fetch('/insurer/insurance/new', {
@@ -56,16 +80,13 @@ function InsurerProfilePage() {
       },
       body: JSON.stringify(newInsurance),
     });
-
     const resData = await response.json();
-
-    console.log(resData.insurance);
 
     setInsurances([...insurances, resData.insurance]);
     setShowInsuranceModal(false);
   };
 
-  const handleAddCounselor = async e => {
+  const handleAddCounselor = async (e) => {
     e.preventDefault();
 
     if (!isImageValid(e.target.elements.counselorLogo.files[0].type)) {
@@ -73,14 +94,13 @@ function InsurerProfilePage() {
       return;
     }
 
-    const imgExtension =
-      e.target.elements.counselorLogo.files[0].type.split('/')[1];
+    const imgExtension = e.target.elements.counselorLogo.files[0].type.split('/')[1];
 
     const { url } = await fetch('/s3url', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ imgExtension }),
-    }).then(res => res.json());
+    }).then((res) => res.json());
 
     await fetch(url, {
       method: 'PUT',
@@ -92,16 +112,12 @@ function InsurerProfilePage() {
 
     const newCounselor = {
       company_id: user.data._id,
-      insurer: user.data.company_name,
       name: e.target.elements.counselorName.value,
       phone_no: e.target.elements.counselorPhone.value,
       email: e.target.elements.counselorEmail.value,
       company_logo: user.data.image,
       image: imageUrl,
-      tags: [
-        e.target.elements.counselorTag1.value,
-        e.target.elements.counselorTag2.value,
-      ],
+      tags: [e.target.elements.counselorTag1.value, e.target.elements.counselorTag2.value],
     };
 
     const token = localStorage.getItem('auth-token');
@@ -117,8 +133,6 @@ function InsurerProfilePage() {
     });
 
     const resData = await response.json();
-
-    console.log(resData.counsellor);
 
     setCounselors([...counselors, resData.counsellor]);
     setShowCounselorModal(false);
@@ -182,18 +196,14 @@ function InsurerProfilePage() {
           </Card>
         </div>
 
-        <Tabs
-          activeKey={key}
-          onSelect={k => setKey(k)}
-          className='toggle-section'
-        >
-          {/* <Tab eventKey='insurances' title='Insurances'>
+        <Tabs activeKey={key} onSelect={(k) => setKey(k)} className='toggle-section'>
+          <Tab eventKey='insurances' title='Insurances'>
             <div className='insurance-section'>
               {insurances.map((insurance, index) => (
                 <Card key={index} className='insurance-card'>
                   <Card.Img variant='top' src={insurance.logo} />
                   <Card.Body>
-                    <Card.Title>{insurance.name}</Card.Title>
+                    <Card.Title>{insurance.insurance_name}</Card.Title>
                     <Card.Text>Insurer: {insurance.insurer}</Card.Text>
                     <Card.Text>Claim: {insurance.claim}</Card.Text>
                     <Card.Text>Premium: ₹{insurance.premium}/month</Card.Text>
@@ -202,25 +212,6 @@ function InsurerProfilePage() {
                   </Card.Body>
                 </Card>
               ))}
-            </div>
-          </Tab> */}
-
-          <Tab eventKey='insurances' title='Insurances'>
-            <div className='insurances'>
-              <Card className='mb-3'>
-                <Card.Body>
-                  <img
-                    src={logo}
-                    alt='insurance-img'
-                    className='insurance-img'
-                  />
-                  <Card.Title>Star Health Alliance</Card.Title>
-                  <p className='keypoints'>
-                    <span>Efficient</span>
-                    <span>High-end Benefits</span>
-                  </p>
-                </Card.Body>
-              </Card>
             </div>
           </Tab>
 
@@ -242,96 +233,98 @@ function InsurerProfilePage() {
         </Tabs>
       </div>
 
-      <Modal
-        show={showInsuranceModal}
-        onHide={() => setShowInsuranceModal(false)}
-      >
+      {/* Add Insurance Modal */}
+      <Modal show={showInsuranceModal} onHide={() => setShowInsuranceModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Insurance</Modal.Title>
+          <Modal.Title>Add Insurance</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleAddInsurance}>
-            <Form.Group>
+            {/* Form fields for new insurance */}
+            <Form.Group controlId='insuranceName'>
               <Form.Label>Insurance Name</Form.Label>
-              <Form.Control type='text' name='insuranceName' required />
+              <Form.Control type='text' required />
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group controlId='claim'>
               <Form.Label>Claim</Form.Label>
-              <Form.Control type='number' name='claim' step='50000' required />
+              <Form.Control type='number' required />
             </Form.Group>
 
-            <Form.Group>
-              <Form.Label>Premium (per month)</Form.Label>
-              <Form.Control type='number' name='premium' step='100' required />
+            <Form.Group controlId='premium'>
+              <Form.Label>Premium (₹/month)</Form.Label>
+              <Form.Control type='number' required />
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group controlId='tag1'>
               <Form.Label>Tag 1</Form.Label>
-              <Form.Control type='text' name='tag1' required />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Tag 2</Form.Label>
-              <Form.Control type='text' name='tag2' required />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Tag 3</Form.Label>
-              <Form.Control type='text' name='tag3' required />
+              <Form.Control type='text' required />
             </Form.Group>
 
-            <Form.Group>
-              <Form.Label>Description</Form.Label>
-              <Form.Control as='textarea' name='description' required />
+            <Form.Group controlId='tag2'>
+              <Form.Label>Tag 2</Form.Label>
+              <Form.Control type='text' required />
             </Form.Group>
-            {error && <h2>{error}</h2>}
+
+            <Form.Group controlId='tag3'>
+              <Form.Label>Tag 3</Form.Label>
+              <Form.Control type='text' required />
+            </Form.Group>
+
+            <Form.Group controlId='description'>
+              <Form.Label>Description</Form.Label>
+              <Form.Control as='textarea' rows={3} required />
+            </Form.Group>
+
             <Button variant='primary' type='submit'>
-              Submit
+              Add Insurance
             </Button>
           </Form>
         </Modal.Body>
       </Modal>
 
-      <Modal
-        show={showCounselorModal}
-        onHide={() => setShowCounselorModal(false)}
-      >
+      {/* Add Counselor Modal */}
+      <Modal show={showCounselorModal} onHide={() => setShowCounselorModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Counselor</Modal.Title>
+          <Modal.Title>Add Counselor</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleAddCounselor}>
-            <Form.Group>
-              <Form.Label>Counselor Name</Form.Label>
-              <Form.Control type='text' name='counselorName' required />
+            {/* Form fields for new counselor */}
+            <Form.Group controlId='counselorName'>
+              <Form.Label>Name</Form.Label>
+              <Form.Control type='text' required />
             </Form.Group>
 
-            <Form.Group>
-              <Form.Label>Phone Number</Form.Label>
-              <Form.Control type='tel' name='counselorPhone' required />
+            <Form.Group controlId='counselorPhone'>
+              <Form.Label>Phone</Form.Label>
+              <Form.Control type='text' required />
             </Form.Group>
 
-            <Form.Group>
-              <Form.Label>Email ID</Form.Label>
-              <Form.Control type='email' name='counselorEmail' required />
+            <Form.Group controlId='counselorEmail'>
+              <Form.Label>Email</Form.Label>
+              <Form.Control type='email' required />
             </Form.Group>
 
-            <Form.Group>
-              <Form.Label>Councelor Photo</Form.Label>
-              <Form.Control type='file' name='counselorLogo' required />
-            </Form.Group>
-
-            <Form.Group>
+            <Form.Group controlId='counselorTag1'>
               <Form.Label>Tag 1</Form.Label>
-              <Form.Control type='text' name='counselorTag1' required />
+              <Form.Control type='text' required />
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group controlId='counselorTag2'>
               <Form.Label>Tag 2</Form.Label>
-              <Form.Control type='text' name='counselorTag2' required />
+              <Form.Control type='text' required />
             </Form.Group>
+
+            <Form.Group controlId='counselorLogo'>
+              <Form.Label>Logo</Form.Label>
+              <Form.Control type='file' required />
+            </Form.Group>
+
+            {error && <p className='text-danger'>{error}</p>}
 
             <Button variant='primary' type='submit'>
-              Submit
+              Add Counselor
             </Button>
           </Form>
         </Modal.Body>
@@ -341,3 +334,4 @@ function InsurerProfilePage() {
 }
 
 export default InsurerProfilePage;
+
