@@ -39,12 +39,9 @@ const UserProfilePage = () => {
   }, []);
 
   useEffect(() => {
-    try {
-      localStorage.setItem('healthRecords', JSON.stringify(healthRecords));
-    } catch (error) {
-      console.error('Error saving health records to local storage:', error);
-    }
-  }, [healthRecords]);
+    const healthRecordsData = user.data.medical_records;
+    setHealthRecords(healthRecordsData);
+  }, [user.data.medical_records]);
 
   const handleAddRecord = e => {
     setShowAddRecordModal(true);
@@ -114,7 +111,7 @@ const UserProfilePage = () => {
     console.log(resData);
 
     setHealthRecords([...healthRecords, resData]);
-    setShowAddRecordModal(true);
+    setShowAddRecordModal(false);
   };
 
   const handleAppointmentBtn = e => {
@@ -192,19 +189,20 @@ const UserProfilePage = () => {
           <Tabs activeKey={key} onSelect={k => setKey(k)} className='mb-3'>
             <Tab eventKey='healthRecords' title='Health Records'>
               <div className='health-records'>
-                {healthRecords.map((record, index) => (
-                  <Card key={index} className='mb-3'>
-                    <Card.Body>
-                      <Card.Title>{record.date}</Card.Title>
-                      <img
-                        src={record.image}
-                        alt='Record'
-                        className='record-img'
-                      />
-                      <p>{record.description}</p>
-                    </Card.Body>
-                  </Card>
-                ))}
+                {healthRecords &&
+                  healthRecords.map((record, index) => (
+                    <Card key={index} className='mb-3'>
+                      <Card.Body>
+                        <Card.Title>{record.date}</Card.Title>
+                        <img
+                          src={record.image}
+                          alt='Record'
+                          className='record-img'
+                        />
+                        <p>{record.description}</p>
+                      </Card.Body>
+                    </Card>
+                  ))}
               </div>
             </Tab>
 
