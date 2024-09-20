@@ -106,7 +106,7 @@ function HospitalProfilePage() {
                   <tbody>
                     <tr>
                       <td>1</td>
-                      <td>Appointment request</td>
+                      <td>Insurance request</td>
                       <td>Pending</td>
                       <td>
                         <div className='action-btns'>
