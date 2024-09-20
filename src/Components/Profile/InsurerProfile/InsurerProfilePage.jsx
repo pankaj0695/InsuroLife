@@ -4,7 +4,7 @@ import { Card, Button, Modal, Form, Tabs, Tab } from 'react-bootstrap';
 
 import { UserContext } from '../../../store/user-context';
 import { isImageValid, capitalize } from '../../../helpers/helper';
-import logo from '../../../assets/hospital-images/logo.png'
+import logo from '../../../assets/hospital-images/logo.png';
 
 import InsurerCoverImg from '../../../assets/images/insurercover.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -92,6 +92,7 @@ function InsurerProfilePage() {
 
     const newCounselor = {
       company_id: user.data._id,
+      insurer: user.data.company_name,
       name: e.target.elements.counselorName.value,
       phone_no: e.target.elements.counselorPhone.value,
       email: e.target.elements.counselorEmail.value,
@@ -205,19 +206,23 @@ function InsurerProfilePage() {
           </Tab> */}
 
           <Tab eventKey='insurances' title='Insurances'>
-              <div className='insurances'>
-                <Card className='mb-3'>
-                  <Card.Body>
-                    <img src={logo} alt='insurance-img' className='insurance-img' />
-                    <Card.Title>Star Health Alliance</Card.Title>
-                    <p className='keypoints'>
-                      <span>Efficient</span>
-                      <span>High-end Benefits</span>
-                    </p>
-                  </Card.Body>
-                </Card>
-              </div>
-            </Tab>
+            <div className='insurances'>
+              <Card className='mb-3'>
+                <Card.Body>
+                  <img
+                    src={logo}
+                    alt='insurance-img'
+                    className='insurance-img'
+                  />
+                  <Card.Title>Star Health Alliance</Card.Title>
+                  <p className='keypoints'>
+                    <span>Efficient</span>
+                    <span>High-end Benefits</span>
+                  </p>
+                </Card.Body>
+              </Card>
+            </div>
+          </Tab>
 
           <Tab eventKey='counselors' title='Counselors'>
             <div className='counselor-section'>
