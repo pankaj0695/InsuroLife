@@ -158,3 +158,58 @@
 .view-details-btn:hover {
   background-color: #1878ff;
 }
+
+@media (max-width: 768px) {
+  .filters-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .counsellor-cards-container {
+    padding: 20px;
+    grid-template-columns: 1fr;
+  }
+
+  .counsellor-card {
+    padding: 15px;
+  }
+
+  .counsellor-image {
+    width: 100px;
+  }
+
+  .c-insurer-logo {
+    width: 100px;
+  }
+
+  .view-details-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .filters-container {
+    gap: 5px;
+  }
+
+  .dropdown-btn {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  .counsellor-card {
+    padding: 10px;
+  }
+
+  .counsellor-image {
+    width: 80px;
+  }
+
+  .c-insurer-logo {
+    width: 80px;
+  }
+
+  .view-details-btn {
+    padding: 8px 15px;
+  }
+}

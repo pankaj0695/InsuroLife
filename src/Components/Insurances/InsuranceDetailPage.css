@@ -100,3 +100,88 @@
   font-weight: bold;
   margin-top: 10px;
 }
+@media (max-width: 768px) {
+  .d-insurer-logo {
+    width: 150px;
+  }
+
+  .d-insurance-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .d-point {
+    font-size: 1rem;
+  }
+
+  .d-key-points li {
+    font-size: 0.9rem;
+  }
+
+  .d-insurance-details {
+    font-size: 0.9rem;
+  }
+
+  .d-hospital-cards-container {
+    flex-direction: column;
+  }
+
+  .d-hospital-card {
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .d-hospital-image {
+    width: 80px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .d-hospital-name {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .d-insurance-info {
+    padding: 15px;
+  }
+
+  .d-insurer-logo {
+    width: 120px;
+  }
+
+  .d-insurance-info h2 {
+    font-size: 1.2rem;
+  }
+
+  .d-point {
+    font-size: 0.9rem;
+  }
+
+  .d-key-points li {
+    font-size: 0.8rem;
+  }
+
+  .d-insurance-details {
+    font-size: 0.8rem;
+  }
+
+  .d-hospital-card {
+    padding: 10px;
+  }
+
+  .d-hospital-image {
+    width: 60px;
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+
+  .d-hospital-name {
+    font-size: 0.9rem;
+  }
+  .ctr{
+    text-align: center;
+  }
+}
+

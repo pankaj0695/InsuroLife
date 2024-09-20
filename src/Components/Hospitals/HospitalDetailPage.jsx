@@ -285,7 +285,7 @@ const HospitalDetailPage = () => {
       </div>
 
       <div className='d-insurance-list'>
-        <h3>Insurances that can be use in our Hospital</h3>
+        <h3 className='ctr'>Insurances that can be use in our Hospital</h3>
         <div className='d-insurance-cards-container'>
           {insurances.map((insurance, index) => (
             <div key={index} className='d-insurance-card'>
