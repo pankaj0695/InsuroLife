@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import insurerIcon from '../../assets/icons/insurer.svg';
@@ -142,7 +142,7 @@ const InsurancesPage = () => {
     premium: '',
   });
   const [sortOption, setSortOption] = useState({ field: '', order: '' });
-  const [filteredData, setFilteredData] = useState(insuranceData);
+  const [filteredData, setFilteredData] = useState([]);
 
   const [isInsurerDropdownOpen, setIsInsurerDropdownOpen] = useState(false);
   const [isClaimDropdownOpen, setIsClaimDropdownOpen] = useState(false);
@@ -164,6 +164,26 @@ const InsurancesPage = () => {
       : [...filters.insurers, insurer];
     setFilters({ ...filters, insurers: selectedInsurers });
   };
+
+  useEffect(() => {
+    const fetchInsurances = async () => {
+      const token = localStorage.getItem('auth-token');
+
+      const response = await fetch('/customer/get-insurances', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'auth-token': `${token}`,
+        },
+      });
+
+      const resData = await response.json();
+      console.log(resData);
+      setFilteredData(resData);
+    };
+    fetchInsurances();
+  }, []);
 
   // Handle claim and premium filters
   const handleOtherFilterChange = e => {
@@ -333,11 +353,11 @@ const InsurancesPage = () => {
         {filteredData.map((insurance, index) => (
           <div key={index} className='insurance-card'>
             <img
-              src={insurance.insurerLogo}
+              src={insurance.logo}
               alt={insurance.insurer}
               className='insurer-logo'
             />
-            <h3>{insurance.insuranceName}</h3>
+            <h3>{insurance.insurance_name}</h3>
             {/* <p className='insurance-insurer'>{insurance.insurer}</p> */}
             <p>
               Claim: <span>₹{insurance.claim}</span>
@@ -346,14 +366,14 @@ const InsurancesPage = () => {
               Premium: <span>₹{insurance.premium}/month</span>
             </p>
             <ul className='key-points'>
-              {insurance.keyPoints.map((point, idx) => (
-                <li key={idx}>★ {point}</li>
+              {insurance.tags.map((tag, idx) => (
+                <li key={idx}>★ {tag}</li>
               ))}
             </ul>
             <button
               className='view-details-btn'
               onClick={() => {
-                navigate(`/insurances/${insurance.id}`);
+                navigate(`/insurances/${insurance._id}`);
               }}
             >
               View Details →

@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+// import { UserContext } from '../../store/user-context';
+import { capitalize } from '../../helpers/helper';
 
 import downArrowIcon from '../../assets/icons/down-arrow.svg';
 import locationIcon from '../../assets/icons/location.svg';
@@ -232,10 +235,11 @@ const hospitalsData = [
   },
 ];
 const HospitalsPage = () => {
-  const [state, setState] = useState('Maharashtra');
+  // const { user } = useContext(UserContext);
+  const [state, setState] = useState('maharashtra');
   const [city, setCity] = useState('');
 
-  const [filteredData, setFilteredData] = useState(hospitalsData);
+  const [filteredData, setFilteredData] = useState([]);
 
   const [isStateDropdownOpen, setIsStateDropdownOpen] = useState(false);
   const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
@@ -252,6 +256,26 @@ const HospitalsPage = () => {
         .map(hospital => hospital.city)
     ),
   ];
+
+  useEffect(() => {
+    const fetchHospitals = async () => {
+      const token = localStorage.getItem('auth-token');
+
+      const response = await fetch('/customer/get-hospitals', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'auth-token': `${token}`,
+        },
+      });
+
+      const resData = await response.json();
+      console.log(resData);
+      setFilteredData(resData);
+    };
+    fetchHospitals();
+  }, [state]);
 
   const stateChangeHandler = e => {
     setState(e.target.value);
@@ -351,10 +375,10 @@ const HospitalsPage = () => {
               alt={hospital.hospital_name}
               className='hospital-image'
             />
-            <h3>{hospital.hospital_name}</h3>
+            <h3>{capitalize(hospital.hospital_name)}</h3>
             <p>
               <img src={locationIcon} alt='location icon' width={20} />
-              {hospital.city}, {hospital.state}
+              {capitalize(hospital.city)}, {capitalize(hospital.state)}
             </p>
             <p className='star-rating'>
               {hospital.avgRating}{' '}
@@ -363,7 +387,7 @@ const HospitalsPage = () => {
             <button
               className='view-details-btn'
               onClick={() => {
-                navigate(`/hospitals/${hospital.id}`);
+                navigate(`/hospitals/${hospital._id}`);
               }}
             >
               View Details →
