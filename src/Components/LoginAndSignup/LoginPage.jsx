@@ -39,7 +39,20 @@ const LoginPage = () => {
           },
         });
 
-        if (response.status !== 200) return;
+        if (response.status === 403) {
+          alert('Wrong email or password.');
+          return;
+        }
+    
+        if (response.status === 404) {
+          alert('User not found.');
+          return;
+        }
+    
+        if (response.status !== 200) {
+          alert('Something went wrong. Please try again later.');
+          return;
+        }
 
         resData = await response.json();
         login(resData.token, role, resData.user);
@@ -56,7 +69,20 @@ const LoginPage = () => {
           },
         });
 
-        if (response.status !== 200) return;
+        if (response.status === 403) {
+          alert('Wrong email or password.');
+          return;
+        }
+    
+        if (response.status === 404) {
+          alert('Hopital not found.');
+          return;
+        }
+    
+        if (response.status !== 200) {
+          alert('Something went wrong. Please try again later.');
+          return;
+        }
 
         resData = await response.json();
         login(resData.token, role, resData.hospital);
@@ -73,7 +99,20 @@ const LoginPage = () => {
           },
         });
 
-        if (response.status !== 200) return;
+        if (response.status === 403) {
+          alert('Wrong email or password.');
+          return;
+        }
+    
+        if (response.status === 404) {
+          alert('Insurer not found.');
+          return;
+        }
+    
+        if (response.status !== 200) {
+          alert('Something went wrong. Please try again later.');
+          return;
+        }
 
         resData = await response.json();
         login(resData.token, role, resData.company);

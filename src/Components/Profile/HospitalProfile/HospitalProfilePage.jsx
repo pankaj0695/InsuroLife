@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { UserContext } from '../../../store/user-context';
 import { capitalize } from '../../../helpers/helper';
+import logo from '../../../assets/hospital-images/logo.png'
 
 import hospitalCoverImg from '../../../assets/images/undoc.svg';
 import { Button, Card, Tabs, Tab } from 'react-bootstrap';
@@ -82,10 +83,10 @@ function HospitalProfilePage() {
               <div className='insurances'>
                 <Card className='mb-3'>
                   <Card.Body>
-                    <img src='' alt='insurance-img' className='insurance-img' />
+                    <img src={logo} alt='insurance-img' className='insurance-img' />
                     <Card.Title>Star Health Alliance</Card.Title>
                     <p className='keypoints'>
-                      <span> hello</span>
+                      <span>Efficient</span>
                     </p>
                   </Card.Body>
                 </Card>

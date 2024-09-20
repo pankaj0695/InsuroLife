@@ -17,6 +17,8 @@ const SignupPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
   const navigate = useNavigate();
   const location = useLocation();
   const { login } = useContext(UserContext);
@@ -24,6 +26,7 @@ const SignupPage = () => {
 
   const submitHandler = async e => {
     e.preventDefault();
+    setErrorMessage('');
 
     if (
       !name ||
@@ -35,8 +38,10 @@ const SignupPage = () => {
       !password ||
       password.trim().length < 8 ||
       confirmPassword !== password
-    )
+    ) {
+      setErrorMessage('Please fill all required fields correctly.');
       return;
+    }
 
     const imgExtension = image.type.split('/')[1];
 
@@ -66,8 +71,20 @@ const SignupPage = () => {
           city.trim().length === 0 ||
           !state ||
           state.trim().length === 0
-        )
+        ){
+          setErrorMessage('Please fill all required fields.');
           return;
+        }
+
+        if (!/^[a-zA-Z ]+$/.test(city)) {
+          setErrorMessage('Please enter a valid city name.');
+          return;
+        }
+        if (!/^[a-zA-Z ]+$/.test(state)) {
+          setErrorMessage('Please enter a valid state name.');
+          return;
+        }
+
 
         userData = {
           name,
@@ -81,7 +98,7 @@ const SignupPage = () => {
           password,
         };
 
-        console.log(userData);
+        // console.log(userData);
 
         response = await fetch('/customer/signup/', {
           method: 'POST',
@@ -91,7 +108,18 @@ const SignupPage = () => {
           },
         });
 
-        if (response.status !== 200) return;
+        if (response.status === 400) {
+          setErrorMessage('Invalid input. Please check your details.');
+          return;
+        }
+        if (response.status === 403) {
+          setErrorMessage('User already exists.');
+          return;
+        }
+        if (response.status !== 200) {
+          setErrorMessage('Something went wrong. Please try again later.');
+          return;
+        }
 
         resData = await response.json();
         console.log(resData.user);
@@ -101,13 +129,10 @@ const SignupPage = () => {
         break;
 
       case 'hospital':
-        if (
-          !city ||
-          city.trim().length === 0 ||
-          !state ||
-          state.trim().length === 0
-        )
+        if (!city || city.trim().length === 0 || !state || state.trim().length === 0) {
+          setErrorMessage('Please fill all required fields.');
           return;
+        }
 
         userData = {
           hospital_name: name.toLowerCase(),
@@ -127,7 +152,18 @@ const SignupPage = () => {
           },
         });
 
-        if (response.status !== 200) return;
+        if (response.status === 400) {
+          setErrorMessage('Invalid input. Please check your details.');
+          return;
+        }
+        if (response.status === 403) {
+          setErrorMessage('Hospital already exists.');
+          return;
+        }
+        if (response.status !== 200) {
+          setErrorMessage('Something went wrong. Please try again later.');
+          return;
+        }
 
         resData = await response.json();
         login(resData.token, role, resData.hospital);
@@ -153,7 +189,18 @@ const SignupPage = () => {
           },
         });
 
-        if (response.status !== 200) return;
+        if (response.status === 400) {
+          setErrorMessage('Invalid input. Please check your details.');
+          return;
+        }
+        if (response.status === 403) {
+          setErrorMessage('Company already exists.');
+          return;
+        }
+        if (response.status !== 200) {
+          setErrorMessage('Something went wrong. Please try again later.');
+          return;
+        }
 
         resData = await response.json();
         login(resData.token, role, resData.company);
@@ -176,7 +223,10 @@ const SignupPage = () => {
           ? 'Hospital Authority'
           : 'Insurance Company Authority'}
       </h2>
-      {/* Signup form */}
+
+      {errorMessage && <p className='error-message'>{errorMessage}</p>}
+
+
       <form className='signup-form' onSubmit={submitHandler}>
         <label htmlFor='name'>
           {role === 'customer'
