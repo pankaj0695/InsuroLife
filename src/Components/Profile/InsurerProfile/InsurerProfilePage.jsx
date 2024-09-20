@@ -31,7 +31,6 @@ function InsurerProfilePage() {
     const {
       insuranceName,
       insurer,
-      insurerLogo,
       claim,
       premium,
       tag1,
@@ -40,31 +39,10 @@ function InsurerProfilePage() {
       description,
     } = e.target.elements;
 
-    if (!isImageValid(insurerLogo.files[0].type)) {
-      setError('File must be in JPG/PNG format');
-      return;
-    }
-
-    const imgExtension = insurerLogo.files[0].type.split('/')[1];
-
-    const { url } = await fetch('/s3url', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ imgExtension }),
-    }).then(res => res.json());
-
-    await fetch(url, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'multipart/form-data' },
-      body: insurerLogo.files[0],
-    });
-
-    const imageUrl = url.split('?')[0];
-
     const newInsurance = {
       insurance_name: insuranceName.value,
       insurer: insurer.value,
-      logo: imageUrl,
+      logo: user.data.image,
       claim: claim.value,
       premium: premium.value,
       tags: [tag1.value, tag2.value, tag3.value],
@@ -265,11 +243,6 @@ function InsurerProfilePage() {
             <Form.Group>
               <Form.Label>Insurer</Form.Label>
               <Form.Control type='text' name='insurer' required />
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Insurer Logo</Form.Label>
-              <Form.Control type='file' name='insurerLogo' required />
             </Form.Group>
 
             <Form.Group>
