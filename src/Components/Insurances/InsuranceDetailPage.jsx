@@ -1,135 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import bajajLogo from '../../assets/insurance-images/bajaj-logo.png';
+import { capitalize } from '../../helpers/helper';
+
 import hospitalImage from '../../assets/hospital-images/hospital-image.jpg';
 import './InsuranceDetailPage.css';
 
 // Sample insurance data
-const insuranceData = [
-  {
-    id: 'insurance-1',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-2',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-3',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-4',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-5',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Apollo India',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-6',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'LIC',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-7',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Star Health',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  {
-    id: 'insurance-8',
-    insuranceName: 'Health Shield Plan',
-    insurer: 'Bajaj Allianz',
-    insurerLogo: bajajLogo, // Placeholder image for insurer logo
-    claim: 500000,
-    premium: 800,
-    keyPoints: [
-      'Covers hospitalization and outpatient treatments',
-      'Cashless facility at 4500+ network hospitals',
-      'Includes maternity cover after 3 years',
-    ],
-    details:
-      'The Health Shield Plan by Apollo India is designed to cover both hospitalization and outpatient treatments...',
-  },
-  // Add more insurances similarly
-];
-
 const hospitals = [
   {
     hospital_name: 'City Hospital',
@@ -146,12 +23,24 @@ const InsuranceDetailPage = () => {
   const [insurance, setInsurance] = useState(null);
 
   useEffect(() => {
-    const fetchedInsurance = insuranceData.find(
-      item => item.id === insurance_id
-    );
-    if (fetchedInsurance) {
-      setInsurance(fetchedInsurance);
-    }
+    const fetchInsurance = async () => {
+      const token = localStorage.getItem('auth-token');
+
+      const response = await fetch('/customer/get-insurance', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'auth-token': `${token}`,
+        },
+        body: JSON.stringify({ insurance_id }),
+      });
+
+      const resData = await response.json();
+      console.log(resData);
+      setInsurance(resData);
+    };
+    fetchInsurance();
   }, [insurance_id]);
 
   if (!insurance) {
@@ -162,13 +51,13 @@ const InsuranceDetailPage = () => {
     <div className='insurance-detail-page'>
       <div className='d-insurance-info'>
         <img
-          src={insurance.insurerLogo}
+          src={insurance.logo}
           alt={insurance.insurer}
           className='d-insurer-logo'
         />
-        <h2>{insurance.insuranceName}</h2>
+        <h2>{capitalize(insurance.insurance_name)}</h2>
         <p className='d-point'>
-          Insurer: <span>{insurance.insurer}</span>
+          Insurer: <span>{capitalize(insurance.insurer)}</span>
         </p>
         <p className='d-point'>
           Claim: <span>₹{insurance.claim}</span>
@@ -177,11 +66,11 @@ const InsuranceDetailPage = () => {
           Premium: <span>₹{insurance.premium}/month</span>
         </p>
         <ul className='d-key-points'>
-          {insurance.keyPoints.map((point, index) => (
-            <li key={index}>{point}</li>
+          {insurance.tags.map((tag, index) => (
+            <li key={index}>{tag}</li>
           ))}
         </ul>
-        <p className='d-insurance-details'>{insurance.details}</p>
+        <p className='d-insurance-details'>{insurance.description}</p>
       </div>
 
       <div className='d-hospital-list'>
