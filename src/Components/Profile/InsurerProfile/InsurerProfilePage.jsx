@@ -28,26 +28,21 @@ function InsurerProfilePage() {
   const handleAddInsurance = async e => {
     e.preventDefault();
 
-    const {
-      insuranceName,
-      insurer,
-      claim,
-      premium,
-      tag1,
-      tag2,
-      tag3,
-      description,
-    } = e.target.elements;
+    const { insuranceName, claim, premium, tag1, tag2, tag3, description } =
+      e.target.elements;
 
     const newInsurance = {
+      company_id: user.data._id,
       insurance_name: insuranceName.value,
-      insurer: insurer.value,
+      insurer: user.data.company_name,
       logo: user.data.image,
       claim: claim.value,
       premium: premium.value,
       tags: [tag1.value, tag2.value, tag3.value],
       description: description.value,
     };
+
+    console.log(newInsurance);
 
     const token = localStorage.getItem('auth-token');
 
@@ -238,11 +233,6 @@ function InsurerProfilePage() {
             <Form.Group>
               <Form.Label>Insurance Name</Form.Label>
               <Form.Control type='text' name='insuranceName' required />
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Insurer</Form.Label>
-              <Form.Control type='text' name='insurer' required />
             </Form.Group>
 
             <Form.Group>
