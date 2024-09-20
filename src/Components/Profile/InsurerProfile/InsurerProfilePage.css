@@ -141,3 +141,19 @@
 .toggle-section {
   flex: 2;
 }
+.keypoints span{
+  display: flex;
+  flex-direction: column;
+  gap: 5px
+}
+.insurances{
+  position: relative;
+  top: 50px;
+  right: 590px;
+  height: 500px;
+}
+
+.insurances Card.Body{
+  display: flex;
+  flex-direction: row;
+}

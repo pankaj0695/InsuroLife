@@ -4,6 +4,7 @@ import { Card, Button, Modal, Form, Tabs, Tab } from 'react-bootstrap';
 
 import { UserContext } from '../../../store/user-context';
 import { isImageValid, capitalize } from '../../../helpers/helper';
+import logo from '../../../assets/hospital-images/logo.png'
 
 import InsurerCoverImg from '../../../assets/images/insurercover.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -185,7 +186,7 @@ function InsurerProfilePage() {
           onSelect={k => setKey(k)}
           className='toggle-section'
         >
-          <Tab eventKey='insurances' title='Insurances'>
+          {/* <Tab eventKey='insurances' title='Insurances'>
             <div className='insurance-section'>
               {insurances.map((insurance, index) => (
                 <Card key={index} className='insurance-card'>
@@ -201,7 +202,22 @@ function InsurerProfilePage() {
                 </Card>
               ))}
             </div>
-          </Tab>
+          </Tab> */}
+
+          <Tab eventKey='insurances' title='Insurances'>
+              <div className='insurances'>
+                <Card className='mb-3'>
+                  <Card.Body>
+                    <img src={logo} alt='insurance-img' className='insurance-img' />
+                    <Card.Title>Star Health Alliance</Card.Title>
+                    <p className='keypoints'>
+                      <span>Efficient</span>
+                      <span>High-end Benefits</span>
+                    </p>
+                  </Card.Body>
+                </Card>
+              </div>
+            </Tab>
 
           <Tab eventKey='counselors' title='Counselors'>
             <div className='counselor-section'>
