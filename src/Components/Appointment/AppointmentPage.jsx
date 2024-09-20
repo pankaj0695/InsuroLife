@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+
+import { UserContext } from '../../store/user-context';
 
 import insurerIcon from '../../assets/icons/insurer.svg';
 import downArrowIcon from '../../assets/icons/down-arrow.svg';
@@ -19,6 +21,16 @@ const AppointmentPage = () => {
   const [todayDate, setTodayDate] = useState('');
 
   const [isInsurerDropdownOpen, setIsInsurerDropdownOpen] = useState(false);
+
+  const [appointmentData, setAppointmentData] = useState({
+    date: '',
+    company_id: '',
+    counsellor_name: '',
+    time: '',
+    timeSlot: '',
+  });
+
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0];
@@ -52,12 +64,36 @@ const AppointmentPage = () => {
     fetchCounsellors();
   }, []);
 
-  const [appointmentData, setAppointmentData] = useState({
-    date: '',
-    time: '',
-    timeSlot: '',
-  });
-  const handleBookAppointment = () => {
+  const bookAppointmentHandler = async e => {
+    e.preventDefault();
+
+    const token = localStorage.getItem('auth-token');
+
+    await fetch('/customer/book-appointment', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'auth-token': `${token}`,
+      },
+      body: JSON.stringify({
+        user_id: user.data._id,
+        date: appointmentData.date,
+        timing: appointmentData.time,
+        company_id: appointmentData.company_id,
+        counsellor: appointmentData.counsellor_name,
+      }),
+    });
+
+    handleCloseAppointmentModal();
+  };
+
+  const handleBookAppointment = (company_id, counsellor_name) => {
+    setAppointmentData(prevData => ({
+      ...prevData,
+      company_id,
+      counsellor_name,
+    }));
     setShowBookAppointmentModal(true);
   };
 
@@ -136,7 +172,7 @@ const AppointmentPage = () => {
         {filteredData.map((counsellor, index) => (
           <div key={index} className='counsellor-card'>
             <img
-              src={counsellor.insurer_logo}
+              src={counsellor.company_logo}
               alt={counsellor.insurer}
               className='c-insurer-logo'
             />
@@ -148,7 +184,7 @@ const AppointmentPage = () => {
             <h3>{counsellor.name}</h3>
             <p>
               <img src={callIcon} alt='call icon' width={17} />
-              {counsellor.contactNo}
+              {counsellor.phone_no}
             </p>
             <p>
               <img src={emailIcon} alt='email icon' width={19} />
@@ -163,7 +199,9 @@ const AppointmentPage = () => {
             </ul>
             <button
               className='view-details-btn'
-              onClick={handleBookAppointment}
+              onClick={() => {
+                handleBookAppointment(counsellor.company_id, counsellor.name);
+              }}
             >
               Book Appointment
             </button>
@@ -179,7 +217,7 @@ const AppointmentPage = () => {
           <Modal.Title>Book an Appointment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+          <form onSubmit={bookAppointmentHandler}>
             <div className='mb-3'>
               <label htmlFor='date' className='form-label'>
                 Date

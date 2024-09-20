@@ -1,10 +1,15 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+
+import { UserContext } from '../../store/user-context';
 
 import secTwoIllustration from '../../assets/images/trafalgar-illustration sec02 1.svg';
 import secThreeIllustration from '../../assets/images/trafalgar-illustration sec03 1.svg';
 import './TestimonialsPage.css';
 
 function TestimonialsPage() {
+  const { user } = useContext(UserContext);
+
   return (
     <section className='testimonial-sec'>
       <div className='testimonial'>
@@ -27,7 +32,7 @@ function TestimonialsPage() {
                 accessible on mobile and online for everyone. To us, it's not
                 just work. We take pride in the solutions we deliver.
               </p>
-              <Link to='/profile' className='t-button'>
+              <Link to={`/${user.type}/profile`} className='t-button'>
                 Learn more
               </Link>
             </div>
