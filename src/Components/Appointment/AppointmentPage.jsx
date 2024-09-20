@@ -39,15 +39,15 @@ const AppointmentPage = () => {
       });
 
       const resData = await response.json();
-      console.log(resData);
+      console.log(resData.counsellors);
 
       const insurersData = [
-        ...new Set(resData.map(counsellor => counsellor.insurer)),
+        ...new Set(resData.counsellors.map(counsellor => counsellor.insurer)),
       ];
 
       setInsurers(insurersData);
-      setCounsellors(resData);
-      setFilteredData(resData);
+      setCounsellors(resData.counsellors);
+      setFilteredData(resData.counsellors);
     };
     fetchCounsellors();
   }, []);
