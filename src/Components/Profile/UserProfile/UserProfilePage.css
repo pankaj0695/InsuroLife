@@ -87,6 +87,7 @@
 }
 
 .health-records .card {
+  max-width: 500px;
   background-color: #f8f9fa;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -184,36 +185,36 @@
 /* Mobile styles */
 @media (max-width: 768px) {
   .header-section {
-      margin-bottom: 30px;
+    margin-bottom: 30px;
   }
 
   .profile-info {
-      flex-direction: column;
-      align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .profile-name {
-      left: 0;
-      bottom: 0;
+    left: 0;
+    bottom: 0;
   }
 
   .action-buttons {
-      position: static;
-      margin-top: 10px;
+    position: static;
+    margin-top: 10px;
   }
 
   .body-section {
-      margin-top: 10px;
+    margin-top: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .profile-pic {
-      width: 80px;
-      height: 80px;
+    width: 80px;
+    height: 80px;
   }
 
   .profile-name {
-      font-size: 20px;
+    font-size: 20px;
   }
 }

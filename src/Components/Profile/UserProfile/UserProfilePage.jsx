@@ -25,6 +25,7 @@ const UserProfilePage = () => {
     image: null,
   });
   const [healthRecords, setHealthRecords] = useState([]);
+  const [updates, setUpdates] = useState([]);
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
@@ -32,16 +33,13 @@ const UserProfilePage = () => {
   const { logout, user } = useContext(UserContext);
 
   useEffect(() => {
-    const storedRecords = localStorage.getItem('healthRecords');
-    if (storedRecords) {
-      setHealthRecords(JSON.parse(storedRecords));
-    }
-  }, []);
-
-  useEffect(() => {
     const healthRecordsData = user.data.medical_records;
     setHealthRecords(healthRecordsData);
   }, [user.data.medical_records]);
+
+  useEffect(() => {
+    setUpdates([{ counsellor: 'Sumit Jha', status: 'Pending' }]);
+  }, []);
 
   const handleAddRecord = e => {
     setShowAddRecordModal(true);
@@ -208,57 +206,20 @@ const UserProfilePage = () => {
 
             <Tab eventKey='updates' title='Updates'>
               <div className='updates'>
-                <div className='update-item'>
-                  <img
-                    src='https://via.placeholder.com/50'
-                    alt='Counselor'
-                    className='update-img'
-                  />
-                  <div className='update-info'>
-                    <h5>Shelby Goode</h5>
-                    <p>Completed</p>
+                {updates.map(update => (
+                  <div className='update-item'>
+                    <img
+                      src='https://via.placeholder.com/50'
+                      alt={update.counsellor}
+                      className='update-img'
+                    />
+                    <div className='update-info'>
+                      <h5>{update.counsellor}</h5>
+                      <p>{update.status}</p>
+                    </div>
+                    <span className='update-time'>1 min ago</span>
                   </div>
-                  <span className='update-time'>1 min ago</span>
-                </div>
-
-                <div className='update-item'>
-                  <img
-                    src='https://via.placeholder.com/50'
-                    alt='Counselor'
-                    className='update-img'
-                  />
-                  <div className='update-info'>
-                    <h5>Shelby Goode</h5>
-                    <p>Approved</p>
-                  </div>
-                  <span className='update-time'>9 min ago</span>
-                </div>
-
-                <div className='update-item'>
-                  <img
-                    src='https://via.placeholder.com/50'
-                    alt='Counselor'
-                    className='update-img'
-                  />
-                  <div className='update-info'>
-                    <h5>Shelby Goode</h5>
-                    <p>Pending</p>
-                  </div>
-                  <span className='update-time'>15 min ago</span>
-                </div>
-
-                <div className='update-item'>
-                  <img
-                    src='https://via.placeholder.com/50'
-                    alt='Counselor'
-                    className='update-img'
-                  />
-                  <div className='update-info'>
-                    <h5>Adriene Watson</h5>
-                    <p>Declined</p>
-                  </div>
-                  <span className='update-time'>21 min ago</span>
-                </div>
+                ))}
               </div>
             </Tab>
           </Tabs>
