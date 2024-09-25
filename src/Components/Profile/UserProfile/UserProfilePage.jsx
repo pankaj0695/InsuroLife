@@ -38,8 +38,26 @@ const UserProfilePage = () => {
   }, [user.data.medical_records]);
 
   useEffect(() => {
-    setUpdates([{ counsellor: 'Sumit Jha', status: 'Pending' }]);
-  }, []);
+    const fetchCounsellors = async () => {
+      const token = localStorage.getItem('auth-token');
+
+      const response = await fetch('/insurer/get-appointments-user', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'auth-token': `${token}`,
+        },
+        body: JSON.stringify({
+          user_id: user.data._id,
+        }),
+      });
+
+      const resData = await response.json();
+      setUpdates(resData.appointments);
+    };
+    fetchCounsellors();
+  }, [user.data._id]);
 
   const handleAddRecord = e => {
     setShowAddRecordModal(true);
@@ -206,20 +224,23 @@ const UserProfilePage = () => {
 
             <Tab eventKey='updates' title='Updates'>
               <div className='updates'>
-                {updates.map(update => (
-                  <div className='update-item'>
-                    <img
-                      src='https://via.placeholder.com/50'
-                      alt={update.counsellor}
-                      className='update-img'
-                    />
-                    <div className='update-info'>
-                      <h5>{update.counsellor}</h5>
-                      <p>{update.status}</p>
+                {updates &&
+                  updates.map(update => (
+                    <div className='update-item' key={update._id}>
+                      <img
+                        src={update.counsellor_image}
+                        alt={update.counsellor_name}
+                        className='update-img'
+                      />
+                      <div className='update-info'>
+                        <h5>{update.counsellor_name}</h5>
+                        <p>{update.status}</p>
+                      </div>
+                      <span className='update-time'>
+                        {formatDate(update.updatedAt)}
+                      </span>
                     </div>
-                    <span className='update-time'>1 min ago</span>
-                  </div>
-                ))}
+                  ))}
               </div>
             </Tab>
           </Tabs>

@@ -26,6 +26,7 @@ const AppointmentPage = () => {
     date: '',
     company_id: '',
     counsellor_name: '',
+    counsellor_image: '',
     time: '',
     timeSlot: '',
   });
@@ -81,18 +82,24 @@ const AppointmentPage = () => {
         date: appointmentData.date,
         timing: appointmentData.time,
         company_id: appointmentData.company_id,
-        counsellor: appointmentData.counsellor_name,
+        counsellor_name: appointmentData.counsellor_name,
+        counsellor_image: appointmentData.counsellor_image,
       }),
     });
 
     handleCloseAppointmentModal();
   };
 
-  const handleBookAppointment = (company_id, counsellor_name) => {
+  const handleBookAppointment = (
+    company_id,
+    counsellor_name,
+    counsellor_image
+  ) => {
     setAppointmentData(prevData => ({
       ...prevData,
       company_id,
       counsellor_name,
+      counsellor_image,
     }));
     setShowBookAppointmentModal(true);
   };
@@ -200,7 +207,11 @@ const AppointmentPage = () => {
             <button
               className='view-details-btn'
               onClick={() => {
-                handleBookAppointment(counsellor.company_id, counsellor.name);
+                handleBookAppointment(
+                  counsellor.company_id,
+                  counsellor.name,
+                  counsellor.image
+                );
               }}
             >
               Book Appointment
