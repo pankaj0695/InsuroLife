@@ -1,7 +1,5 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-
-import { UserContext } from '../../store/user-context';
 
 import insurerIcon from '../../assets/icons/insurer.svg';
 import downArrowIcon from '../../assets/icons/down-arrow.svg';
@@ -30,8 +28,6 @@ const AppointmentPage = () => {
     time: '',
     timeSlot: '',
   });
-
-  const { user } = useContext(UserContext);
 
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0];
@@ -69,6 +65,7 @@ const AppointmentPage = () => {
     e.preventDefault();
 
     const token = localStorage.getItem('auth-token');
+    const userId = localStorage.getItem('user-id');
 
     await fetch('/customer/book-appointment', {
       method: 'POST',
@@ -78,7 +75,7 @@ const AppointmentPage = () => {
         'auth-token': `${token}`,
       },
       body: JSON.stringify({
-        user_id: user.data._id,
+        user_id: userId,
         date: appointmentData.date,
         timing: appointmentData.time,
         company_id: appointmentData.company_id,

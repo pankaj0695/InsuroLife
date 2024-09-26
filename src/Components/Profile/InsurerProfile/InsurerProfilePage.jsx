@@ -7,7 +7,11 @@ import { isImageValid, capitalize } from '../../../helpers/helper';
 
 import InsurerCoverImg from '../../../assets/images/insurer-bg.jpeg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import {
+  faLocationDot,
+  faEnvelope,
+  faPhone,
+} from '@fortawesome/free-solid-svg-icons';
 import './InsurerProfilePage.css';
 
 function InsurerProfilePage() {
@@ -54,9 +58,10 @@ function InsurerProfilePage() {
     fetchCounselors();
   }, []);
 
-  const handleAddInsurance = async (e) => {
+  const handleAddInsurance = async e => {
     e.preventDefault();
-    const { insuranceName, claim, premium, tag1, tag2, tag3, description } = e.target.elements;
+    const { insuranceName, claim, premium, tag1, tag2, tag3, description } =
+      e.target.elements;
 
     const newInsurance = {
       company_id: user.data._id,
@@ -86,7 +91,7 @@ function InsurerProfilePage() {
     setShowInsuranceModal(false);
   };
 
-  const handleAddCounselor = async (e) => {
+  const handleAddCounselor = async e => {
     e.preventDefault();
 
     if (!isImageValid(e.target.elements.counselorLogo.files[0].type)) {
@@ -94,13 +99,14 @@ function InsurerProfilePage() {
       return;
     }
 
-    const imgExtension = e.target.elements.counselorLogo.files[0].type.split('/')[1];
+    const imgExtension =
+      e.target.elements.counselorLogo.files[0].type.split('/')[1];
 
     const { url } = await fetch('/s3url', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ imgExtension }),
-    }).then((res) => res.json());
+    }).then(res => res.json());
 
     await fetch(url, {
       method: 'PUT',
@@ -111,13 +117,17 @@ function InsurerProfilePage() {
     const imageUrl = url.split('?')[0];
 
     const newCounselor = {
+      insurer: user.data.company_name,
       company_id: user.data._id,
       name: e.target.elements.counselorName.value,
       phone_no: e.target.elements.counselorPhone.value,
       email: e.target.elements.counselorEmail.value,
       company_logo: user.data.image,
       image: imageUrl,
-      tags: [e.target.elements.counselorTag1.value, e.target.elements.counselorTag2.value],
+      tags: [
+        e.target.elements.counselorTag1.value,
+        e.target.elements.counselorTag2.value,
+      ],
     };
 
     const token = localStorage.getItem('auth-token');
@@ -134,7 +144,7 @@ function InsurerProfilePage() {
 
     const resData = await response.json();
 
-    setCounselors([...counselors, resData.counsellor]);
+    setCounselors(prev => [...prev, resData.counsellor]);
     setShowCounselorModal(false);
   };
 
@@ -196,7 +206,11 @@ function InsurerProfilePage() {
           </Card>
         </div>
 
-        <Tabs activeKey={key} onSelect={(k) => setKey(k)} className='toggle-section'>
+        <Tabs
+          activeKey={key}
+          onSelect={k => setKey(k)}
+          className='toggle-section'
+        >
           <Tab eventKey='insurances' title='Insurances'>
             <div className='insurance-section'>
               {insurances.map((insurance, index) => (
@@ -234,7 +248,10 @@ function InsurerProfilePage() {
       </div>
 
       {/* Add Insurance Modal */}
-      <Modal show={showInsuranceModal} onHide={() => setShowInsuranceModal(false)}>
+      <Modal
+        show={showInsuranceModal}
+        onHide={() => setShowInsuranceModal(false)}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Add Insurance</Modal.Title>
         </Modal.Header>
@@ -284,7 +301,10 @@ function InsurerProfilePage() {
       </Modal>
 
       {/* Add Counselor Modal */}
-      <Modal show={showCounselorModal} onHide={() => setShowCounselorModal(false)}>
+      <Modal
+        show={showCounselorModal}
+        onHide={() => setShowCounselorModal(false)}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Add Counselor</Modal.Title>
         </Modal.Header>
@@ -334,4 +354,3 @@ function InsurerProfilePage() {
 }
 
 export default InsurerProfilePage;
-

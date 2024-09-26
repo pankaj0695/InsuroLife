@@ -38,10 +38,11 @@ const UserProfilePage = () => {
   }, [user.data.medical_records]);
 
   useEffect(() => {
-    const fetchCounsellors = async () => {
+    const fetchUpdates = async () => {
       const token = localStorage.getItem('auth-token');
+      const userId = localStorage.getItem('user-id');
 
-      const response = await fetch('/insurer/get-appointments-user', {
+      const response = await fetch('/insurer/get-user-appointments', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -49,15 +50,15 @@ const UserProfilePage = () => {
           'auth-token': `${token}`,
         },
         body: JSON.stringify({
-          user_id: user.data._id,
+          user_id: userId,
         }),
       });
 
       const resData = await response.json();
       setUpdates(resData.appointments);
     };
-    fetchCounsellors();
-  }, [user.data._id]);
+    fetchUpdates();
+  }, []);
 
   const handleAddRecord = e => {
     setShowAddRecordModal(true);
