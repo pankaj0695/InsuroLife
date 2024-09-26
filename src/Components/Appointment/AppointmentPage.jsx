@@ -55,8 +55,8 @@ const AppointmentPage = () => {
       ];
 
       setInsurers(insurersData);
-      setCounsellors(resData.counsellors);
-      setFilteredData(resData.counsellors);
+      setCounsellors(resData.counsellors || []);
+      setFilteredData(resData.counsellors || []);
     };
     fetchCounsellors();
   }, []);

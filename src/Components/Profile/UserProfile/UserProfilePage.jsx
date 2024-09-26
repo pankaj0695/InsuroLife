@@ -223,7 +223,7 @@ const UserProfilePage = () => {
               </div>
             </Tab>
 
-            <Tab eventKey='updates' title='Updates'>
+            <Tab eventKey='updates' title='Appointments'>
               <div className='updates'>
                 {updates &&
                   updates.map(update => (
