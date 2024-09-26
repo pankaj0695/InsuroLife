@@ -28,7 +28,7 @@ function InsurerProfilePage() {
   useEffect(() => {
     const fetchInsurances = async () => {
       const token = localStorage.getItem('auth-token');
-      const response = await fetch('/insurer/insurances', {
+      const response = await fetch('/insurer/get-insurances', {
         method: 'GET',
         headers: {
           Accept: 'application/json',
@@ -42,7 +42,7 @@ function InsurerProfilePage() {
 
     const fetchCounselors = async () => {
       const token = localStorage.getItem('auth-token');
-      const response = await fetch('/insurer/counselors', {
+      const response = await fetch('/insurer/get-counsellors', {
         method: 'GET',
         headers: {
           Accept: 'application/json',
