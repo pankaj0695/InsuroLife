@@ -1,9 +1,9 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { UserContext } from '../../../store/user-context';
 import { capitalize } from '../../../helpers/helper';
-import logo from '../../../assets/hospital-images/logo.png'
+import logo from '../../../assets/hospital-images/logo.png';
 
 import hospitalCoverImg from '../../../assets/images/undoc.svg';
 import { Button, Card, Tabs, Tab } from 'react-bootstrap';
@@ -17,12 +17,89 @@ import {
 
 function HospitalProfilePage() {
   const [key, setKey] = useState('insurances');
+  const [requests, setRequests] = useState([]);
+  const [acceptedInsurances, setAcceptedInsurances] = useState([]);
   const navigate = useNavigate();
 
   const { logout, user } = useContext(UserContext);
 
   const handleTabSelect = k => {
     setKey(k);
+  };
+
+  useEffect(() => {
+    const fetchInsurances = async () => {
+      const token = localStorage.getItem('auth-token');
+
+      const response = await fetch('/customer/get-insurances', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'auth-token': `${token}`,
+        },
+      });
+
+      const resData = await response.json();
+      // console.log(resData);
+      setRequests(resData);
+    };
+    fetchInsurances();
+  }, []);
+
+  const handleAccept = async insurance => {
+    const token = localStorage.getItem('auth-token');
+
+    try {
+      const response = await fetch('/notifications/pending', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'auth-token': `${token}`,
+        },
+        body: JSON.stringify({
+          request_id: insurance.request_id,
+          status: 'Accepted',
+        }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setAcceptedInsurances(prev => [...prev, insurance]);
+        setRequests(prev => prev.filter(req => req.id !== insurance.id));
+      } else {
+        console.error('Error accepting insurance:', await response.json());
+      }
+    } catch (error) {
+      console.error('Failed to accept insurance:', error);
+    }
+  };
+
+  const handleDecline = async insuranceId => {
+    const token = localStorage.getItem('auth-token');
+
+    try {
+      const response = await fetch('/notifications/declined', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'auth-token': `${token}`,
+        },
+        body: JSON.stringify({
+          request_id: insuranceId,
+          status: 'Declined',
+        }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setRequests(prev => prev.filter(req => req.id !== insuranceId));
+      } else {
+        console.error('Error declining insurance:', await response.json());
+      }
+    } catch (error) {
+      console.error('Failed to decline insurance:', error);
+    }
   };
 
   return (
@@ -79,19 +156,27 @@ function HospitalProfilePage() {
 
         <div className='col-md-9 toggle-section'>
           <Tabs activeKey={key} onSelect={handleTabSelect} className='mb-3'>
+            {/* Insurances Tab */}
             <Tab eventKey='insurances' title='Insurances'>
-              {/* <div className='insurances'>
-                <Card className='mb-3'>
-                  <Card.Body>
-                    <img src={logo} alt='insurance-img' className='insurance-img' />
-                    <Card.Title>Star Health Alliance</Card.Title>
-                    <p className='keypoints'>
-                      <span>Efficient</span>
-                    </p>
-                  </Card.Body>
-                </Card>
-              </div> */}
+              <div className='insurances'>
+                {acceptedInsurances.length > 0 ? (
+                  acceptedInsurances.map((insurance, index) => (
+                    <Card key={index} className='mb-3'>
+                      <Card.Body>
+                        <Card.Title>{insurance.insurance_name}</Card.Title>
+                        <p>Claim: {insurance.claim}</p>
+                        <p>Premium: {insurance.premium}</p>
+                        <p>Description: {insurance.description}</p>
+                      </Card.Body>
+                    </Card>
+                  ))
+                ) : (
+                  <p>No accepted insurances yet.</p>
+                )}
+              </div>
             </Tab>
+
+            {/* Requests Tab */}
             <Tab eventKey='requests' title='Requests'>
               <div className='requests'>
                 <table className='table'>
@@ -100,25 +185,52 @@ function HospitalProfilePage() {
                       <th>ID</th>
                       <th>Description</th>
                       <th>Status</th>
-                      <th>Actions</th>
+                      <th style={{ display: 'flex', justifyContent: 'center' }}>
+                        Actions
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Insurance request</td>
-                      <td>Pending</td>
-                      <td>
-                        <div className='action-btns'>
-                          <Button variant='primary' size='sm'>
-                            Accept
-                          </Button>
-                          <Button variant='danger' size='sm'>
-                            Decline
-                          </Button>
-                        </div>
-                      </td>
-                    </tr>
+                    {requests.map((insurance, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{insurance.insurance_name}</td>
+                        <td>{insurance.status || 'Pending'}</td>
+                        <td>
+                          <div
+                            className='action-btns'
+                            style={{
+                              display: 'flex',
+                              justifyContent: 'center',
+                            }}
+                          >
+                            <Button
+                              variant='primary'
+                              size='sm'
+                              onClick={() => handleAccept(insurance)}
+                            >
+                              Accept
+                            </Button>
+                            <Button
+                              variant='danger'
+                              size='sm'
+                              onClick={() => handleDecline(insurance)}
+                            >
+                              Decline
+                            </Button>
+                            <Button
+                              variant='primary'
+                              size='sm'
+                              onClick={() => {
+                                navigate(`/insurances/${insurance._id}`);
+                              }}
+                            >
+                              View Details
+                            </Button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
