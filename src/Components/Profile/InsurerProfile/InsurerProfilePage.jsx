@@ -28,13 +28,15 @@ function InsurerProfilePage() {
   useEffect(() => {
     const fetchInsurances = async () => {
       const token = localStorage.getItem('auth-token');
+      const company_id = localStorage.getItem('user-id');
       const response = await fetch('/insurer/get-insurances', {
-        method: 'GET',
+        method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
           'auth-token': `${token}`,
         },
+        body: JSON.stringify({ company_id }),
       });
       const resData = await response.json();
       setInsurances(resData.insurances || []);
@@ -42,16 +44,18 @@ function InsurerProfilePage() {
 
     const fetchCounselors = async () => {
       const token = localStorage.getItem('auth-token');
+      const company_id = localStorage.getItem('user-id');
       const response = await fetch('/insurer/get-counsellors', {
-        method: 'GET',
+        method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
           'auth-token': `${token}`,
         },
+        body: JSON.stringify({ company_id }),
       });
       const resData = await response.json();
-      setCounselors(resData.counselors || []);
+      setCounselors(resData.counsellors || []);
     };
 
     fetchInsurances();
@@ -213,19 +217,20 @@ function InsurerProfilePage() {
         >
           <Tab eventKey='insurances' title='Insurances'>
             <div className='insurance-section'>
-              {insurances.map((insurance, index) => (
-                <Card key={index} className='insurance-card'>
-                  <Card.Img variant='top' src={insurance.logo} />
-                  <Card.Body>
-                    <Card.Title>{insurance.insurance_name}</Card.Title>
-                    <Card.Text>Insurer: {insurance.insurer}</Card.Text>
-                    <Card.Text>Claim: {insurance.claim}</Card.Text>
-                    <Card.Text>Premium: ₹{insurance.premium}/month</Card.Text>
-                    <Card.Text>Tags: {insurance.tags.join(', ')}</Card.Text>
-                    <Card.Text>{insurance.description}</Card.Text>
-                  </Card.Body>
-                </Card>
-              ))}
+              {insurances &&
+                insurances.map((insurance, index) => (
+                  <Card key={index} className='insurance-card'>
+                    <Card.Img variant='top' src={insurance.logo} />
+                    <Card.Body>
+                      <Card.Title>{insurance.insurance_name}</Card.Title>
+                      <Card.Text>Insurer: {insurance.insurer}</Card.Text>
+                      <Card.Text>Claim: {insurance.claim}</Card.Text>
+                      <Card.Text>Premium: ₹{insurance.premium}/month</Card.Text>
+                      <Card.Text>Tags: {insurance.tags.join(', ')}</Card.Text>
+                      <Card.Text>{insurance.description}</Card.Text>
+                    </Card.Body>
+                  </Card>
+                ))}
             </div>
           </Tab>
 
