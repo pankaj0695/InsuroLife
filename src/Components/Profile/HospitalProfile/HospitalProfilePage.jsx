@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { UserContext } from '../../../store/user-context';
 import { capitalize } from '../../../helpers/helper';
-import logo from '../../../assets/hospital-images/logo.png';
 
 import hospitalCoverImg from '../../../assets/images/undoc.svg';
 import { Button, Card, Tabs, Tab } from 'react-bootstrap';
@@ -47,58 +46,40 @@ function HospitalProfilePage() {
     fetchInsurances();
   }, []);
 
-  const handleAccept = async insurance => {
+  const handleRequestAction = async (insuranceId, status) => {
     const token = localStorage.getItem('auth-token');
 
     try {
-      const response = await fetch('/notifications/pending', {
-        method: 'POST',
+      const response = await fetch('/notifications', {
+        method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json',
-          'auth-token': `${token}`,
-        },
-        body: JSON.stringify({
-          request_id: insurance.request_id,
-          status: 'Accepted',
-        }),
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        setAcceptedInsurances(prev => [...prev, insurance]);
-        setRequests(prev => prev.filter(req => req.id !== insurance.id));
-      } else {
-        console.error('Error accepting insurance:', await response.json());
-      }
-    } catch (error) {
-      console.error('Failed to accept insurance:', error);
-    }
-  };
-
-  const handleDecline = async insuranceId => {
-    const token = localStorage.getItem('auth-token');
-
-    try {
-      const response = await fetch('/notifications/declined', {
-        method: 'POST',
-        headers: {
+          Accept: 'application/json',
           'Content-Type': 'application/json',
           'auth-token': `${token}`,
         },
         body: JSON.stringify({
           request_id: insuranceId,
-          status: 'Declined',
+          status,
         }),
       });
 
-      if (response.ok) {
-        const result = await response.json();
-        setRequests(prev => prev.filter(req => req.id !== insuranceId));
+      const resData = await response.json();
+      if (response.status === 200) {
+        if (status === 'Accepted') {
+          setAcceptedInsurances(prev => [
+            ...prev,
+            resData.updatedRequest.insurance_id,
+          ]);
+        }
+
+        setRequests(prev =>
+          prev.filter(request => request._id !== resData.updatedRequest._id)
+        );
       } else {
-        console.error('Error declining insurance:', await response.json());
+        console.log(resData.message);
       }
     } catch (error) {
-      console.error('Failed to decline insurance:', error);
+      console.error(error.message);
     }
   };
 
@@ -207,14 +188,18 @@ function HospitalProfilePage() {
                             <Button
                               variant='primary'
                               size='sm'
-                              onClick={() => handleAccept(insurance)}
+                              onClick={() =>
+                                handleRequestAction(insurance._id, 'Accepted')
+                              }
                             >
                               Accept
                             </Button>
                             <Button
                               variant='danger'
                               size='sm'
-                              onClick={() => handleDecline(insurance)}
+                              onClick={() =>
+                                handleRequestAction(insurance._id, 'Declined')
+                              }
                             >
                               Decline
                             </Button>
