@@ -27,23 +27,25 @@ function HospitalProfilePage() {
   };
 
   useEffect(() => {
-    const fetchInsurances = async () => {
+    const fetchRequests = async () => {
       const token = localStorage.getItem('auth-token');
+      const hospital_id = localStorage.getItem('user-id');
 
-      const response = await fetch('/customer/get-insurances', {
-        method: 'GET',
+      const response = await fetch('/hospital/get-requests', {
+        method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
           'auth-token': `${token}`,
         },
+        body: JSON.stringify({ hospital_id }),
       });
 
       const resData = await response.json();
       // console.log(resData);
       setRequests(resData);
     };
-    fetchInsurances();
+    fetchRequests();
   }, []);
 
   const handleRequestAction = async (insuranceId, status) => {
