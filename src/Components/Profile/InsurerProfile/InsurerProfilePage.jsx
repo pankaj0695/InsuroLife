@@ -185,7 +185,7 @@ function InsurerProfilePage() {
         </div>
       </div>
 
-      <div className='profile-body'>
+      <div className='profile-info'>
         <div className='col-md-3 about-section'>
           <Card>
             <Card.Body>
@@ -227,7 +227,6 @@ function InsurerProfilePage() {
                       <Card.Text>Claim: {insurance.claim}</Card.Text>
                       <Card.Text>Premium: ₹{insurance.premium}/month</Card.Text>
                       <Card.Text>Tags: {insurance.tags.join(', ')}</Card.Text>
-                      <Card.Text>{insurance.description}</Card.Text>
                     </Card.Body>
                   </Card>
                 ))}
