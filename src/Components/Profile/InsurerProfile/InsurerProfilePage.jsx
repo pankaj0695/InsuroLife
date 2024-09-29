@@ -213,7 +213,7 @@ function InsurerProfilePage() {
         <Tabs
           activeKey={key}
           onSelect={k => setKey(k)}
-          className='toggle-section'
+          className='toggle-section-i'
         >
           <Tab eventKey='insurances' title='Insurances'>
             <div className='insurance-section'>

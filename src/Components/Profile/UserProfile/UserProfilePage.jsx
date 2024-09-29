@@ -202,7 +202,7 @@ const UserProfilePage = () => {
           </Card>
         </div>
 
-        <div className='col-md-9 toggle-section'>
+        <div className='toggle-section'>
           <Tabs activeKey={key} onSelect={k => setKey(k)} className='mb-3'>
             <Tab eventKey='healthRecords' title='Health Records'>
               <div className='health-records'>

@@ -1,23 +1,31 @@
-.buttons Button{
-    position: relative;
-    bottom: 45px;
+.buttons Button {
+  position: relative;
+  bottom: 45px;
 }
 
-.keypoints span{
-    color: #7D7987;
+.profile-info-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+  flex-wrap: wrap;
 }
-.action-btns{
+
+.keypoints span {
+  color: #7d7987;
+}
+.action-btns {
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
-.insurance-img{
+.insurance-img {
   width: 150px;
   height: 100px;
 }
 
-/* Insurances Section Styling */
-.insurances {
+/* Insurances-h Section Styling */
+.insurances-h {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -25,7 +33,7 @@
 }
 
 /* Styling for individual cards */
-.insurances .card {
+.insurances-h .card {
   width: 100%; /* Ensure it takes full width in smaller screens */
   max-width: 350px; /* Limit card width on larger screens */
   border-radius: 10px;
@@ -34,20 +42,27 @@
   transition: transform 0.3s ease-in-out; /* Animation for hover effect */
 }
 
-.insurances .card:hover {
+.insurances-h .card:hover {
   transform: translateY(-5px); /* Slight lift on hover */
 }
 
-.insurances .card-body {
+.insurances-h .card-body {
   padding: 20px;
 }
 
-.insurances .card-title {
+.insurances-h .card-title {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.insurances .card p {
+.insurances-h .card p {
   margin-bottom: 8px;
+}
+
+.body-section-h {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  bottom: 5px;
 }

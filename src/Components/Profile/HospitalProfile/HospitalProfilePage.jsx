@@ -45,7 +45,7 @@ function HospitalProfilePage() {
       // console.log(resData);
       setRequests(resData);
     };
-    fetchRequests();
+    // fetchRequests();
   }, []);
 
   const handleRequestAction = async (insuranceId, status) => {
@@ -97,7 +97,7 @@ function HospitalProfilePage() {
         </div>
       </div>
 
-      <div className='profile-info'>
+      <div className='profile-info-h'>
         <h2 className='profile-name'>{capitalize(user.data.hospital_name)}</h2>
         <div className='buttons'>
           <Button
@@ -112,7 +112,7 @@ function HospitalProfilePage() {
         </div>
       </div>
 
-      <div className='row body-section'>
+      <div className='body-section-h'>
         <div className='col-md-3 about-section'>
           <Card>
             <Card.Body>
@@ -141,7 +141,7 @@ function HospitalProfilePage() {
           <Tabs activeKey={key} onSelect={handleTabSelect} className='mb-3'>
             {/* Insurances Tab */}
             <Tab eventKey='insurances' title='Insurances'>
-              <div className='insurances'>
+              <div className='insurances-h'>
                 {acceptedInsurances.length > 0 ? (
                   acceptedInsurances.map((insurance, index) => (
                     <Card key={index} className='mb-3'>
