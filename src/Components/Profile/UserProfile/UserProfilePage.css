@@ -86,8 +86,15 @@
   font-weight: bold;
 }
 
+.health-records {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 15px;
+}
+
 .health-records .card {
-  max-width: 500px;
+  max-width: 48%;
   background-color: #f8f9fa;
   border-radius: 10px;
   margin-bottom: 20px;

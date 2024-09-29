@@ -209,46 +209,53 @@ function InsurerProfilePage() {
             </Card.Body>
           </Card>
         </div>
+        <div className='tab-box'>
+          <Tabs
+            activeKey={key}
+            onSelect={k => setKey(k)}
+            className='toggle-section-i'
+          >
+            <Tab eventKey='insurances' title='Insurances'>
+              <div className='insurance-section'>
+                {insurances &&
+                  insurances.map((insurance, index) => (
+                    <Card key={index} className='insurance-card'>
+                      <Card.Img variant='top' src={insurance.logo} />
+                      <Card.Body>
+                        <Card.Title>{insurance.insurance_name}</Card.Title>
+                        <Card.Text>Insurer: {insurance.insurer}</Card.Text>
+                        <Card.Text>Claim: {insurance.claim}</Card.Text>
+                        <Card.Text>
+                          Premium: ₹{insurance.premium}/month
+                        </Card.Text>
+                        <Card.Text>Tags: {insurance.tags.join(', ')}</Card.Text>
+                      </Card.Body>
+                    </Card>
+                  ))}
+              </div>
+            </Tab>
 
-        <Tabs
-          activeKey={key}
-          onSelect={k => setKey(k)}
-          className='toggle-section-i'
-        >
-          <Tab eventKey='insurances' title='Insurances'>
-            <div className='insurance-section'>
-              {insurances &&
-                insurances.map((insurance, index) => (
-                  <Card key={index} className='insurance-card'>
-                    <Card.Img variant='top' src={insurance.logo} />
+            <Tab eventKey='counselors' title='Counselors'>
+              <div className='counselor-section'>
+                {counselors.map((counselor, index) => (
+                  <Card key={index} className='counselor-card'>
+                    <Card.Img
+                      variant='top'
+                      src={counselor.image}
+                      className='counselor-image'
+                    />
                     <Card.Body>
-                      <Card.Title>{insurance.insurance_name}</Card.Title>
-                      <Card.Text>Insurer: {insurance.insurer}</Card.Text>
-                      <Card.Text>Claim: {insurance.claim}</Card.Text>
-                      <Card.Text>Premium: ₹{insurance.premium}/month</Card.Text>
-                      <Card.Text>Tags: {insurance.tags.join(', ')}</Card.Text>
+                      <Card.Title>{counselor.name}</Card.Title>
+                      <Card.Text>Phone: {counselor.phone_no}</Card.Text>
+                      <Card.Text>Email: {counselor.email}</Card.Text>
+                      <Card.Text>Tags: {counselor.tags.join(', ')}</Card.Text>
                     </Card.Body>
                   </Card>
                 ))}
-            </div>
-          </Tab>
-
-          <Tab eventKey='counselors' title='Counselors'>
-            <div className='counselor-section'>
-              {counselors.map((counselor, index) => (
-                <Card key={index} className='counselor-card'>
-                  <Card.Img variant='top' src={counselor.image} />
-                  <Card.Body>
-                    <Card.Title>{counselor.name}</Card.Title>
-                    <Card.Text>Phone: {counselor.phone_no}</Card.Text>
-                    <Card.Text>Email: {counselor.email}</Card.Text>
-                    <Card.Text>Tags: {counselor.tags.join(', ')}</Card.Text>
-                  </Card.Body>
-                </Card>
-              ))}
-            </div>
-          </Tab>
-        </Tabs>
+              </div>
+            </Tab>
+          </Tabs>
+        </div>
       </div>
 
       {/* Add Insurance Modal */}

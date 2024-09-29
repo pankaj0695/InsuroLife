@@ -1,9 +1,19 @@
+import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+
+import { UserContext } from '../../store/user-context';
 
 import illustration from '../../assets/images/illustration.svg';
 import './HeroPage.css';
 
 function HeroPage() {
+  const [startLink, setStartLink] = useState('/get-started');
+  const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    setStartLink(!user.type ? '/get-started' : `/${user.type}/profile`);
+  }, [user.type]);
+
   return (
     <section className='hero-section'>
       <div className='container'>
@@ -16,7 +26,7 @@ function HeroPage() {
               Discover the best insurance for you, and book appointments with
               ease, all in one place.
             </p>
-            <Link to='get-started' className='button'>
+            <Link to={startLink} className='button'>
               Get Started
             </Link>
           </div>
