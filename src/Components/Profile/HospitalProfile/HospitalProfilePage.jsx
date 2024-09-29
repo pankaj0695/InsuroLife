@@ -42,17 +42,35 @@ function HospitalProfilePage() {
       });
 
       const resData = await response.json();
-      // console.log(resData);
+      console.log(resData);
       setRequests(resData);
     };
-    // fetchRequests();
+    const fetchInsurances = async () => {
+      const token = localStorage.getItem('auth-token');
+      const hospital_id = localStorage.getItem('user-id');
+
+      const response = await fetch('/hospital/get-insurances', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'auth-token': `${token}`,
+        },
+        body: JSON.stringify({ hospital_id }),
+      });
+
+      const resData = await response.json();
+      console.log(resData);
+      setAcceptedInsurances(resData || []);
+    };
+    fetchRequests();
+    fetchInsurances();
   }, []);
 
-  const handleRequestAction = async (insuranceId, status) => {
+  const handleRequestAction = async (request_id, status) => {
     const token = localStorage.getItem('auth-token');
-
     try {
-      const response = await fetch('/notifications', {
+      await fetch('/hospital/notifications', {
         method: 'PATCH',
         headers: {
           Accept: 'application/json',
@@ -60,26 +78,13 @@ function HospitalProfilePage() {
           'auth-token': `${token}`,
         },
         body: JSON.stringify({
-          request_id: insuranceId,
+          request_id,
           status,
         }),
       });
-
-      const resData = await response.json();
-      if (response.status === 200) {
-        if (status === 'Accepted') {
-          setAcceptedInsurances(prev => [
-            ...prev,
-            resData.updatedRequest.insurance_id,
-          ]);
-        }
-
-        setRequests(prev =>
-          prev.filter(request => request._id !== resData.updatedRequest._id)
-        );
-      } else {
-        console.log(resData.message);
-      }
+      setRequests(prev =>
+        prev.filter(request => request._doc._id !== request_id)
+      );
     } catch (error) {
       console.error(error.message);
     }
@@ -174,11 +179,11 @@ function HospitalProfilePage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {requests.map((insurance, index) => (
+                    {requests.map((request, index) => (
                       <tr key={index}>
                         <td>{index + 1}</td>
-                        <td>{insurance.insurance_name}</td>
-                        <td>{insurance.status || 'Pending'}</td>
+                        <td>{request.insurance_name}</td>
+                        <td>{request._doc.status || 'Pending'}</td>
                         <td>
                           <div
                             className='action-btns'
@@ -191,7 +196,10 @@ function HospitalProfilePage() {
                               variant='primary'
                               size='sm'
                               onClick={() =>
-                                handleRequestAction(insurance._id, 'Accepted')
+                                handleRequestAction(
+                                  request._doc._id,
+                                  'Accepted'
+                                )
                               }
                             >
                               Accept
@@ -200,7 +208,10 @@ function HospitalProfilePage() {
                               variant='danger'
                               size='sm'
                               onClick={() =>
-                                handleRequestAction(insurance._id, 'Declined')
+                                handleRequestAction(
+                                  request._doc._id,
+                                  'Declined'
+                                )
                               }
                             >
                               Decline
@@ -209,7 +220,9 @@ function HospitalProfilePage() {
                               variant='primary'
                               size='sm'
                               onClick={() => {
-                                navigate(`/insurances/${insurance._id}`);
+                                navigate(
+                                  `/insurances/${request._doc.insurance_id}`
+                                );
                               }}
                             >
                               View Details
