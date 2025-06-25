@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
+import { API_BASE } from '../helpers/helper';
 
 const initialState = {
   type: '',
@@ -37,7 +38,7 @@ const UserProvider = props => {
       const role = localStorage.getItem('user-type');
       const id = localStorage.getItem('user-id');
       if (!role) return;
-      const response = await fetch('http://localhost:4000/user', {
+      const response = await fetch(`${API_BASE}/user`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -24,3 +24,5 @@ export const formatDate = dateString => {
 
   return formattedDate;
 };
+
+export const API_BASE = 'https://insurolife-backend.vercel.app';

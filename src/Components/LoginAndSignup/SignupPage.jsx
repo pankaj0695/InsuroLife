@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import PhoneInput from 'react-phone-input-2';
 import { UserContext } from '../../store/user-context';
+import { API_BASE } from '../../helpers/helper';
 
 import 'react-phone-input-2/lib/style.css';
 import './LoginAndSignupPage.css';
@@ -45,7 +46,7 @@ const SignupPage = () => {
 
     const imgExtension = image.type.split('/')[1];
 
-    const { url } = await fetch('/s3url', {
+    const { url } = await fetch(`${API_BASE}/s3url`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ imgExtension }),
@@ -71,7 +72,7 @@ const SignupPage = () => {
           city.trim().length === 0 ||
           !state ||
           state.trim().length === 0
-        ){
+        ) {
           setErrorMessage('Please fill all required fields.');
           return;
         }
@@ -84,7 +85,6 @@ const SignupPage = () => {
           setErrorMessage('Please enter a valid state name.');
           return;
         }
-
 
         userData = {
           name,
@@ -100,7 +100,7 @@ const SignupPage = () => {
 
         // console.log(userData);
 
-        response = await fetch('/customer/signup/', {
+        response = await fetch(`${API_BASE}/customer/signup/`, {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
@@ -129,7 +129,12 @@ const SignupPage = () => {
         break;
 
       case 'hospital':
-        if (!city || city.trim().length === 0 || !state || state.trim().length === 0) {
+        if (
+          !city ||
+          city.trim().length === 0 ||
+          !state ||
+          state.trim().length === 0
+        ) {
           setErrorMessage('Please fill all required fields.');
           return;
         }
@@ -144,7 +149,7 @@ const SignupPage = () => {
           password,
         };
 
-        response = await fetch('/hospital/signup/', {
+        response = await fetch(`${API_BASE}/hospital/signup/`, {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
@@ -181,7 +186,7 @@ const SignupPage = () => {
           email,
           password,
         };
-        response = await fetch('/insurer/signup/', {
+        response = await fetch(`${API_BASE}/insurer/signup/`, {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
@@ -225,7 +230,6 @@ const SignupPage = () => {
       </h2>
 
       {errorMessage && <p className='error-message'>{errorMessage}</p>}
-
 
       <form className='signup-form' onSubmit={submitHandler}>
         <label htmlFor='name'>

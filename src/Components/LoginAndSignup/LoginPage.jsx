@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { UserContext } from '../../store/user-context';
+import { API_BASE } from '../../helpers/helper';
 
 import './LoginAndSignupPage.css';
 
@@ -31,7 +32,7 @@ const LoginPage = () => {
 
     switch (role) {
       case 'customer':
-        response = await fetch('/customer/login/', {
+        response = await fetch(`${API_BASE}/customer/login/`, {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
@@ -43,12 +44,12 @@ const LoginPage = () => {
           alert('Wrong email or password.');
           return;
         }
-    
+
         if (response.status === 404) {
           alert('User not found.');
           return;
         }
-    
+
         if (response.status !== 200) {
           alert('Something went wrong. Please try again later.');
           return;
@@ -61,7 +62,7 @@ const LoginPage = () => {
         break;
 
       case 'hospital':
-        response = await fetch('/hospital/login/', {
+        response = await fetch(`${API_BASE}/hospital/login/`, {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
@@ -73,12 +74,12 @@ const LoginPage = () => {
           alert('Wrong email or password.');
           return;
         }
-    
+
         if (response.status === 404) {
           alert('Hopital not found.');
           return;
         }
-    
+
         if (response.status !== 200) {
           alert('Something went wrong. Please try again later.');
           return;
@@ -91,7 +92,7 @@ const LoginPage = () => {
         break;
 
       case 'insurer':
-        response = await fetch('/insurer/login/', {
+        response = await fetch(`${API_BASE}/insurer/login/`, {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {
@@ -103,12 +104,12 @@ const LoginPage = () => {
           alert('Wrong email or password.');
           return;
         }
-    
+
         if (response.status === 404) {
           alert('Insurer not found.');
           return;
         }
-    
+
         if (response.status !== 200) {
           alert('Something went wrong. Please try again later.');
           return;

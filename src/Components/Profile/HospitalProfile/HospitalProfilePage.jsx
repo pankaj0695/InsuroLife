@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { UserContext } from '../../../store/user-context';
-import { capitalize } from '../../../helpers/helper';
+import { capitalize, API_BASE } from '../../../helpers/helper';
 
 import hospitalCoverImg from '../../../assets/images/undoc.svg';
 import { Button, Card, Tabs, Tab } from 'react-bootstrap';
@@ -31,7 +31,7 @@ function HospitalProfilePage() {
       const token = localStorage.getItem('auth-token');
       const hospital_id = localStorage.getItem('user-id');
 
-      const response = await fetch('/hospital/get-requests', {
+      const response = await fetch(`${API_BASE}/hospital/get-requests`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -49,7 +49,7 @@ function HospitalProfilePage() {
       const token = localStorage.getItem('auth-token');
       const hospital_id = localStorage.getItem('user-id');
 
-      const response = await fetch('/hospital/get-insurances', {
+      const response = await fetch(`${API_BASE}/hospital/get-insurances`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -70,7 +70,7 @@ function HospitalProfilePage() {
   const handleRequestAction = async (request_id, status) => {
     const token = localStorage.getItem('auth-token');
     try {
-      await fetch('/hospital/notifications', {
+      await fetch(`${API_BASE}/hospital/notifications`, {
         method: 'PATCH',
         headers: {
           Accept: 'application/json',

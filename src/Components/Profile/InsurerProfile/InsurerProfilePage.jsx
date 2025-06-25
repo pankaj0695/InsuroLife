@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card, Button, Modal, Form, Tabs, Tab } from 'react-bootstrap';
 
 import { UserContext } from '../../../store/user-context';
-import { isImageValid, capitalize } from '../../../helpers/helper';
+import { isImageValid, capitalize, API_BASE } from '../../../helpers/helper';
 
 import InsurerCoverImg from '../../../assets/images/insurer-bg.jpeg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -29,7 +29,7 @@ function InsurerProfilePage() {
     const fetchInsurances = async () => {
       const token = localStorage.getItem('auth-token');
       const company_id = localStorage.getItem('user-id');
-      const response = await fetch('/insurer/get-insurances', {
+      const response = await fetch(`${API_BASE}/insurer/get-insurances`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -45,7 +45,7 @@ function InsurerProfilePage() {
     const fetchCounselors = async () => {
       const token = localStorage.getItem('auth-token');
       const company_id = localStorage.getItem('user-id');
-      const response = await fetch('/insurer/get-counsellors', {
+      const response = await fetch(`${API_BASE}/insurer/get-counsellors`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -80,7 +80,7 @@ function InsurerProfilePage() {
 
     const token = localStorage.getItem('auth-token');
 
-    const response = await fetch('/insurer/insurance/new', {
+    const response = await fetch(`${API_BASE}/insurer/insurance/new`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -106,7 +106,7 @@ function InsurerProfilePage() {
     const imgExtension =
       e.target.elements.counselorLogo.files[0].type.split('/')[1];
 
-    const { url } = await fetch('/s3url', {
+    const { url } = await fetch(`${API_BASE}/s3url`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ imgExtension }),
@@ -136,7 +136,7 @@ function InsurerProfilePage() {
 
     const token = localStorage.getItem('auth-token');
 
-    const response = await fetch('/insurer/counsellor', {
+    const response = await fetch(`${API_BASE}/insurer/counsellor`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

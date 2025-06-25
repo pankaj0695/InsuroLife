@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // import { UserContext } from '../../store/user-context';
-import { capitalize } from '../../helpers/helper';
+import { capitalize, API_BASE } from '../../helpers/helper';
 
 import downArrowIcon from '../../assets/icons/down-arrow.svg';
 import locationIcon from '../../assets/icons/location.svg';
@@ -36,7 +36,7 @@ const HospitalsPage = () => {
     const fetchHospitals = async () => {
       const token = localStorage.getItem('auth-token');
 
-      const response = await fetch('/customer/get-hospitals', {
+      const response = await fetch(`${API_BASE}/customer/get-hospitals`, {
         method: 'GET',
         headers: {
           Accept: 'application/json',

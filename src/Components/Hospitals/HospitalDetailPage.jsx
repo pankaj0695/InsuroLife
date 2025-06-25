@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { capitalize } from '../../helpers/helper';
+import { capitalize, API_BASE } from '../../helpers/helper';
 
 import bajajLogo from '../../assets/insurance-images/bajaj-logo.png';
 import starIcon from '../../assets/icons/star-fill-icon.svg';
@@ -28,7 +28,7 @@ const HospitalDetailPage = () => {
     const fetchHospital = async () => {
       const token = localStorage.getItem('auth-token');
 
-      const response = await fetch('/customer/get-hospital', {
+      const response = await fetch(`${API_BASE}/customer/get-hospital`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',

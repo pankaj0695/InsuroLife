@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { capitalize } from '../../helpers/helper';
+import { capitalize, API_BASE } from '../../helpers/helper';
 
 import hospitalImage from '../../assets/hospital-images/hospital-image.jpg';
 import './InsuranceDetailPage.css';
@@ -26,7 +26,7 @@ const InsuranceDetailPage = () => {
     const fetchInsurance = async () => {
       const token = localStorage.getItem('auth-token');
 
-      const response = await fetch('/customer/get-insurance', {
+      const response = await fetch(`${API_BASE}/customer/get-insurance`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',

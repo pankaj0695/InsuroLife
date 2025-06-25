@@ -2,7 +2,12 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { UserContext } from '../../../store/user-context';
-import { isImageValid, capitalize, formatDate } from '../../../helpers/helper';
+import {
+  isImageValid,
+  capitalize,
+  formatDate,
+  API_BASE,
+} from '../../../helpers/helper';
 
 import { Card, Button, Tabs, Tab, Modal } from 'react-bootstrap';
 import CoverImg from '../../../assets/images/unsplash_0aMMMUjiiEQ.svg';
@@ -42,17 +47,20 @@ const UserProfilePage = () => {
       const token = localStorage.getItem('auth-token');
       const userId = localStorage.getItem('user-id');
 
-      const response = await fetch('/insurer/get-user-appointments', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          'auth-token': `${token}`,
-        },
-        body: JSON.stringify({
-          user_id: userId,
-        }),
-      });
+      const response = await fetch(
+        `${API_BASE}/insurer/get-user-appointments`,
+        {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'auth-token': `${token}`,
+          },
+          body: JSON.stringify({
+            user_id: userId,
+          }),
+        }
+      );
 
       const resData = await response.json();
       setUpdates(resData.appointments);
@@ -90,7 +98,7 @@ const UserProfilePage = () => {
 
     const imgExtension = newRecordData.image.type.split('/')[1];
 
-    const { url } = await fetch('/s3url', {
+    const { url } = await fetch(`${API_BASE}/s3url`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ imgExtension }),
@@ -113,15 +121,18 @@ const UserProfilePage = () => {
 
     const token = localStorage.getItem('auth-token');
 
-    const response = await fetch('/customer/profile/medical_records', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'auth-token': `${token}`,
-      },
-      body: JSON.stringify(newHealthRecord),
-    });
+    const response = await fetch(
+      `${API_BASE}/customer/profile/medical_records`,
+      {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'auth-token': `${token}`,
+        },
+        body: JSON.stringify(newHealthRecord),
+      }
+    );
 
     const resData = await response.json();
 
